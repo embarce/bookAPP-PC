@@ -1,11 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9c8584e3-c1ce-4b77-932f-464935fa490b" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+    <list default="true" id="9c8584e3-c1ce-4b77-932f-464935fa490b" name="Default" comment="还原回了第一次提交而且更改了数据库的连接">
+      <change beforePath="$PROJECT_DIR$/.gradle/4.3.1/fileContent/annotation-processors.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.3.1/fileContent/annotation-processors.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.3.1/fileContent/fileContent.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.3.1/fileContent/fileContent.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.3.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.3.1/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.3.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.3.1/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.3.1/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.3.1/fileHashes/resourceHashesCache.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.3.1/taskHistory/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.3.1/taskHistory/taskHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.3.1/taskHistory/taskHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.3.1/taskHistory/taskHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sc-provider/sc-xzsd-app/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/sc-provider/sc-xzsd-app/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sc-api-gateway/build/classes/java/main/com/neusoft/gateway/filter/AuthFilter.class" beforeDir="false" afterPath="$PROJECT_DIR$/sc-api-gateway/build/classes/java/main/com/neusoft/gateway/filter/AuthFilter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sc-api-gateway/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/sc-api-gateway/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sc-common/sc-common-base/build/libs/sc-common-base-0.0.1-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/sc-common/sc-common-base/build/libs/sc-common-base-0.0.1-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sc-common/sc-common-client/build/libs/sc-common-client-0.0.1-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/sc-common/sc-common-client/build/libs/sc-common-client-0.0.1-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sc-common/sc-common-util/build/classes/java/main/com/neusoft/util/StringUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/sc-common/sc-common-util/build/classes/java/main/com/neusoft/util/StringUtil.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sc-common/sc-common-util/build/libs/sc-common-util-0.0.1-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/sc-common/sc-common-util/build/libs/sc-common-util-0.0.1-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sc-common/sc-core/build/classes/java/main/com/neusoft/core/config/SwaggerConfiguration.class" beforeDir="false" afterPath="$PROJECT_DIR$/sc-common/sc-core/build/classes/java/main/com/neusoft/core/config/SwaggerConfiguration.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sc-common/sc-core/build/classes/java/main/com/neusoft/core/page/PageInterceptor.class" beforeDir="false" afterPath="$PROJECT_DIR$/sc-common/sc-core/build/classes/java/main/com/neusoft/core/page/PageInterceptor.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sc-common/sc-core/build/libs/sc-core-0.0.1-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/sc-common/sc-core/build/libs/sc-core-0.0.1-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sc-provider/sc-xzsd-app/build/resources/main/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/sc-provider/sc-xzsd-app/build/resources/main/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sc-provider/sc-xzsd-app/build/resources/main/bootstrap.yml" beforeDir="false" afterPath="$PROJECT_DIR$/sc-provider/sc-xzsd-app/build/resources/main/bootstrap.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sc-provider/sc-xzsd-app/build/resources/main/logback-spring.xml" beforeDir="false" afterPath="$PROJECT_DIR$/sc-provider/sc-xzsd-app/build/resources/main/logback-spring.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sc-provider/sc-xzsd-app/build/resources/main/mybatis/mybatis-config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/sc-provider/sc-xzsd-app/build/resources/main/mybatis/mybatis-config.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sc-provider/sc-xzsd-app/build/resources/main/static/error/404.html" beforeDir="false" afterPath="$PROJECT_DIR$/sc-provider/sc-xzsd-app/build/resources/main/static/error/404.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sc-provider/sc-xzsd-pc/build/resources/main/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/sc-provider/sc-xzsd-pc/build/resources/main/application.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sc-provider/sc-xzsd-pc/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/sc-provider/sc-xzsd-pc/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sc-security/sc-security-client/build/libs/sc-security-client-0.0.1-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/sc-security/sc-security-client/build/libs/sc-security-client-0.0.1-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sc-security/sc-security-core/build/classes/java/main/com/neusoft/security/core/validate/processor/AbstractValidateCodeProcessor.class" beforeDir="false" afterPath="$PROJECT_DIR$/sc-security/sc-security-core/build/classes/java/main/com/neusoft/security/core/validate/processor/AbstractValidateCodeProcessor.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sc-security/sc-security-core/build/libs/sc-security-core-0.0.1-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/sc-security/sc-security-core/build/libs/sc-security-core-0.0.1-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sc-security/sc-security-uaa/build/classes/java/main/com/neusoft/oauth/service/UaaUserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/sc-security/sc-security-uaa/build/classes/java/main/com/neusoft/oauth/service/UaaUserService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sc-security/sc-security-uaa/build/resources/main/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/sc-security/sc-security-uaa/build/resources/main/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sc-security/sc-security-uaa/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/sc-security/sc-security-uaa/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sc-support/sc-job/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/sc-support/sc-job/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sc-support/sc-log/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/sc-support/sc-log/src/main/resources/application.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,7 +106,7 @@
       <recent name="C:\Users\Administrator\Desktop\FY2020 课件20200220\京东行走书店项目资料\sc2019\sc-provider" />
     </key>
   </component>
-  <component name="RunManager" selected="Spring Boot.ScXzsdAppApplication">
+  <component name="RunManager" selected="Spring Boot.ScApiGatewayApplication">
     <configuration default="true" type="Applet">
       <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
       <method v="2">
@@ -245,8 +275,17 @@
       <workItem from="1586222176937" duration="467000" />
       <workItem from="1586223010944" duration="3388000" />
       <workItem from="1586239381072" duration="494000" />
-      <workItem from="1586247918661" duration="317000" />
+      <workItem from="1586247918661" duration="424000" />
+      <workItem from="1586266034084" duration="1302000" />
     </task>
+    <task id="LOCAL-00001" summary="还原回了第一次提交而且更改了数据库的连接">
+      <created>1586248341823</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1586248341823</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -260,47 +299,55 @@
       <collection />
     </option>
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="还原回了第一次提交而且更改了数据库的连接" />
+    <option name="LAST_COMMIT_MESSAGE" value="还原回了第一次提交而且更改了数据库的连接" />
+  </component>
   <component name="WindowStateProjectService">
-    <state width="1877" height="318" key="GridCell.Tab.0.bottom" timestamp="1586248244385">
+    <state x="505" y="113" key="CommitChangelistDialog2" timestamp="1586248339022">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="505" y="113" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1586248339022" />
+    <state width="1877" height="318" key="GridCell.Tab.0.bottom" timestamp="1586268262609">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1493" height="244" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1586231249901" />
-    <state width="1877" height="318" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1586248244385" />
-    <state width="1877" height="318" key="GridCell.Tab.0.center" timestamp="1586248244385">
+    <state width="1877" height="318" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1586268262609" />
+    <state width="1877" height="318" key="GridCell.Tab.0.center" timestamp="1586268262609">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1493" height="244" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1586231249901" />
-    <state width="1877" height="318" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1586248244385" />
-    <state width="1877" height="318" key="GridCell.Tab.0.left" timestamp="1586248244384">
+    <state width="1877" height="318" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1586268262609" />
+    <state width="1877" height="318" key="GridCell.Tab.0.left" timestamp="1586268262609">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1493" height="244" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1586231249900" />
-    <state width="1877" height="318" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1586248244384" />
-    <state width="1877" height="318" key="GridCell.Tab.0.right" timestamp="1586248244385">
+    <state width="1877" height="318" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1586268262609" />
+    <state width="1877" height="318" key="GridCell.Tab.0.right" timestamp="1586268262609">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1493" height="244" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1586231249901" />
-    <state width="1877" height="318" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1586248244385" />
-    <state width="1877" height="318" key="GridCell.Tab.1.bottom" timestamp="1586248244385">
+    <state width="1877" height="318" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1586268262609" />
+    <state width="1877" height="318" key="GridCell.Tab.1.bottom" timestamp="1586268262609">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1493" height="244" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1586231249901" />
-    <state width="1877" height="318" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1586248244385" />
-    <state width="1877" height="318" key="GridCell.Tab.1.center" timestamp="1586248244385">
+    <state width="1877" height="318" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1586268262609" />
+    <state width="1877" height="318" key="GridCell.Tab.1.center" timestamp="1586268262609">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1493" height="244" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1586231249901" />
-    <state width="1877" height="318" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1586248244385" />
-    <state width="1877" height="318" key="GridCell.Tab.1.left" timestamp="1586248244385">
+    <state width="1877" height="318" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1586268262609" />
+    <state width="1877" height="318" key="GridCell.Tab.1.left" timestamp="1586268262609">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1493" height="244" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1586231249901" />
-    <state width="1877" height="318" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1586248244385" />
-    <state width="1877" height="318" key="GridCell.Tab.1.right" timestamp="1586248244385">
+    <state width="1877" height="318" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1586268262609" />
+    <state width="1877" height="318" key="GridCell.Tab.1.right" timestamp="1586268262609">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1493" height="244" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1586231249901" />
-    <state width="1877" height="318" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1586248244385" />
+    <state width="1877" height="318" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1586268262609" />
     <state x="157" y="25" key="SettingsEditor" timestamp="1586223203599">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

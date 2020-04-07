@@ -4,10 +4,12 @@ spring:
   application:
     name: sc-log
   datasource:
-      driver-class-name: com.mysql.jdbc.Driver
-      url: jdbc:mysql://10.100.12.20:4506/xzsdcs?useUnicode=true&characterEncoding=utf-8&useSSL=false
-      username: root
-      password: 123456
+    name: dataSource
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3307/bookstore?serverTimezone=UTC&serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=UTF-8&useSSL=false
+    username: root
+    password: 827428112mb
   jpa:
     hibernate:
       #ddl-auto: create #ddl-auto:设为create表示每次都重新建表
