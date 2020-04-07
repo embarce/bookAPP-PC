@@ -15,9 +15,9 @@ security:
   sessions: stateless
 spring:
   redis:
-    host: 47.92.101.6
-    password: dnc.2009
+    host: 127.0.0.1
     database: 9
+    port: 6379
   datasource:
     name: dataSource
     type: com.alibaba.druid.pool.DruidDataSource

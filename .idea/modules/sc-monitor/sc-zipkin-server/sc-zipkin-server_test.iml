@@ -18,12 +18,12 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="sc-zipkin-server_main" />
     <orderEntry type="library" name="Gradle: org.springframework.boot:spring-boot-devtools:1.5.10.RELEASE" level="project" />
-    <orderEntry type="library" name="Gradle: io.zipkin.java:zipkin-server:2.6.1" level="project" />
     <orderEntry type="library" name="Gradle: org.springframework.boot:spring-boot-autoconfigure:1.5.10.RELEASE" level="project" />
+    <orderEntry type="library" name="Gradle: io.zipkin.java:zipkin-server:2.6.1" level="project" />
     <orderEntry type="library" name="Gradle: io.zipkin.java:zipkin-autoconfigure-ui:2.6.1" level="project" />
     <orderEntry type="library" name="Gradle: org.springframework.boot:spring-boot:1.5.10.RELEASE" level="project" />
-    <orderEntry type="library" name="Gradle: org.springframework.boot:spring-boot-starter-web:1.5.10.RELEASE" level="project" />
     <orderEntry type="library" name="Gradle: org.springframework:spring-context:4.3.14.RELEASE" level="project" />
+    <orderEntry type="library" name="Gradle: org.springframework.boot:spring-boot-starter-web:1.5.10.RELEASE" level="project" />
     <orderEntry type="library" name="Gradle: org.springframework:spring-aop:4.3.14.RELEASE" level="project" />
     <orderEntry type="library" name="Gradle: org.springframework.boot:spring-boot-starter-actuator:1.5.10.RELEASE" level="project" />
     <orderEntry type="library" name="Gradle: org.springframework:spring-beans:4.3.14.RELEASE" level="project" />

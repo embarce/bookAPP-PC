@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xzsd.pc.order.dao.OredrDao">
+    <insert id="addOrder" parameterType="com.xzsd.pc.order.entity.OrderInfo">
+        insert into t_goods_order_table
+        (order_id,
+        goods_Id,
+        price,
+        user_id,
+        shipping_money,
+        shipping_user,
+        pay_time,
+        shipping_time,
+        receive_time,
+        order_status,
+        receiver_no,
+        driver_id,
+        order_p,
+        is_deleted,
+        create_by,
+        gmt_create,
+        version)
+        values (
+        #{orderId},
+        #{goodsId},
+        #{price},
+        #{userId},
+        #{shippingMoney},
+        #{shippingUser},
+        now(),
+        now(),
+        #{receiveTime},
+        0,
+        #{receiverNo},
+        #{driverId},
+        #{orderP},
+        0,
+        #{createBy},
+        now(),
+        0)
+    </insert>
+</mapper>

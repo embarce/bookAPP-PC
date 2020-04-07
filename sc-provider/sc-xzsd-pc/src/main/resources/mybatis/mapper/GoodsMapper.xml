@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xzsd.pc.goods.dao.GoodsDao">
+    <!--统计要新增的商品数量-->
+    <select id="countgoodsBybookId" parameterType="java.lang.String" resultType="int">
+        select count(bookId)
+        from t_goods_table
+        where is_delete = 0
+        and bookId = #{bookId}
+    </select>
+    <!--新增商品-->
+    <insert id="addGoods" parameterType="com.xzsd.pc.goods.entity.goodsInfo">
+        insert into t_goods_table
+        (goods_name,
+         good_id,
+         price,
+         is_delete,
+         create_name,
+         create_time,
+         version,
+         author,
+         publisher,
+         introduction,
+         bookId,
+         status,
+         picture
+         )
+        values
+           (#{goodsName},
+            #{goodId},
+            #{price},
+            #{isDeleted},
+            #{createBy},
+            now(),
+            0,
+            #{author},
+            #{outsideName},
+            #{introduction},
+            #{bookId},
+            #{status},
+            #{picture}
+            )
+    </insert>
+    <!--查询商品列表分页查询-->
+    <select id="listGoodsByPage" parameterType="com.xzsd.pc.goods.entity.goodsInfo" resultType="com.xzsd.pc.goods.entity.goodsInfo">
+        select
+            a.goods_name goodsName,
+            a.good_id goodId,
+            a.price price,
+            a.is_delete isDeleted
+        from t_goods_table a
+        where is_delete = 0
+        <if test="publisher != null and publisher != ''">
+            and a.publisher like concat('%', #{publisher}, '%')
+        </if>
+        <if test="status != null and status != ''">
+            and a.status like concat('%', #{status}, '%')
+        </if>
+        <if test="author != null and author != ''">
+            and a.author like concat('%', #{author}, '%')
+        </if>
+        <if test="introduce != null and introduce != ''">
+            and a.introduce like concat('%', #{introduce}, '%')
+        </if>
+        <if test="outsideName != null and outsideName != ''">
+            and a.outside_name like concat('%', #{outsideName}, '%')
+        </if>
+        order by good_id desc
+    </select>
+
+    <!--删除商品-->
+    <update id="deleteGoods" parameterType="com.xzsd.pc.goods.entity.goodsInfo">
+        update t_goods_table
+        set
+        is_delete = 1,
+        change_time = now(),
+        version = version + 1
+        where good_id in
+        <foreach item="item" index="index" collection="listCode" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </update>
+
+    <!--修改商品信息-->
+    <update id="updateGoods" parameterType="com.xzsd.pc.goods.entity.goodsInfo">
+        update t_goods_table
+        set
+            goods_name    = #{goodsName},
+            price   = #{price},
+            stock          = #{stock},
+            introduce        = #{introduce},
+            picture        = #{picture},
+            category       = #{category},
+            cost_price       = #{cost},
+            outside_name       = #{outsideName},
+            author       = #{author},
+            publisher       = #{publisher},
+            introduction = #{introduction},
+            status       =#{status},
+            bookId = #{bookId},
+            change_name   = #{lastModifiedBy},
+            version      = version + 1
+         where good_id = #{goodId}
+         and version = #{version}
+    </update>
+    <!--查询商品详情信息-->
+    <select id="getGoodsByGoodsId" parameterType="java.lang.String" resultType="com.xzsd.pc.goods.entity.goodsInfo">
+        select
+            a.goods_name    goodsName,
+            a.good_id       goodId,
+            a.price         price,
+            a.stock         stock,
+            a.introduce     introduce,
+            a.picture       picture,
+            a.category      category,
+            a.cost_price    cost_price,
+            a.outside_name  outside_name,
+            a.author        author,
+            a.publisher     publisher,
+            a.introduction  introduction,
+            a.status        status,
+            a.bookId        bookId
+        from t_goods_table a
+        where good_id=#{goodsId}
+    </select>
+
+    <!--上架商品-->
+    <update id="updateGoodsUpper" parameterType="com.xzsd.pc.goods.entity.goodsInfo">
+        update t_goods_table
+        set
+        status = 1,
+        change_time = now(),
+        version = version + 1
+        where good_id in
+        <foreach item="item" index="index" collection="listCode" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </update>
+    <!--下架商品-->
+    <update id="updateGoodsLower" parameterType="com.xzsd.pc.goods.entity.goodsInfo">
+        update t_goods_table
+        set
+        status = 0,
+        change_time = now(),
+        version = version + 1
+        where good_id in
+        <foreach item="item" index="index" collection="listCode" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </update>
+</mapper>

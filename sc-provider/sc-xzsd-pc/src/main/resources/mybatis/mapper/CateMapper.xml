@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xzsd.pc.cate.dao.CateDao">
+    <!--通过名字来看分类是否存在-->
+    <select id="countCateByName" parameterType="java.lang.String" resultType="int">
+        select count(*)
+        from  t_cate_table
+        where cate_name=#{cateName}
+    </select>
+    <!--新增分类-->
+    <insert id="addCate" parameterType="com.xzsd.pc.cate.entity.CateInfo">
+        insert into t_cate_table
+        (cate_id,
+        cate_name,
+        cate_id_parent,
+        is_delete,
+        version,
+        create_name,
+        create_time,
+        remake
+        )
+        value (
+        #{cateId},
+        #{cateName},
+        #{cateIdParent},
+        0,
+        0,
+        #{createBy},
+        now(),
+        #{remake}
+        )
+    </insert>
+<!--    &lt;!&ndash;新增MQ队列&ndash;&gt;-->
+<!--    <insert id="addMq" parameterType="java.lang.String">-->
+<!--        insert into t_mq_test-->
+<!--        (-->
+<!--        cate,-->
+<!--        a_time-->
+<!--        )-->
+<!--        value (-->
+<!--        #{json},-->
+<!--        now()-->
+<!--        )-->
+<!--    </insert>-->
+    <select id="getCate" resultType="com.xzsd.pc.cate.entity.CateInfo">
+        select
+            cate_id cateId,
+            cate_name cateName
+        from t_cate_table
+        where cate_id_parent =0
+    </select>
+    <!--查询父类的子类-->
+    <select id="findCateById" parameterType="java.lang.String" resultType="com.xzsd.pc.cate.entity.cateParentInfo">
+        select
+            cate_id cateId,
+            cate_name cateName
+        from t_cate_table
+        where cate_id_parent=#{chId}
+    </select>
+    <select id="chekChiById" parameterType="java.lang.String" resultType="int">
+        select
+            count(*)
+        from t_cate_table
+        where cate_id_parent=#{cateId}
+    </select>
+<!--    删除分类-->
+    <update id="delectCateById" parameterType="java.lang.String" >
+        update t_cate_table
+        set
+            is_delete = 1,
+            change_time = now(),
+            change_name=#{lastModifiedBy},
+            version = version + 1
+        where cate_id=#{cateId}
+    </update>
+    <update id="updateCateById" parameterType="java.lang.String" >
+        update t_cate_table
+        set
+            cate_name=#{cateName},
+            remake=#{remake},
+            change_time = now(),
+            change_name=#{lastModifiedBy},
+            version = version + 1
+        where cate_id=#{cateId}
+         and version = #{version}
+    </update>
+</mapper>

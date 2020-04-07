@@ -110,8 +110,8 @@
     <orderEntry type="library" name="Gradle: org.springframework.boot:spring-boot-starter-logging:1.5.10.RELEASE" level="project" />
     <orderEntry type="library" name="Gradle: org.springframework:spring-beans:4.3.14.RELEASE" level="project" />
     <orderEntry type="library" name="Gradle: ch.qos.logback:logback-classic:1.1.11" level="project" />
-    <orderEntry type="library" name="Gradle: org.slf4j:jcl-over-slf4j:1.7.25" level="project" />
     <orderEntry type="library" name="Gradle: org.springframework:spring-expression:4.3.14.RELEASE" level="project" />
+    <orderEntry type="library" name="Gradle: org.slf4j:jcl-over-slf4j:1.7.25" level="project" />
     <orderEntry type="library" name="Gradle: org.springframework:spring-core:4.3.14.RELEASE" level="project" />
     <orderEntry type="library" name="Gradle: org.slf4j:jul-to-slf4j:1.7.25" level="project" />
     <orderEntry type="library" name="Gradle: org.slf4j:log4j-over-slf4j:1.7.25" level="project" />
@@ -161,8 +161,8 @@
     <orderEntry type="library" name="Gradle: org.apache.tomcat:tomcat-jdbc:8.5.27" level="project" />
     <orderEntry type="library" name="Gradle: ch.qos.logback:logback-core:1.1.11" level="project" />
     <orderEntry type="library" name="Gradle: io.netty:netty-handler:4.0.27.Final" level="project" />
-    <orderEntry type="library" name="Gradle: io.netty:netty-codec:4.0.27.Final" level="project" />
     <orderEntry type="library" name="Gradle: org.bouncycastle:bcprov-jdk15on:1.56" level="project" />
+    <orderEntry type="library" name="Gradle: io.netty:netty-codec:4.0.27.Final" level="project" />
     <orderEntry type="library" name="Gradle: io.netty:netty-transport:4.0.27.Final" level="project" />
     <orderEntry type="library" name="Gradle: io.netty:netty-buffer:4.0.27.Final" level="project" />
     <orderEntry type="library" name="Gradle: io.netty:netty-common:4.0.27.Final" level="project" />
