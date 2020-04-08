@@ -8,7 +8,7 @@ import java.util.Date;
  */
 public class OrderInfo {
     /**
-     * 订单号
+            * 订单号
      */
     private String orderId;
 
@@ -36,6 +36,7 @@ public class OrderInfo {
      * 付款时间
      */
     private String payTime;
+    private String payTime2;
     /**
      * 发货时间
      */
@@ -96,6 +97,23 @@ public class OrderInfo {
      * 版本号
      */
     private String version;
+    private String phone;
+
+    public String getPayTime2() {
+        return payTime2;
+    }
+
+    public void setPayTime2(String payTime2) {
+        this.payTime2 = payTime2;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
 
     public String getOrderId() {
         return orderId;

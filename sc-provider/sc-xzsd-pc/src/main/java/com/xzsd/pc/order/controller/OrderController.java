@@ -33,4 +33,34 @@ public class OrderController {
             throw e;
         }
     }
+    @RequestMapping("listOrderByPage")
+    public AppResponse listOrderByPage(OrderInfo orderInfo){
+        try{
+            AppResponse appResponse=orderService.listOredrByPage(orderInfo);
+            return appResponse;
+        }catch (Exception e){
+            logger.error("查询异常",e);
+            throw e;
+        }
+    }
+    @RequestMapping("findOrderById")
+    public AppResponse findOrderById(String orderId){
+        try{
+            AppResponse appResponse=orderService.findOrderById(orderId);
+            return  appResponse;
+        }catch (Exception e){
+            logger.error("查询异常",e);
+            throw  e;
+        }
+    }
+    @PostMapping("CancelOrderById")
+    public AppResponse CancelOrderById(String orderId){
+        try{
+            AppResponse appResponse=orderService.CancelOrderById(orderId);
+            return appResponse;
+        }catch (Exception e){
+            logger.error("取消失败");
+            throw e;
+        }
+    }
 }

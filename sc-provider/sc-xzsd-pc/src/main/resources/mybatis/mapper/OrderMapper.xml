@@ -39,4 +39,76 @@
         now(),
         0)
     </insert>
+    <select id="listOrderByPage" parameterType="com.xzsd.pc.order.entity.OrderInfo" resultType="com.xzsd.pc.order.entity.OrderVO">
+        select
+        a.order_id orderId,
+        a.price+a.shipping_money price,
+        a.user_id userId,
+        b.phone,
+        b.user_name shippingUser,
+        a.pay_time payTime,
+        a.order_status orderStatus,
+        a.receiver_no receiverNo
+        FROM
+        t_goods_order_table a
+        JOIN t_sys_user b ON a.user_id = b.user_code
+        where a.is_deleted = 0
+        <if test="orderStatus != null and orderStatus != ''">
+            and a.order_status like concat('%', #{orderStatus}, '%')
+        </if>
+        <if test="orderId != null and orderId != ''">
+            and a.order_id like concat('%', #{orderId}, '%')
+        </if>
+        <if test="phone != null and phone != ''">
+            and b.phone like concat('%', #{phone}, '%')
+        </if>
+        <if test="shippingUser != null and shippingUser != ''">
+            and b.user_name like concat('%', #{shippingUser}, '%')
+        </if>
+        <if test="payTime != null and payTime != ''">
+            <if test="payTime2 != null and payTime2 != ''">
+                and a.pay_time between #{payTime} and #{payTime2}
+            </if>
+        </if>
+        order by pay_time desc
+    </select>
+    <select id="findOrderById" parameterType="java.lang.String" resultType="com.xzsd.pc.order.entity.OrderDetailsVO">
+        select
+             a.order_id orderId,
+             a.goods_Id goodsId,
+             b.goods_name goodsName,
+             a.price price,
+             a.price salesPrice,
+             a.price+a.shipping_money sumPrice,
+             a.user_id userId,
+             a.num num
+        FROM
+            t_goods_order_table a
+            JOIN t_goods_table b ON a.goods_Id = b.good_id
+        WHERE
+            a.is_deleted = 0
+            and a.order_id=#{orderId}
+        ORDER BY
+            a.pay_time DESC
+    </select>
+    <update id="CancelOrderById" parameterType="java.lang.String">
+        update t_goods_order_table
+        set order_status=2,
+        change_name=#{userId},
+        change_time=now()
+        where order_id in
+        <foreach item="item" index="index" collection="listCode" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </update>
+<!--    <update id="orderArrivalById" parameterType="java.lang.String">-->
+<!--        update t_goods_order_table-->
+<!--        set order_status=1,-->
+<!--        change_name=#{userId},-->
+<!--        change_time=now()-->
+<!--        where order_id in-->
+<!--        <foreach item="item" index="index" collection="listCode" open="(" separator="," close=")">-->
+<!--            #{item}-->
+<!--        </foreach>-->
+<!--    </update>-->
 </mapper>
