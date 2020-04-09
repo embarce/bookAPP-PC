@@ -1,18 +1,60 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9c8584e3-c1ce-4b77-932f-464935fa490b" name="Default" comment="完成了用户，分类，商品，轮播图的模块修改">
-      <change afterPath="$PROJECT_DIR$/sc-provider/sc-xzsd-pc/src/main/java/com/xzsd/pc/order/entity/OrderDetailsVO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sc-provider/sc-xzsd-pc/src/main/java/com/xzsd/pc/order/entity/OrderVO.java" afterDir="false" />
+    <list default="true" id="9c8584e3-c1ce-4b77-932f-464935fa490b" name="Default" comment="完成了订单的修改">
+      <change afterPath="$PROJECT_DIR$/sc-provider/sc-xzsd-pc/src/main/java/com/xzsd/pc/hotGoods/controller/HotGoodsController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sc-provider/sc-xzsd-pc/src/main/java/com/xzsd/pc/hotGoods/dao/HotGoodsDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sc-provider/sc-xzsd-pc/src/main/java/com/xzsd/pc/hotGoods/entity/HotGoodsInfo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sc-provider/sc-xzsd-pc/src/main/java/com/xzsd/pc/hotGoods/entity/HotGoodsVO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sc-provider/sc-xzsd-pc/src/main/java/com/xzsd/pc/hotGoods/service/HotGoodsService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.3.1/fileContent/fileContent.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.3.1/fileContent/fileContent.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.3.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.3.1/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.3.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.3.1/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.3.1/taskHistory/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.3.1/taskHistory/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.3.1/taskHistory/taskHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.3.1/taskHistory/taskHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/sc-common/sc-common-base/sc-common-base_test.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/sc-common/sc-common-base/sc-common-base_test.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/sc-common/sc-common-client/sc-common-client_main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/sc-common/sc-common-client/sc-common-client_main.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/sc-common/sc-common-client/sc-common-client_test.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/sc-common/sc-common-client/sc-common-client_test.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/sc-common/sc-common-log/sc-common-log_test.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/sc-common/sc-common-log/sc-common-log_test.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/sc-common/sc-core/sc-core_main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/sc-common/sc-core/sc-core_main.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/sc-common/sc-core/sc-core_test.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/sc-common/sc-core/sc-core_test.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/sc-config-server/sc-config-server_test.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/sc-config-server/sc-config-server_test.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/sc-eureka-server/sc-eureka-server_main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/sc-eureka-server/sc-eureka-server_main.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/sc-eureka-server/sc-eureka-server_test.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/sc-eureka-server/sc-eureka-server_test.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/sc-monitor/sc-admin-server/sc-admin-server_main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/sc-monitor/sc-admin-server/sc-admin-server_main.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/sc-monitor/sc-admin-server/sc-admin-server_test.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/sc-monitor/sc-admin-server/sc-admin-server_test.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/sc-monitor/sc-zipkin-server/sc-zipkin-server_test.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/sc-monitor/sc-zipkin-server/sc-zipkin-server_test.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/sc-provider-api/sc-service-api/sc-service-api_test.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/sc-provider-api/sc-service-api/sc-service-api_test.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/sc-provider/sc-project/sc-project_main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/sc-provider/sc-project/sc-project_main.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/sc-provider/sc-project/sc-project_test.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/sc-provider/sc-project/sc-project_test.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/sc-provider/sc-service/sc-service_main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/sc-provider/sc-service/sc-service_main.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/sc-provider/sc-service/sc-service_test.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/sc-provider/sc-service/sc-service_test.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/sc-provider/sc-web-auth/sc-web-auth_main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/sc-provider/sc-web-auth/sc-web-auth_main.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/sc-provider/sc-web-auth/sc-web-auth_test.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/sc-provider/sc-web-auth/sc-web-auth_test.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/sc-provider/sc-web/sc-web_main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/sc-provider/sc-web/sc-web_main.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/sc-provider/sc-web/sc-web_test.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/sc-provider/sc-web/sc-web_test.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/sc-provider/sc-xzsd-app/sc-xzsd-app_main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/sc-provider/sc-xzsd-app/sc-xzsd-app_main.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/sc-provider/sc-xzsd-pc/sc-xzsd-pc_main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/sc-provider/sc-xzsd-pc/sc-xzsd-pc_main.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/sc-provider/sc-xzsd-pc/sc-xzsd-pc_test.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/sc-provider/sc-xzsd-pc/sc-xzsd-pc_test.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/sc-security/sc-security-client/sc-security-client_main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/sc-security/sc-security-client/sc-security-client_main.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/sc-security/sc-security-client/sc-security-client_test.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/sc-security/sc-security-client/sc-security-client_test.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/sc-security/sc-security-core/sc-security-core_main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/sc-security/sc-security-core/sc-security-core_main.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/sc-security/sc-security-core/sc-security-core_test.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/sc-security/sc-security-core/sc-security-core_test.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/sc-security/sc-security-uaa/sc-security-uaa_main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/sc-security/sc-security-uaa/sc-security-uaa_main.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/sc-security/sc-security-uaa/sc-security-uaa_test.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/sc-security/sc-security-uaa/sc-security-uaa_test.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/sc-support/sc-job/sc-job_main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/sc-support/sc-job/sc-job_main.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/sc-support/sc-job/sc-job_test.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/sc-support/sc-job/sc-job_test.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/sc-support/sc-log/sc-log_main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/sc-support/sc-log/sc-log_main.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/sc-support/sc-log/sc-log_test.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/sc-support/sc-log/sc-log_test.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/sc-support/sc-shardingjdbc/sc-shardingjdbc_main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/sc-support/sc-shardingjdbc/sc-shardingjdbc_main.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/sc-support/sc-shardingjdbc/sc-shardingjdbc_test.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/sc-support/sc-shardingjdbc/sc-shardingjdbc_test.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/sc-web-static/sc-web-static_main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/sc-web-static/sc-web-static_main.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/sc-web-static/sc-web-static_test.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/sc-web-static/sc-web-static_test.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sc-provider/sc-xzsd-pc/src/main/java/com/xzsd/pc/order/controller/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/sc-provider/sc-xzsd-pc/src/main/java/com/xzsd/pc/order/controller/OrderController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sc-provider/sc-xzsd-pc/src/main/java/com/xzsd/pc/order/dao/OredrDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/sc-provider/sc-xzsd-pc/src/main/java/com/xzsd/pc/order/dao/OredrDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sc-provider/sc-xzsd-pc/src/main/java/com/xzsd/pc/order/entity/OrderDetailsVO.java" beforeDir="false" afterPath="$PROJECT_DIR$/sc-provider/sc-xzsd-pc/src/main/java/com/xzsd/pc/order/entity/OrderDetailsVO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sc-provider/sc-xzsd-pc/src/main/java/com/xzsd/pc/order/entity/OrderInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/sc-provider/sc-xzsd-pc/src/main/java/com/xzsd/pc/order/entity/OrderInfo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sc-provider/sc-xzsd-pc/src/main/java/com/xzsd/pc/order/service/OrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/sc-provider/sc-xzsd-pc/src/main/java/com/xzsd/pc/order/service/OrderService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sc-provider/sc-xzsd-pc/src/main/resources/mybatis/mapper/OrderMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/sc-provider/sc-xzsd-pc/src/main/resources/mybatis/mapper/OrderMapper.xml" afterDir="false" />
@@ -53,6 +95,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -271,7 +314,10 @@
       <workItem from="1586266034084" duration="7218000" />
       <workItem from="1586307116359" duration="10488000" />
       <workItem from="1586326194521" duration="4819000" />
-      <workItem from="1586350424723" duration="593000" />
+      <workItem from="1586350424723" duration="4948000" />
+      <workItem from="1586396681153" duration="3247000" />
+      <workItem from="1586417681162" duration="7292000" />
+      <workItem from="1586443527965" duration="7898000" />
     </task>
     <task id="LOCAL-00001" summary="还原回了第一次提交而且更改了数据库的连接">
       <created>1586248341823</created>
@@ -294,7 +340,14 @@
       <option name="project" value="LOCAL" />
       <updated>1586274175354</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="完成了订单的修改">
+      <created>1586355393777</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1586355393777</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -312,78 +365,89 @@
     <MESSAGE value="还原回了第一次提交而且更改了数据库的连接" />
     <MESSAGE value="修改了各个文件的yml" />
     <MESSAGE value="完成了用户，分类，商品，轮播图的模块修改" />
-    <option name="LAST_COMMIT_MESSAGE" value="完成了用户，分类，商品，轮播图的模块修改" />
+    <MESSAGE value="完成了订单的修改" />
+    <option name="LAST_COMMIT_MESSAGE" value="完成了订单的修改" />
   </component>
   <component name="WindowStateProjectService">
     <state x="552" y="178" key="#Notifications" timestamp="1586268796822">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="552" y="178" key="#Notifications/0.0.1920.1040@0.0.1920.1040" timestamp="1586268796822" />
-    <state x="574" y="96" key="#com.intellij.ide.util.MemberChooser" timestamp="1586316624818">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="574" y="96" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1586316624818" />
-    <state x="505" y="113" key="CommitChangelistDialog2" timestamp="1586274160430">
+    <state x="718" y="121" key="#com.intellij.ide.util.MemberChooser" timestamp="1586447863653">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="505" y="113" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1586274160430" />
-    <state width="916" height="312" key="GridCell.Tab.0.bottom" timestamp="1586331206565">
+    <state x="574" y="96" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1586398950752" />
+    <state x="718" y="121" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1586447863653" />
+    <state x="690" y="266" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1586424600769">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="690" y="266" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1586424600769" />
+    <state x="505" y="113" key="CommitChangelistDialog2" timestamp="1586355386672">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="505" y="113" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1586355386672" />
+    <state width="914" height="307" key="GridCell.Tab.0.bottom" timestamp="1586451514880">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1493" height="237" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1586317655186" />
-    <state width="916" height="312" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1586331206565" />
-    <state width="916" height="312" key="GridCell.Tab.0.center" timestamp="1586331206565">
+    <state width="914" height="307" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1586451514880" />
+    <state width="914" height="307" key="GridCell.Tab.0.center" timestamp="1586451514879">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1493" height="237" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1586317655186" />
-    <state width="916" height="312" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1586331206565" />
-    <state width="916" height="312" key="GridCell.Tab.0.left" timestamp="1586331206565">
+    <state width="914" height="307" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1586451514879" />
+    <state width="914" height="307" key="GridCell.Tab.0.left" timestamp="1586451514879">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1493" height="237" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1586317655186" />
-    <state width="916" height="312" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1586331206565" />
-    <state width="916" height="312" key="GridCell.Tab.0.right" timestamp="1586331206565">
+    <state width="914" height="307" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1586451514879" />
+    <state width="914" height="307" key="GridCell.Tab.0.right" timestamp="1586451514879">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1493" height="237" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1586317655186" />
-    <state width="916" height="312" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1586331206565" />
-    <state width="916" height="312" key="GridCell.Tab.1.bottom" timestamp="1586331206566">
+    <state width="914" height="307" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1586451514879" />
+    <state width="914" height="307" key="GridCell.Tab.1.bottom" timestamp="1586451514880">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1493" height="237" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1586317655186" />
-    <state width="916" height="312" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1586331206566" />
-    <state width="916" height="312" key="GridCell.Tab.1.center" timestamp="1586331206566">
+    <state width="914" height="307" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1586451514880" />
+    <state width="914" height="307" key="GridCell.Tab.1.center" timestamp="1586451514880">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1493" height="237" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1586317655186" />
-    <state width="916" height="312" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1586331206566" />
-    <state width="916" height="312" key="GridCell.Tab.1.left" timestamp="1586331206566">
+    <state width="914" height="307" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1586451514880" />
+    <state width="914" height="307" key="GridCell.Tab.1.left" timestamp="1586451514880">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1493" height="237" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1586317655186" />
-    <state width="916" height="312" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1586331206566" />
-    <state width="916" height="312" key="GridCell.Tab.1.right" timestamp="1586331206566">
+    <state width="914" height="307" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1586451514880" />
+    <state width="914" height="307" key="GridCell.Tab.1.right" timestamp="1586451514880">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1493" height="237" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1586317655186" />
-    <state width="916" height="312" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1586331206566" />
+    <state width="914" height="307" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1586451514880" />
     <state x="157" y="25" key="SettingsEditor" timestamp="1586223203599">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="157" y="25" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1586223203599" />
-    <state x="545" y="113" width="881" height="538" key="dock-window-1" timestamp="1586310168802">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="953" y="0" width="974" height="1047" key="dock-window-1" timestamp="1586447525276">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="545" y="113" width="881" height="538" key="dock-window-1/0.0.1536.824@0.0.1536.824" timestamp="1586310168802" />
-    <state x="953" y="0" width="977" height="1048" key="dock-window-2" timestamp="1586355304494">
+    <state x="953" y="0" width="974" height="1047" key="dock-window-1/0.0.1920.1040@0.0.1920.1040" timestamp="1586447525276" />
+    <state x="985" y="44" width="932" height="682" key="dock-window-2" timestamp="1586358571578">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="762" y="0" width="781" height="830" key="dock-window-2/0.0.1536.824@0.0.1536.824" timestamp="1586314110130" />
-    <state x="953" y="0" width="977" height="1048" key="dock-window-2/0.0.1920.1040@0.0.1920.1040" timestamp="1586355304494" />
+    <state x="985" y="44" width="932" height="682" key="dock-window-2/0.0.1920.1040@0.0.1920.1040" timestamp="1586358571578" />
     <state x="1208" y="0" width="722" height="1048" key="dock-window-3" timestamp="1586326238182">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="966" y="0" width="577" height="830" key="dock-window-3/0.0.1536.824@0.0.1536.824" timestamp="1586316444927" />
     <state x="1208" y="0" width="722" height="1048" key="dock-window-3/0.0.1920.1040@0.0.1920.1040" timestamp="1586326238182" />
+    <state x="661" y="146" key="refactoring.ChangeSignatureDialog" timestamp="1586424893236">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="661" y="146" key="refactoring.ChangeSignatureDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1586424893236" />
   </component>
 </project>

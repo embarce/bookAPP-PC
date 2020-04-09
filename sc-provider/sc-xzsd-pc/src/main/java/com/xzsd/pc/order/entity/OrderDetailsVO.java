@@ -29,10 +29,6 @@ public class OrderDetailsVO {
      */
     private float salesPrice;
     /**
-     * 总价
-     */
-    private float sumPrice;
-    /**
      * 用户id
      */
     private String userId;
@@ -98,11 +94,16 @@ public class OrderDetailsVO {
         this.num = num;
     }
 
-    public float getSumPrice() {
-        return sumPrice;
-    }
-
-    public void setSumPrice(float sumPrice) {
-        this.sumPrice = sumPrice;
+    @Override
+    public String toString() {
+        return "OrderDetailsVO{" +
+                "orderId='" + orderId + '\'' +
+                ", goodsId='" + goodsId + '\'' +
+                ", goodsName='" + goodsName + '\'' +
+                ", price=" + price +
+                ", salesPrice=" + salesPrice +
+                ", userId='" + userId + '\'' +
+                ", num=" + num +
+                '}';
     }
 }

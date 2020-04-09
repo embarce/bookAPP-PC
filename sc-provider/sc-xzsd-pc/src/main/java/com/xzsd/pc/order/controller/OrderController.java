@@ -53,14 +53,56 @@ public class OrderController {
             throw  e;
         }
     }
-    @PostMapping("CancelOrderById")
-    public AppResponse CancelOrderById(String orderId){
-        try{
-            AppResponse appResponse=orderService.CancelOrderById(orderId);
-            return appResponse;
-        }catch (Exception e){
-            logger.error("取消失败");
-            throw e;
-        }
-    }
+//    @PostMapping("CancelOrderById")
+//    public AppResponse CancelOrderById(String orderId){
+//        try{
+//            AppResponse appResponse=orderService.CancelOrderById(orderId);
+//            return appResponse;
+//        }catch (Exception e){
+//            logger.error("取消失败");
+//            throw e;
+//        }
+//    }
+//    @PostMapping("orderArrivalById")
+//    public AppResponse orderArrivalById(String orderId){
+//        try{
+//            AppResponse appResponse=orderService.orderArrivalById(orderId);
+//            return appResponse;
+//        }catch (Exception e){
+//            logger.error("修改失败");
+//            throw e;
+//        }
+//    }
+//    @PostMapping("cancelOrderArrivalById")
+//    public AppResponse cancelOrderArrivalById(String orderId){
+//        try{
+//            AppResponse appResponse=orderService.cancelOrderArrivalById(orderId);
+//            return appResponse;
+//        }catch (Exception e){
+//            logger.error("修改失败");
+//            throw e;
+//        }
+//    }
+//
+//    @PostMapping("cancelOrderPickupById")
+//    public AppResponse cancelOrderPickupById(String orderId){
+//        try{
+//            AppResponse appResponse=orderService.cancelOrderPickupById(orderId);
+//            return appResponse;
+//        }catch (Exception e){
+//            logger.error("修改失败");
+//            throw e;
+//        }
+//    }
+//
+//    @PostMapping("orderAlreadyPickupById")
+//    public AppResponse orderAlreadyPickupById(String orderId){
+//        try{
+//            AppResponse appResponse=orderService.orderAlreadyPickupById(orderId);
+//            return appResponse;
+//        }catch (Exception e){
+//            logger.error("修改失败");
+//            throw e;
+//        }
+//    }
 }

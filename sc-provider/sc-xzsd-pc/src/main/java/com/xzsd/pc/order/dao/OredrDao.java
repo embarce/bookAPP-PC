@@ -21,6 +21,12 @@ public interface OredrDao {
      * @return
      */
     int addOrder(OrderInfo orderInfo);
+    /**
+     * 新增订单明细接口
+     * @param orderInfo
+     * @return
+     */
+    int addOrderDetail(List<OrderDetailsVO> orderInfo);
 
     /**
      * 分页查询订单列表
@@ -36,5 +42,16 @@ public interface OredrDao {
      */
     OrderDetailsVO findOrderById(@Param("orderId")String orderId);
 
-    int CancelOrderById(@Param("listCode") List<String> listCode,@Param("userId")String userId);
+    /**
+     * 订单各个状态修改 订单状态 0已下单，1已发货，2已取消，3已完成未评价，4已完成已评价
+     *                        订单取消  订单到货  取消到货   订单已取货     取消已取货
+     * @param listCode
+     * @param userId
+     * @return
+     */
+//    int CancelOrderById(@Param("listCode") List<String> listCode,@Param("userId")String userId);
+//    int orderArrivalById(@Param("listCode") List<String> listCode,@Param("userId")String userId);
+//    int cancelOrderArrivalById(@Param("listCode") List<String> listCode,@Param("userId")String userId);
+//    int cancelOrderPickupById(@Param("listCode") List<String> listCode,@Param("userId")String userId);
+//    int orderAlreadyPickupById (@Param("listCode") List<String> listCode,@Param("userId")String userId);
 }

@@ -8,7 +8,15 @@ import java.util.Date;
  */
 public class OrderInfo {
     /**
-            * 订单号
+     * order_id
+     * goods_Id
+     * price
+     * user_id
+     * num
+     * id
+     */
+    /**
+     * 订单号
      */
     private String orderId;
 
@@ -21,30 +29,12 @@ public class OrderInfo {
      */
     private float price;
     /**
-     * 用户id
-     */
-    private String userId;
-    /**
-     * 运费
-     */
-    private String shippingMoney;
-    /**
-     * 收货人
-     */
-    private String shippingUser;
-    /**
      * 付款时间
      */
     private String payTime;
+
     private String payTime2;
-    /**
-     * 发货时间
-     */
-    private String shippingTime;
-    /**
-     * 收货时间
-     */
-    private String receiveTime;
+
     /**
      * 订单状态；订单状态 0已下单，1已发货，2已取消，3已完成未评价，4已完成已评价
      */
@@ -54,29 +44,9 @@ public class OrderInfo {
      */
     private String receiverNo;
     /**
-     * 司机id
-     */
-    private String driverId;
-    /**
-     * 评价文字
-     */
-    private String orderP;
-    /**
-     * 页码
-     */
-    private int pageSize;
-    /**
-     * 页数
-     */
-    private int pageNum;
-    /**
      * 作废标记 0为存在，1为作废
      */
     private int isDeleted;
-    /**
-     * 序号
-     */
-    private int sortNo;
     /**
      * 创建时间
      */
@@ -97,38 +67,70 @@ public class OrderInfo {
      * 版本号
      */
     private String version;
-    private String phone;
 
-    public String getPayTime2() {
-        return payTime2;
+    /**
+     * order_id
+     * is_deleted
+     * create_by
+     * gmt_create
+     * change_name
+     * change_time
+     * version
+     * user_id
+     * shipping_user
+     * order_status
+     * receiver_no
+     * pay_time
+     * price
+     * @return
+     */
+    private String userId;
+    private String shippingUser;
+    private String receiver_no;
+    private String goodsIdList;
+    private String goodsPriceList;
+    private String goodsNumList;
+    private double unitPrice;
+    private int num;
+
+    public String getGoodsIdList() {
+        return goodsIdList;
     }
 
-    public void setPayTime2(String payTime2) {
-        this.payTime2 = payTime2;
+    public void setGoodsIdList(String goodsIdList) {
+        this.goodsIdList = goodsIdList;
     }
 
-    public String getPhone() {
-        return phone;
+    public String getGoodsPriceList() {
+        return goodsPriceList;
     }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
+    public void setGoodsPriceList(String goodsPriceList) {
+        this.goodsPriceList = goodsPriceList;
     }
 
-    public String getOrderId() {
-        return orderId;
+    public String getGoodsNumList() {
+        return goodsNumList;
     }
 
-    public void setOrderId(String orderId) {
-        this.orderId = orderId;
+    public void setGoodsNumList(String goodsNumList) {
+        this.goodsNumList = goodsNumList;
     }
 
-    public float getPrice() {
-        return price;
+    public double getUnitPrice() {
+        return unitPrice;
     }
 
-    public void setPrice(float price) {
-        this.price = price;
+    public void setUnitPrice(float unitPrice) {
+        this.unitPrice = unitPrice;
+    }
+
+    public int getNum() {
+        return num;
+    }
+
+    public void setNum(int num) {
+        this.num = num;
     }
 
     public String getUserId() {
@@ -139,20 +141,43 @@ public class OrderInfo {
         this.userId = userId;
     }
 
-    public String getShippingMoney() {
-        return shippingMoney;
-    }
-
-    public void setShippingMoney(String shippingMoney) {
-        this.shippingMoney = shippingMoney;
-    }
-
     public String getShippingUser() {
         return shippingUser;
     }
 
     public void setShippingUser(String shippingUser) {
         this.shippingUser = shippingUser;
+    }
+
+    public String getReceiver_no() {
+        return receiver_no;
+    }
+
+    public void setReceiver_no(String receiver_no) {
+        this.receiver_no = receiver_no;
+    }
+    public String getOrderId() {
+        return orderId;
+    }
+
+    public void setOrderId(String orderId) {
+        this.orderId = orderId;
+    }
+
+    public String getGoodsId() {
+        return goodsId;
+    }
+
+    public void setGoodsId(String goodsId) {
+        this.goodsId = goodsId;
+    }
+
+    public float getPrice() {
+        return price;
+    }
+
+    public void setPrice(float price) {
+        this.price = price;
     }
 
     public String getPayTime() {
@@ -163,20 +188,12 @@ public class OrderInfo {
         this.payTime = payTime;
     }
 
-    public String getShippingTime() {
-        return shippingTime;
+    public String getPayTime2() {
+        return payTime2;
     }
 
-    public void setShippingTime(String shippingTime) {
-        this.shippingTime = shippingTime;
-    }
-
-    public String getReceiveTime() {
-        return receiveTime;
-    }
-
-    public void setReceiveTime(String receiveTime) {
-        this.receiveTime = receiveTime;
+    public void setPayTime2(String payTime2) {
+        this.payTime2 = payTime2;
     }
 
     public int getOrderStatus() {
@@ -194,53 +211,12 @@ public class OrderInfo {
     public void setReceiverNo(String receiverNo) {
         this.receiverNo = receiverNo;
     }
-
-    public String getDriverId() {
-        return driverId;
-    }
-
-    public void setDriverId(String driverId) {
-        this.driverId = driverId;
-    }
-
-    public String getOrderP() {
-        return orderP;
-    }
-
-    public void setOrderP(String orderP) {
-        this.orderP = orderP;
-    }
-
-    public int getPageSize() {
-        return pageSize;
-    }
-
-    public void setPageSize(int pageSize) {
-        this.pageSize = pageSize;
-    }
-
-    public int getPageNum() {
-        return pageNum;
-    }
-
-    public void setPageNum(int pageNum) {
-        this.pageNum = pageNum;
-    }
-
     public int getIsDeleted() {
         return isDeleted;
     }
 
     public void setIsDeleted(int isDeleted) {
         this.isDeleted = isDeleted;
-    }
-
-    public int getSortNo() {
-        return sortNo;
-    }
-
-    public void setSortNo(int sortNo) {
-        this.sortNo = sortNo;
     }
 
     public Date getGmtCreate() {
@@ -283,11 +259,30 @@ public class OrderInfo {
         this.version = version;
     }
 
-    public String getGoodsId() {
-        return goodsId;
-    }
-
-    public void setGoodsId(String goodsId) {
-        this.goodsId = goodsId;
+    @Override
+    public String toString() {
+        return "OrderInfo{" +
+                "orderId='" + orderId + '\'' +
+                ", goodsId='" + goodsId + '\'' +
+                ", price=" + price +
+                ", payTime='" + payTime + '\'' +
+                ", payTime2='" + payTime2 + '\'' +
+                ", orderStatus=" + orderStatus +
+                ", receiverNo='" + receiverNo + '\'' +
+                ", isDeleted=" + isDeleted +
+                ", gmtCreate=" + gmtCreate +
+                ", createBy='" + createBy + '\'' +
+                ", gmtModified=" + gmtModified +
+                ", lastModifiedBy='" + lastModifiedBy + '\'' +
+                ", version='" + version + '\'' +
+                ", userId='" + userId + '\'' +
+                ", shippingUser='" + shippingUser + '\'' +
+                ", receiver_no='" + receiver_no + '\'' +
+                ", goodsIdList='" + goodsIdList + '\'' +
+                ", goodsPriceList='" + goodsPriceList + '\'' +
+                ", goodsNumList='" + goodsNumList + '\'' +
+                ", unitPrice=" + unitPrice +
+                ", num=" + num +
+                '}';
     }
 }
