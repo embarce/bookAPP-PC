@@ -53,5 +53,6 @@ public interface CateDao {
      * @return
      */
     int updateCateById(CateInfo cateInfo);
+    List<CateInfo> listMenus();
 
 }

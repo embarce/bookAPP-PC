@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xzsd.pc.hotGoods.dao.HotGoodsDao">
+    <select id="countHotGoods" parameterType="java.lang.String" resultType="int">
+        select count(*)
+        from t_hot_table
+        where goods_id=#{goodsId}
+    </select>
+    <insert id="addHotGoods" parameterType="com.xzsd.pc.hotGoods.entity.HotGoodsInfo">
+        insert into t_hot_table
+        (
+        no_id,
+        is_delete,
+        create_name,
+        create_time,
+        version,
+        goods_id
+        )
+        values (
+        #{noId},
+        0,
+        #{createBy},
+        now(),
+        0,
+        #{goodsId}
+        )
+    </insert>
+    <select id="choseGoods" resultType="com.xzsd.pc.hotGoods.entity.ChoseHotsGoodsVO" parameterType="com.xzsd.pc.hotGoods.entity.ChoseHotsGoodsVO">
+        select
+            goods_name goodsName,
+            good_id goodsId,
+            father_p cateP,
+            category cate,
+            status
+        from t_goods_table
+    </select>
+</mapper>

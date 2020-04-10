@@ -19,7 +19,6 @@ public class OrderInfo {
      * 订单号
      */
     private String orderId;
-
     /**
      * 商品id
      */
@@ -32,9 +31,7 @@ public class OrderInfo {
      * 付款时间
      */
     private String payTime;
-
     private String payTime2;
-
     /**
      * 订单状态；订单状态 0已下单，1已发货，2已取消，3已完成未评价，4已完成已评价
      */
@@ -67,7 +64,6 @@ public class OrderInfo {
      * 版本号
      */
     private String version;
-
     /**
      * order_id
      * is_deleted
@@ -90,8 +86,20 @@ public class OrderInfo {
     private String goodsIdList;
     private String goodsPriceList;
     private String goodsNumList;
+    private String phone;
     private double unitPrice;
     private int num;
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public void setUnitPrice(double unitPrice) {
+        this.unitPrice = unitPrice;
+    }
 
     public String getGoodsIdList() {
         return goodsIdList;

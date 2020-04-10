@@ -29,13 +29,18 @@ public class OrderDetailsVO {
      */
     private float salesPrice;
     /**
-     * 用户id
-     */
-    private String userId;
-    /**
      * 数量
      */
     private int num;
+    private String userId;
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
 
     public String getOrderId() {
         return orderId;
@@ -77,15 +82,6 @@ public class OrderDetailsVO {
         this.salesPrice = salesPrice;
     }
 
-
-    public String getUserId() {
-        return userId;
-    }
-
-    public void setUserId(String userId) {
-        this.userId = userId;
-    }
-
     public int getNum() {
         return num;
     }
@@ -94,16 +90,4 @@ public class OrderDetailsVO {
         this.num = num;
     }
 
-    @Override
-    public String toString() {
-        return "OrderDetailsVO{" +
-                "orderId='" + orderId + '\'' +
-                ", goodsId='" + goodsId + '\'' +
-                ", goodsName='" + goodsName + '\'' +
-                ", price=" + price +
-                ", salesPrice=" + salesPrice +
-                ", userId='" + userId + '\'' +
-                ", num=" + num +
-                '}';
-    }
 }

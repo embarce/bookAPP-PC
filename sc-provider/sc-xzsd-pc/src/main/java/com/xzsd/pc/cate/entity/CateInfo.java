@@ -50,13 +50,6 @@ public class CateInfo implements Serializable {
      */
     private String version;
 
-    public String getRemake() {
-        return remake;
-    }
-
-    public void setRemake(String remake) {
-        this.remake = remake;
-    }
 
     private String remake;
 
@@ -65,6 +58,14 @@ public class CateInfo implements Serializable {
      * @return
      */
     private List<cateParentInfo> ci;
+
+    public String getRemake() {
+        return remake;
+    }
+
+    public void setRemake(String remake) {
+        this.remake = remake;
+    }
 
     public List<cateParentInfo> getCi() {
         return ci;

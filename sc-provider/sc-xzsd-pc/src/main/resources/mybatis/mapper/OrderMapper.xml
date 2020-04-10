@@ -58,10 +58,24 @@
             )
         </foreach >
     </insert>
+
+    <update id="updateGoodsStock" parameterType="java.util.List">
+        <selectKey resultType ="java.lang.Integer" keyProperty= "id"
+                   order= "AFTER">
+            SELECT LAST_INSERT_ID()
+        </selectKey >
+        <foreach collection="list" item="orderInfo" open="" close="" separator=";">
+            update t_goods_table
+            <set>
+                stock=stock-${orderInfo.num}
+            </set>
+            where good_id = #{orderInfo.goodsId}
+        </foreach >
+    </update>
     <select id="listOrderByPage" parameterType="com.xzsd.pc.order.entity.OrderInfo" resultType="com.xzsd.pc.order.entity.OrderVO">
         select
         a.order_id orderId,
-        a.price+a.shipping_money price,
+        a.price price,
         a.user_id userId,
         b.phone,
         b.user_name shippingUser,
@@ -98,69 +112,28 @@
              b.goods_name goodsName,
              a.price price,
              a.price salesPrice,
-             a.price+a.shipping_money sumPrice,
-             a.user_id userId,
              a.num num
         FROM
-            t_goods_order_table a
+            t_goods_order_table_cp a
             JOIN t_goods_table b ON a.goods_Id = b.good_id
         WHERE
             a.is_deleted = 0
             and a.order_id=#{orderId}
         ORDER BY
-            a.pay_time DESC
+            a.Id DESC
     </select>
-<!--    <update id="CancelOrderById" parameterType="java.lang.String">-->
-<!--        update t_goods_order_table-->
-<!--        set order_status=2,-->
-<!--        change_name=#{userId},-->
-<!--        change_time=now()-->
-<!--        where order_id in-->
-<!--        <foreach item="item" index="index" collection="listCode" open="(" separator="," close=")">-->
-<!--            #{item}-->
-<!--        </foreach>-->
-<!--    </update>-->
+    <!--    * 订单各个状态修改 订单状态 0已下单，1已发货，2已取消，3已完成未评价，4已完成已评价  5订单到货 6 取消到货   7订单已取货  8取消已取货-->
+    <!--    *                          2订单取消  1订单到货  0取消到货   3订单已取货     1取消已取货-->
+    <update id="updateOrderStatusById" parameterType="java.lang.String">
+        update t_goods_order_table
+        set order_status=#{status},
+        change_name=#{userId},
+        change_time=now()
+        where order_id in
+        <foreach item="item" index="index" collection="listCode" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </update>
 
-<!--&lt;!&ndash;    * 订单各个状态修改 订单状态 0已下单，1已发货，2已取消，3已完成未评价，4已完成已评价  5订单到货 6 取消到货   7订单已取货  8取消已取货&ndash;&gt;-->
-<!--&lt;!&ndash;    *                        订单取消  订单到货  取消到货   订单已取货     取消已取货&ndash;&gt;-->
-<!--    <update id="orderArrivalById" parameterType="java.lang.String">-->
-<!--        update t_goods_order_table-->
-<!--        set order_status=5,-->
-<!--        change_name=#{userId},-->
-<!--        change_time=now()-->
-<!--        where order_id in-->
-<!--        <foreach item="item" index="index" collection="listCode" open="(" separator="," close=")">-->
-<!--            #{item}-->
-<!--        </foreach>-->
-<!--    </update>-->
-<!--    <update id="cancelOrderArrivalById" parameterType="java.lang.String">-->
-<!--        update t_goods_order_table-->
-<!--        set order_status=6,-->
-<!--        change_name=#{userId},-->
-<!--        change_time=now()-->
-<!--        where order_id in-->
-<!--        <foreach item="item" index="index" collection="listCode" open="(" separator="," close=")">-->
-<!--            #{item}-->
-<!--        </foreach>-->
-<!--    </update>-->
-<!--    <update id="orderAlreadyPickupById" parameterType="java.lang.String">-->
-<!--        update t_goods_order_table-->
-<!--        set order_status=7,-->
-<!--        change_name=#{userId},-->
-<!--        change_time=now()-->
-<!--        where order_id in-->
-<!--        <foreach item="item" index="index" collection="listCode" open="(" separator="," close=")">-->
-<!--            #{item}-->
-<!--        </foreach>-->
-<!--    </update>-->
-<!--    <update id="cancelOrderPickupById" parameterType="java.lang.String">-->
-<!--        update t_goods_order_table-->
-<!--        set order_status=8,-->
-<!--        change_name=#{userId},-->
-<!--        change_time=now()-->
-<!--        where order_id in-->
-<!--        <foreach item="item" index="index" collection="listCode" open="(" separator="," close=")">-->
-<!--            #{item}-->
-<!--        </foreach>-->
-<!--    </update>-->
+
 </mapper>

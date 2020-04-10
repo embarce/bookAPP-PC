@@ -84,4 +84,34 @@
         where cate_id=#{cateId}
          and version = #{version}
     </update>
+
+
+    <resultMap id="BaseResultMap" type="com.xzsd.pc.cate.entity.CateInfo" >
+        <id column="cate_id" property="cateId" jdbcType="VARCHAR" />
+        <result column="cate_name" property="cateName" jdbcType="VARCHAR" />
+        <result column="cate_id_parent" property="cateIdParent" jdbcType="VARCHAR" />
+<!--        <result column="type" property="type" jdbcType="INTEGER" />-->
+<!--        <result column="level" property="level" jdbcType="INTEGER" />-->
+<!--        <result column="auth_code" property="authCode" jdbcType="VARCHAR" />-->
+<!--        <result column="remark" property="remark" jdbcType="VARCHAR" />-->
+        <result column="is_delete" property="isDeleted" jdbcType="INTEGER" />
+<!--        <result column="id" property="id" jdbcType="VARCHAR" />-->
+<!--        <result column="sort_no" property="sortNo" jdbcType="INTEGER" />-->
+<!--        <result column="gmt_create" property="gmtCreate" jdbcType="TIMESTAMP" />-->
+<!--        <result column="create_by" property="createBy" jdbcType="VARCHAR" />-->
+<!--        <result column="gmt_modified" property="gmtModified" jdbcType="TIMESTAMP" />-->
+<!--        <result column="last_modified_by" property="lastModifiedBy" jdbcType="VARCHAR" />-->
+<!--        <result column="version" property="version" jdbcType="INTEGER" />-->
+    </resultMap>
+
+    <!--查询全部菜单-->
+    <select id="listMenus" resultMap="BaseResultMap">
+        select
+            cate_id ,
+            cate_name ,
+            cate_id_parent
+        from t_cate_table
+        where is_delete = 0
+        order by cate_id
+    </select>
 </mapper>

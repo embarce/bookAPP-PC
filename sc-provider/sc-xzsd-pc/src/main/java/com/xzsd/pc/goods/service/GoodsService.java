@@ -65,7 +65,6 @@ public class GoodsService {
         }
         return AppResponse.success("新增成功！");
     }
-
     /**
      * 查询列表
      * @param goodsInfo
@@ -85,7 +84,6 @@ public class GoodsService {
 //        }
 //        else return AppResponse.bizError("新增失败redis已存在");
     }
-
     /**
      * 删除商品
      * @pram goodsId

@@ -7,8 +7,8 @@ import java.util.Date;
  * @date 2020/4/9 9:57
  */
 public class HotGoodsInfo {
-    private int no_id;
-    private String goods_id;
+    private int noId;
+    private String goodsId;
     private int num;
     /**
      * 作废标记 0为存在，1为作废
@@ -43,20 +43,20 @@ public class HotGoodsInfo {
         this.num = num;
     }
 
-    public int getNo_id() {
-        return no_id;
+    public int getNoId() {
+        return noId;
     }
 
-    public void setNo_id(int no_id) {
-        this.no_id = no_id;
+    public void setNoId(int noId) {
+        this.noId = noId;
     }
 
-    public String getGoods_id() {
-        return goods_id;
+    public String getGoodsId() {
+        return goodsId;
     }
 
-    public void setGoods_id(String goods_id) {
-        this.goods_id = goods_id;
+    public void setGoodsId(String goodsId) {
+        this.goodsId = goodsId;
     }
 
     public int getIsDeleted() {
@@ -86,7 +86,6 @@ public class HotGoodsInfo {
     public Date getGmtModified() {
         return gmtModified;
     }
-
     public void setGmtModified(Date gmtModified) {
         this.gmtModified = gmtModified;
     }
