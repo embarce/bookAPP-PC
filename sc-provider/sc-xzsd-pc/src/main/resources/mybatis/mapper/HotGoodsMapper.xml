@@ -6,6 +6,11 @@
         from t_hot_table
         where goods_id=#{goodsId}
     </select>
+    <select id="findNumByNum" parameterType="int" resultType="int">
+        select count(*)
+        from t_hot_table
+        where no_id=#{num}
+    </select>
     <insert id="addHotGoods" parameterType="com.xzsd.pc.hotGoods.entity.HotGoodsInfo">
         insert into t_hot_table
         (
@@ -34,5 +39,31 @@
             status
         from t_goods_table
         where is_delete=0
+        <if test="goodsName != null and goodsName != ''">
+            and goods_name like concat('%', #{goodsName}, '%')
+        </if>
+        <if test="goodsId != null and goodsId != ''">
+            and good_id like concat('%', #{goodsId}, '%')
+        </if>
     </select>
+    <update id="changeShowNum" parameterType="java.lang.String">
+        update word
+        set
+        word=#{num},
+        version=version+1,
+        change_name=#{userId},
+        change_time=now()
+    </update>
+    <update id="deleteHotGoods" parameterType="java.lang.String">
+        update t_hot_table
+        set
+        is_delete=1,
+        change_name=#{userId},
+        change_time=now(),
+        version =version+1
+        where goods_id in
+        <foreach item="item" index="index" collection="hotGoodsId" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </update>
 </mapper>

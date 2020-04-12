@@ -43,4 +43,24 @@ public class HotGoodsController {
             throw e;
         }
     }
+    @PostMapping("changeShowNum")
+    public AppResponse changeShowNum(String showNum){
+        try{
+            AppResponse appResponse=hotGoodsService.changeShowNum(showNum);
+            return appResponse;
+        }catch (Exception e){
+            logger.error("修改失败");
+            throw e;
+        }
+    }
+    @PostMapping("deleteHotGoods")
+    public AppResponse deleteHotGoods(String hotGoodsIdList){
+        try{
+            AppResponse appResponse=hotGoodsService.deleteHotGoods(hotGoodsIdList);
+            return appResponse;
+        }catch (Exception e){
+            logger.error("删除失败");
+            throw e;
+        }
+    }
 }
