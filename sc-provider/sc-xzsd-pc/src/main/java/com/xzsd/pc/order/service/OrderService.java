@@ -6,6 +6,7 @@ import com.neusoft.core.restful.AppResponse;
 import com.neusoft.security.client.utils.SecurityUtils;
 import com.neusoft.util.StringUtil;
 import com.xzsd.pc.order.dao.OredrDao;
+import com.xzsd.pc.order.entity.OrderDTO;
 import com.xzsd.pc.order.entity.OrderDetailsVO;
 import com.xzsd.pc.order.entity.OrderInfo;
 import com.xzsd.pc.order.entity.OrderVO;
@@ -103,6 +104,34 @@ public class OrderService {
             return AppResponse.bizError("修改失败");
         } else {
             return AppResponse.success("修改成功");
+        }
+    }
+
+    @Transactional(rollbackFor = Exception.class)
+    public AppResponse updateOrderStatus(String orderList,String versionList,String status) {
+        String userId = SecurityUtils.getCurrentUserId();
+        List<String> Olist = Arrays.asList(orderList.split(","));
+        List<String> Vlist = Arrays.asList(versionList.split(","));
+        List<OrderDTO> orderDTOList=new ArrayList<>();
+        if(Olist.size()!=Vlist.size()){
+            return AppResponse.bizError("版本号数量与订单数量不符合");
+        }
+        else {
+            for (int i = 0; i <Olist.size() ; i++) {
+                OrderDTO orderDTO=new OrderDTO();
+                orderDTO.setOrderStatus(status);
+                orderDTO.setOrderId(Olist.get(i));
+                orderDTO.setVersion(Vlist.get(i));
+                orderDTO.setLastModifiedBy(userId);
+                orderDTOList.add(orderDTO);
+
+            }
+            int count = oredrDao.updateOrderStatus(orderDTOList);
+            if (count == 0) {
+                return AppResponse.bizError("修改失败");
+            } else {
+                return AppResponse.success("修改成功");
+            }
         }
     }
 }

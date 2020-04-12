@@ -33,5 +33,6 @@
             category cate,
             status
         from t_goods_table
+        where is_delete=0
     </select>
 </mapper>

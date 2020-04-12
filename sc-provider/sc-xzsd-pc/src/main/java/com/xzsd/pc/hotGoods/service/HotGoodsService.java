@@ -19,6 +19,12 @@ import java.util.List;
 public class HotGoodsService {
     @Resource
     private HotGoodsDao hotGoodsDao;
+
+    /**
+     * 新增热门位
+     * @param hotGoodsInfo
+     * @return
+     */
     public AppResponse addHotGoods(HotGoodsInfo hotGoodsInfo){
         int count=hotGoodsDao.countHotGoods(hotGoodsInfo.getGoodsId());
         if(count>0){
@@ -33,6 +39,12 @@ public class HotGoodsService {
             }
         }
     }
+
+    /**
+     * 查询可选择商品
+     * @param choseHotsGoodsVO
+     * @return
+     */
     public AppResponse choseGoodsByPage(ChoseHotsGoodsVO choseHotsGoodsVO){
         List<ChoseHotsGoodsVO> choseHotsGoodsVOList=hotGoodsDao.choseGoods(choseHotsGoodsVO);
         return AppResponse.success("查询成功",PageUtils.getPageInfo(choseHotsGoodsVOList));

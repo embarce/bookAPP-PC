@@ -2,6 +2,7 @@ package com.xzsd.pc.order.controller;
 
 
 import com.neusoft.core.restful.AppResponse;
+import com.xzsd.pc.order.entity.OrderDTO;
 import com.xzsd.pc.order.entity.OrderInfo;
 import com.xzsd.pc.order.service.OrderService;
 import org.slf4j.Logger;
@@ -57,6 +58,17 @@ public class OrderController {
     public AppResponse CancelOrderById(String orderId,String status){
         try{
             AppResponse appResponse=orderService.updateOrderStatusById(orderId,status);
+            return appResponse;
+        }catch (Exception e){
+            logger.error("取消失败");
+            throw e;
+        }
+    }
+
+    @PostMapping("updateOrderStatus")
+    public AppResponse updateOrderStatus(String orderList,String versionList,String status){
+        try{
+            AppResponse appResponse=orderService.updateOrderStatus(orderList,versionList,status);
             return appResponse;
         }catch (Exception e){
             logger.error("取消失败");

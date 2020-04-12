@@ -1,6 +1,7 @@
 package com.xzsd.pc.order.dao;
 
 
+import com.xzsd.pc.order.entity.OrderDTO;
 import com.xzsd.pc.order.entity.OrderDetailsVO;
 import com.xzsd.pc.order.entity.OrderInfo;
 import com.xzsd.pc.order.entity.OrderVO;
@@ -52,5 +53,6 @@ public interface OredrDao {
      * @return
      */
       int updateOrderStatusById(@Param("listCode") List<String> listCode,@Param("userId")String userId,@Param("status")String status);
+      int updateOrderStatus(List<OrderDTO> orderDTO);
       int updateGoodsStock(List<OrderDetailsVO> orderInfo);
 }
