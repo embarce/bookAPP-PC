@@ -110,6 +110,13 @@ public class HotGoodsService {
             }
         }
     }
+
+    /**
+     * 分页查询热门商品
+     * @param goodsId
+     * @param goodsName
+     * @return
+     */
     public AppResponse listHotGoodsByPage(String goodsId,String goodsName){
         List<HotGoodsVO> listHotGoods=hotGoodsDao.listHotGoodsByPage(goodsId,goodsName);
         return AppResponse.success("查询成功",PageUtils.getPageInfo(listHotGoods));
