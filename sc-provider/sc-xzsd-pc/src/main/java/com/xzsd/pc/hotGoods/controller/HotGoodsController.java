@@ -2,6 +2,7 @@ package com.xzsd.pc.hotGoods.controller;
 
 import com.neusoft.core.restful.AppResponse;
 import com.xzsd.pc.hotGoods.entity.ChoseHotsGoodsVO;
+import com.xzsd.pc.hotGoods.entity.HotGoodsDO;
 import com.xzsd.pc.hotGoods.entity.HotGoodsInfo;
 import com.xzsd.pc.hotGoods.service.HotGoodsService;
 import org.slf4j.Logger;
@@ -33,7 +34,7 @@ public class HotGoodsController {
             throw e;
         }
     }
-    @PostMapping("choseGoodsByPage")
+    @RequestMapping(value="choseGoodsByPage")
     public AppResponse choseGoodsByPage(ChoseHotsGoodsVO choseHotsGoodsVO){
         try{
             AppResponse appResponse=hotGoodsService.choseGoodsByPage(choseHotsGoodsVO);
@@ -60,6 +61,26 @@ public class HotGoodsController {
             return appResponse;
         }catch (Exception e){
             logger.error("删除失败");
+            throw e;
+        }
+    }
+    @PostMapping("updateHotGoodsById")
+    public AppResponse updateHotGoodsById(HotGoodsDO hotGoodsDO){
+        try{
+            AppResponse appResponse=hotGoodsService.updateHotGoodsById(hotGoodsDO);
+            return appResponse;
+        }catch (Exception e){
+            logger.error("修改失败");
+            throw e;
+        }
+    }
+    @RequestMapping(value="listHotGoodsByPage")
+    public AppResponse listHotGoodsByPage(String goodsId,String goodsNam){
+        try{
+            AppResponse appResponse=hotGoodsService.listHotGoodsByPage(goodsId,goodsNam);
+            return appResponse;
+        }catch (Exception e){
+            logger.error("查询失败");
             throw e;
         }
     }

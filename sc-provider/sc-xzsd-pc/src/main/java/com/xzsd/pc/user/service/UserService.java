@@ -10,7 +10,6 @@ import com.xzsd.pc.user.entity.CustomerVO;
 import com.xzsd.pc.user.entity.UserInfo;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import javax.annotation.Resource;
 import java.util.Arrays;
 import java.util.List;
@@ -43,6 +42,7 @@ public class UserService {
         }
         userInfo.setUserId(StringUtil.getCommonCode(2));
         userInfo.setIsDeleted(0);
+        userInfo.setUserPwd(PasswordUtils.generatePassword(userInfo.getUserPwd()));
         //新增用户
         int count = userDao.addUser(userInfo);
         if (userInfo.getRole() == 3) {

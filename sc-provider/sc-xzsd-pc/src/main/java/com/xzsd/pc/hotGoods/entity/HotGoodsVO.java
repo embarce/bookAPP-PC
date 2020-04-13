@@ -24,6 +24,15 @@ public class HotGoodsVO {
     private float price;
     private String goodsName;
     private String goodsIntroduction;
+    private int version;
+
+    public int getVersion() {
+        return version;
+    }
+
+    public void setVersion(int version) {
+        this.version = version;
+    }
 
     public int getNoId() {
         return noId;

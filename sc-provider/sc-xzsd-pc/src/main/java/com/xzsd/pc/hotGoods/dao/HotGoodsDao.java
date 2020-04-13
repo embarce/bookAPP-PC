@@ -1,7 +1,9 @@
 package com.xzsd.pc.hotGoods.dao;
 
 import com.xzsd.pc.hotGoods.entity.ChoseHotsGoodsVO;
+import com.xzsd.pc.hotGoods.entity.HotGoodsDO;
 import com.xzsd.pc.hotGoods.entity.HotGoodsInfo;
+import com.xzsd.pc.hotGoods.entity.HotGoodsVO;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -43,4 +45,6 @@ public interface HotGoodsDao {
      * @return
      */
     int deleteHotGoods(@Param("hotGoodsId") List<String> hotGoodsId,@Param("userId") String userId);
+    int updateHotGoodsById(HotGoodsDO hotGoodsDO);
+    List<HotGoodsVO> listHotGoodsByPage(@Param("goodsId") String goodsId,@Param("goodsName") String goodsName);
 }

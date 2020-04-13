@@ -6,7 +6,9 @@ import com.neusoft.security.client.utils.SecurityUtils;
 import com.neusoft.util.StringUtil;
 import com.xzsd.pc.hotGoods.dao.HotGoodsDao;
 import com.xzsd.pc.hotGoods.entity.ChoseHotsGoodsVO;
+import com.xzsd.pc.hotGoods.entity.HotGoodsDO;
 import com.xzsd.pc.hotGoods.entity.HotGoodsInfo;
+import com.xzsd.pc.hotGoods.entity.HotGoodsVO;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -72,6 +74,12 @@ public class HotGoodsService {
           return  AppResponse.success("修改成功");
         }
     }
+
+    /**
+     * 删除热门
+     * @param listCode
+     * @return
+     */
     public AppResponse deleteHotGoods(String listCode){
         List<String> hotGoodsList=Arrays.asList(listCode.split(","));
         int num=hotGoodsDao.deleteHotGoods(hotGoodsList,SecurityUtils.getCurrentUserId());
@@ -80,5 +88,30 @@ public class HotGoodsService {
         }else {
             return AppResponse.success("删除成功");
         }
+    }
+
+    /**
+     * 修改热门
+     * @param hotGoodsDO
+     * @return
+     */
+    public AppResponse updateHotGoodsById(HotGoodsDO hotGoodsDO){
+        int Id=hotGoodsDao.findNumByNum(hotGoodsDO.getHotGoodsSort());
+        if(Id>0){
+            return AppResponse.success("序号已存在，请更改别的序号");
+        }else {
+            String userId= SecurityUtils.getCurrentUserId();
+            hotGoodsDO.setUserId(userId);
+            int num=hotGoodsDao.updateHotGoodsById(hotGoodsDO);
+            if(num==0){
+                return AppResponse.bizError("修改失败");
+            }else {
+                return AppResponse.success("修改成功");
+            }
+        }
+    }
+    public AppResponse listHotGoodsByPage(String goodsId,String goodsName){
+        List<HotGoodsVO> listHotGoods=hotGoodsDao.listHotGoodsByPage(goodsId,goodsName);
+        return AppResponse.success("查询成功",PageUtils.getPageInfo(listHotGoods));
     }
 }
