@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xzsd.pc.store.dao.StoreDao">
+    <select id="findStoreByStoreName" parameterType="java.lang.String" resultType="int">
+        SELECT
+            count(*)
+        FROM
+            t_store_table
+        WHERE
+            store_name = #{name}
+    </select>
+
+    <select id="countBusiness" parameterType="java.lang.String" resultType="int">
+        SELECT
+            count(*)
+        FROM
+            t_store_table
+        WHERE
+            business = #{business}
+    </select>
+    <insert id="addStore" parameterType="com.xzsd.pc.store.entity.StoreInfo">
+        insert into  t_store_table
+        (
+        stroe_no,
+        store_name,
+        stroe_address,
+        stroe_phone,
+        user_code,
+        province,
+        province_no,
+        city,
+        city_no,
+        county,
+        county_no,
+        star_level,
+        is_delete,
+        create_name,
+        create_time,
+        version,
+        invitation,
+        business
+        )
+        values (
+        #{storeCode},
+        #{storeName},
+        #{storeAddress},
+        #{storePhone},
+        #{userCode},
+        #{province},
+        #{provinceCode},
+        #{city},
+        #{cityCode},
+        #{county},
+        #{countyCode},
+        #{starLevel},
+        0,
+        #{createBy},
+        now(),
+        0,
+        #{invitation},
+        #{business}
+        )
+    </insert>
+</mapper>

@@ -16,6 +16,10 @@ public class StoreInfo {
      */
     private String storeName;
     /**
+     * 营业执照
+     */
+    private String business;
+    /**
      *详细地址
      */
     private String storeAddress;
@@ -83,6 +87,14 @@ public class StoreInfo {
      * 版本号
      */
     private String version;
+
+    public String getBusiness() {
+        return business;
+    }
+
+    public void setBusiness(String business) {
+        this.business = business;
+    }
 
     public String getStoreCode() {
         return storeCode;
