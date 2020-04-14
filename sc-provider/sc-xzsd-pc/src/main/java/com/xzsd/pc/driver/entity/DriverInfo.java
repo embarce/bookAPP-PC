@@ -1,78 +1,53 @@
-package com.xzsd.pc.store.entity;
+package com.xzsd.pc.driver.entity;
 
 import java.util.Date;
 
 /**
  * @author Embrace
- * @date 2020/4/13 16:58
+ * @date 2020/4/14 11:10
  */
-public class StoreInfo {
-    /**
-     * 门店编号
-     */
-    private String storeCode;
-    /**
-     * 门店名称
-     */
-    private String storeName;
-    /**
-     * 营业执照
-     */
-    private String business;
-    /**
-     * 详细地址
-     */
-    private String storeAddress;
-    /**
-     * 电话
-     */
-    private String storePhone;
-    /**
-     * 店长用户编码
-     */
-    private String userCode;
+public class DriverInfo {
     /**
      * 省
      */
     private String province;
-    /**
-     * 省编码
-     */
     private String provinceCode;
     /**
      * 市
      */
     private String city;
-    /**
-     * 市编码
-     */
     private String cityCode;
     /**
      * 区
      */
     private String county;
-    /**
-     * 区编码
-     */
     private String countyCode;
     /**
-     * 评价星级1-5
+     * 司机id
      */
-    private String starLevel;
+    private String driverCode;
     /**
-     * 邀请码
+     * 司机账号
      */
-    private String invitation;
+    private String driverAcct;
+    /**
+     * 绑定的店铺
+     */
+    private String storeId;
     /**
      * 作废标记 0为存在，1为作废
      */
     private int isDeleted;
     /**
+     * 序号
+     */
+    private int sortNo;
+    /**
      * 创建时间
      */
     private Date gmtCreate;
     /**
-     * 创建者e
+     * 创建者
      */
     private String createBy;
     /**
@@ -87,54 +62,6 @@ public class StoreInfo {
      * 版本号
      */
     private String version;
-
-    public String getBusiness() {
-        return business;
-    }
-
-    public void setBusiness(String business) {
-        this.business = business;
-    }
-
-    public String getStoreCode() {
-        return storeCode;
-    }
-
-    public void setStoreCode(String storeCode) {
-        this.storeCode = storeCode;
-    }
-
-    public String getStoreName() {
-        return storeName;
-    }
-
-    public void setStoreName(String storeName) {
-        this.storeName = storeName;
-    }
-
-    public String getStoreAddress() {
-        return storeAddress;
-    }
-
-    public void setStoreAddress(String storeAddress) {
-        this.storeAddress = storeAddress;
-    }
-
-    public String getStorePhone() {
-        return storePhone;
-    }
-
-    public void setStorePhone(String storePhone) {
-        this.storePhone = storePhone;
-    }
-
-    public String getUserCode() {
-        return userCode;
-    }
-
-    public void setUserCode(String userCode) {
-        this.userCode = userCode;
-    }
 
     public String getProvince() {
         return province;
@@ -184,20 +111,28 @@ public class StoreInfo {
         this.countyCode = countyCode;
     }
 
-    public String getStarLevel() {
-        return starLevel;
+    public String getDriverCode() {
+        return driverCode;
     }
 
-    public void setStarLevel(String starLevel) {
-        this.starLevel = starLevel;
+    public void setDriverCode(String driverCode) {
+        this.driverCode = driverCode;
     }
 
-    public String getInvitation() {
-        return invitation;
+    public String getDriverAcct() {
+        return driverAcct;
     }
 
-    public void setInvitation(String invitation) {
-        this.invitation = invitation;
+    public void setDriverAcct(String driverAcct) {
+        this.driverAcct = driverAcct;
+    }
+
+    public String getStoreId() {
+        return storeId;
+    }
+
+    public void setStoreId(String storeId) {
+        this.storeId = storeId;
     }
 
     public int getIsDeleted() {
@@ -206,6 +141,14 @@ public class StoreInfo {
 
     public void setIsDeleted(int isDeleted) {
         this.isDeleted = isDeleted;
+    }
+
+    public int getSortNo() {
+        return sortNo;
+    }
+
+    public void setSortNo(int sortNo) {
+        this.sortNo = sortNo;
     }
 
     public Date getGmtCreate() {
@@ -247,5 +190,4 @@ public class StoreInfo {
     public void setVersion(String version) {
         this.version = version;
     }
-
 }

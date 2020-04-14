@@ -45,6 +45,19 @@ public interface HotGoodsDao {
      * @return
      */
     int deleteHotGoods(@Param("hotGoodsId") List<String> hotGoodsId,@Param("userId") String userId);
+
+    /**
+     * 修改热门
+     * @param hotGoodsDO
+     * @return
+     */
     int updateHotGoodsById(HotGoodsDO hotGoodsDO);
+
+    /**
+     * 分页查询
+     * @param goodsId
+     * @param goodsName
+     * @return
+     */
     List<HotGoodsVO> listHotGoodsByPage(@Param("goodsId") String goodsId,@Param("goodsName") String goodsName);
 }

@@ -61,4 +61,91 @@
         #{business}
         )
     </insert>
+    <update id="deleteStore" parameterType="java.lang.String">
+        update t_store_table
+        set
+        is_delete=1,
+        change_name=#{userId},
+        change_time=now(),
+        version =version+1
+        where stroe_no in
+        <foreach item="item" index="index" collection="listCode" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </update>
+
+    <update id="updateStore" parameterType="com.xzsd.pc.store.entity.StoreInfo">
+        update t_store_table
+        set
+        store_name=#{storeName},
+        stroe_address=#{storeAddress},
+        stroe_phone=#{storePhone},
+        user_code=#{userCode},
+        province=#{province},
+        province_no=#{provinceCode},
+        city=#{city},
+        city_no=#{cityCode},
+        county=#{county},
+        county_no=#{countyCode},
+        change_name=#{lastModifiedBy},
+        change_time=now(),
+        version=version+1,
+        invitation=#{invitation},
+        business=#{business}
+        where stroe_no=#{storeCode}
+    </update>
+    <select id="listStoreByPage" parameterType="com.xzsd.pc.store.entity.StoreDO" resultType="com.xzsd.pc.store.entity.StoreVO">
+        SELECT
+            a.stroe_no storeCode,
+            a.store_name storeName,
+            a.stroe_address storeAddress,
+            a.stroe_phone storePhone,
+            a.invitation invitation,
+            a.version version,
+            b.user_name userName
+        FROM
+        t_store_table a
+        JOIN t_sys_user b ON a.user_code = b.user_code
+        WHERE
+        a.is_delete = 0
+        <if test="storeCode != null and storeCode != ''">
+            and a.stroe_no like concat('%', #{storeCode}, '%')
+        </if>
+        <if test="storeName != null and storeName != ''">
+            and a.store_name like concat('%', #{storeName}, '%')
+        </if>
+        <if test="userName != null and userName != ''">
+            and b.user_name like concat('%', #{userName}, '%')
+        </if>
+        <if test="userCode != null and userCode != ''">
+            and b.user_code like concat('%', #{userCode}, '%')
+        </if>
+        <if test="provinceCode != null and provinceCode != ''">
+            and a.province_no like concat('%', #{provinceCode}, '%')
+        </if>
+        <if test="cityCode != null and cityCode != ''">
+            and a.city_no like concat('%', #{cityCode}, '%')
+        </if>
+        <if test="countyCode != null and countyCode != ''">
+            and a.county_no like concat('%', #{countyCode}, '%')
+        </if>
+    </select>
+
+    <select id="findStoreById" parameterType="java.lang.String" resultType="com.xzsd.pc.store.entity.StoreInfo">
+        SELECT
+            stroe_no storeCode,
+            store_name storeName,
+            business business,
+            stroe_address storeAddress,
+            stroe_phone storePhone,
+            user_code userCode,
+            province province,
+            city city,
+            county county,
+            invitation invitation
+        FROM
+            t_store_table
+        WHERE
+            stroe_no = #{storeCode}
+    </select>
 </mapper>
