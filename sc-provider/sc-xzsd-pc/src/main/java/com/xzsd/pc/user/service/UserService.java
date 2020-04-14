@@ -3,6 +3,7 @@ package com.xzsd.pc.user.service;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.neusoft.core.restful.AppResponse;
+import com.neusoft.security.client.utils.SecurityUtils;
 import com.neusoft.util.StringUtil;
 import com.xzsd.pc.user.dao.UserDao;
 import com.xzsd.pc.user.entity.CustomerInfo;
@@ -59,15 +60,15 @@ public class UserService {
      * @ClassName
      * @Description : 功能说明
      *
-     * @param userAcct
+     * @param userList
      * @Return :
      * @Author : Embrace
      * @Date :  2020-3-26
      */
     @Transactional(rollbackFor = Exception.class)
-    public AppResponse deleteUser(String userList, String userAcct) {
+    public AppResponse deleteUser(String userList) {
         List<String> listCode = Arrays.asList(userList.split(","));
-        int count = userDao.deleteUser(listCode, userAcct);
+        int count = userDao.deleteUser(listCode, SecurityUtils.getCurrentUserId());
         if (0 == count) {
             return AppResponse.bizError("删除失败，请重试");
         }

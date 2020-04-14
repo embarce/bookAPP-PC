@@ -46,9 +46,9 @@
         update t_sys_user
         set is_deleted =1,
         gmt_modified=now(),
-        last_modified_by=2,
+        last_modified_by=#{userCode},
         version = version + 1
-        where user_acct in
+        where user_code in
         <foreach item="item" index="index" collection="listCode" open="(" separator="," close=")">
             #{item}
         </foreach>

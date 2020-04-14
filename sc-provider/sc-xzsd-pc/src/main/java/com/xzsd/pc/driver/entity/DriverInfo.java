@@ -78,6 +78,15 @@ public class DriverInfo {
      * 版本号
      */
     private String version;
+    private String version1;
+
+    public String getVersion1() {
+        return version1;
+    }
+
+    public void setVersion1(String version1) {
+        this.version1 = version1;
+    }
 
     public String getDriverName() {
         return driverName;

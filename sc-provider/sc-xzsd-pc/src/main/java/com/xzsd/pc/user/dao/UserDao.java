@@ -35,10 +35,10 @@ public interface UserDao {
     /**
      * 删除用户
      *
-     * @param userAcct listCode 选中的用户编号集合
+     * @param userCode listCode 选中的用户编号集合
      * @return
      */
-    int deleteUser(@Param("listCode") List<String> listCode, @Param("userAcct") String userAcct);
+    int deleteUser(@Param("listCode") List<String> listCode, @Param("userCode") String userCode);
 
     /**
      * 分页列表查询用户信息

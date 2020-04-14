@@ -50,14 +50,14 @@ public class UserController {
     /***
      * @ClassName
      * @Description : 删除用户
-     * @param userAcct
+     * @param userList
      * @Author : Embrace
      * @Date : 2020-3-26
      */
     @PostMapping("deleteUser")
-    public AppResponse deleteUser(String userList, String userAcct) {
+    public AppResponse deleteUser(String userList) {
         try {
-            AppResponse appResponse = userService.deleteUser(userList, userAcct);
+            AppResponse appResponse = userService.deleteUser(userList);
             return appResponse;
         } catch (Exception e) {
             logger.error("删除用户失败", e);
