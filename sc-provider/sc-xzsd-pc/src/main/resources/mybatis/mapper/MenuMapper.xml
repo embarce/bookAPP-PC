@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xzsd.pc.menu.dao.MenuDao">
+    <select id="listMenu" resultType="com.xzsd.pc.menu.entity.MenuInfo">
+        select *
+        from t_menu_table
+    </select>
+    <select id="findMenuByName" parameterType="java.lang.String" resultType="int">
+        select count(*)
+        from t_menu_table
+        where menuName=#{menuName}
+    </select>
+
+    <insert id="addMenu" parameterType="com.xzsd.pc.menu.entity.MenuInfo">
+        insert into t_menu_table
+           (menuCode,
+            menuName,
+            menuUrl,
+            level,
+            sortNo,
+            gmtCreate,
+            createBy,
+            is_deleted,
+            version
+          ) values (
+          #{menuCode},
+          #{menuName},
+          #{menuUrl},
+          #{level},
+          #{sortNo},
+          now(),
+          #{createBy},
+          0,
+          0
+          )
+    </insert>
+    <select id="checkRole" parameterType="java.lang.String" resultType="int">
+        select
+         role
+        from t_sys_user
+        where user_code=#{userId}
+    </select>
+    <update id="deleteMenu" parameterType="java.lang.String">
+        update t_menu_table
+        set
+        is_deleted=1,
+        gmtModified=now(),
+        lastModifiedBy=#{userId},
+        version=version+1
+        where menuCode=#{menuCode}
+    </update>
+</mapper>

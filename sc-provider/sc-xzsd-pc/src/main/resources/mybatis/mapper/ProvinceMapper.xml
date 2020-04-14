@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xzsd.pc.province.dao.ProvinceDao">
+    <select id="findProvince" parameterType="com.xzsd.pc.province.entity.ProvinceInfo" resultType="com.xzsd.pc.province.entity.ProvinceInfo">
+        SELECT
+            id,
+            name,
+            pid,
+            level,
+            citycode cityCode,
+            mername merName
+        FROM
+            region
+        WHERE
+            LEVEL =1
+    </select>
+    <select id="findCityByProvinceId" parameterType="com.xzsd.pc.province.entity.ProvinceInfo" resultType="com.xzsd.pc.province.entity.ProvinceInfo">
+        SELECT
+            id,
+            name,
+            pid,
+            level,
+            citycode cityCode,
+            mername merName
+        FROM
+            region
+        WHERE
+            pid =#{pid}
+    </select>
+</mapper>
