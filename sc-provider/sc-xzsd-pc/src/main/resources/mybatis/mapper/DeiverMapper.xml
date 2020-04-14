@@ -1,5 +1,42 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.xzsd.pc.driver.Dao.DriverDao">
-
+    <select id="countDriverAcct" parameterType="java.lang.String" resultType="int">
+        select count(driver_acct)
+        from t_driver_info_table
+        where driver_acct=#{driverAcct}
+    </select>
+    <insert id="addDriver" parameterType="com.xzsd.pc.driver.entity.DriverInfo">
+        insert into t_driver_info_table
+        (
+            province,
+            province_no,
+            city,
+            city_no,
+            county,
+            county_no,
+            driver_id,
+            is_delete,
+            create_name,
+            create_time,
+            version,
+            store_id,
+            driver_acct
+        )
+        values (
+        #{province},
+        #{provinceCode},
+        #{city},
+        #{cityCode},
+        #{county},
+        #{countyCode},
+        #{driverCode},
+        0,
+        #{createBy},
+        now(),
+        0,
+        #{storeId},
+        #{driverAcct}
+        )
+    </insert>
 </mapper>

@@ -8,6 +8,18 @@ import java.util.Date;
  */
 public class DriverInfo {
     /**
+     * 司机姓名
+     */
+    private String driverName;
+    /**
+     * 联系电话
+     */
+    private String phone;
+    /**
+     * 身份证
+     */
+    private String IdCard;
+    /**
      * 省
      */
     private String province;
@@ -30,6 +42,10 @@ public class DriverInfo {
      * 司机账号
      */
     private String driverAcct;
+    /**
+     * 司机密码
+     */
+    private String password;
     /**
      * 绑定的店铺
      */
@@ -62,6 +78,38 @@ public class DriverInfo {
      * 版本号
      */
     private String version;
+
+    public String getDriverName() {
+        return driverName;
+    }
+
+    public void setDriverName(String driverName) {
+        this.driverName = driverName;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getIdCard() {
+        return IdCard;
+    }
+
+    public void setIdCard(String idCard) {
+        IdCard = idCard;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
     public String getProvince() {
         return province;
