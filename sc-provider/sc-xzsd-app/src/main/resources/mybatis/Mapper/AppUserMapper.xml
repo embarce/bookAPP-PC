@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xzsd.app.userInformation.dao.AppUserDao">
+    <select id="getUserRole" parameterType="java.lang.String" resultType="int">
+        SELECT
+            role
+        FROM
+            t_sys_user
+        WHERE
+            user_code = "测试用户"
+    </select>
+    <select id="getUserIsCustomer" parameterType="java.lang.String" resultType="com.xzsd.app.userInformation.entity.AppUserInfoVO">
+        SELECT
+            a.user_name userName,
+            a.user_code userId,
+            b.stroe_no storeId,
+            b.store_name storeName,
+            d.mername address,
+            c.in_id inId,
+            a.phone phone,
+            a.email email,
+            a.role role,
+            a.pictureUrl pictureUrl,
+            a.version version
+        FROM
+            t_sys_user a,region d,t_store_table b, t_customer_info_table c
+        WHERE
+            a.user_code=c.customer_id and b.county_no=d.id and c.in_id=b.invitation
+            and a.user_code=#{userId}
+    </select>
+
+    <select id="getUserIsDriver" parameterType="java.lang.String" resultType="com.xzsd.app.userInformation.entity.AppUserInfoVO">
+        SELECT
+            a.user_name userName,
+            a.user_code userId,
+            b.stroe_no storeId,
+            b.store_name storeName,
+            d.mername address,
+            c.store_id inId,
+            a.phone phone,
+            a.email email,
+            a.role role,
+            a.pictureUrl pictureUrl,
+            a.version version
+        FROM
+            t_sys_user a,
+            region d,
+            t_store_table b,
+            t_driver_info_table c
+        WHERE
+            a.user_code = c.driver_id
+            AND b.county_no = d.id
+            AND c.store_id = b.invitation
+            AND a.user_code = #{userId}
+    </select>
+
+    <select id="getUserIsOwner" parameterType="java.lang.String" resultType="com.xzsd.app.userInformation.entity.AppUserInfoVO">
+        SELECT
+            a.user_name userName,
+            a.user_code userId,
+            b.stroe_no storeId,
+            b.store_name storeName,
+            d.mername address,
+            b.invitation inId,
+            a.phone phone,
+            a.email email,
+            a.role role,
+            a.pictureUrl pictureUrl,
+            a.version version
+        FROM
+            t_sys_user a,
+            region d,
+            t_store_table b
+        WHERE
+            a.user_code = b.user_code
+            AND b.county_no = d.id
+            AND a.user_code = #{userId}
+    </select>
+    <select id="getPassword" parameterType="java.lang.String" resultType="java.lang.String">
+        select user_pwd
+        from t_sys_user
+        where user_code = #{userId}
+    </select>
+    <update id="updateUserPassword" parameterType="java.lang.String">
+        update t_sys_user
+        set user_pwd=#{userNewPassword},
+        version=version+1
+        where user_code = #{userId}
+    </update>
+</mapper>

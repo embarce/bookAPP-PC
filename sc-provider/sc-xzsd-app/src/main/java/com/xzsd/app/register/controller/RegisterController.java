@@ -19,7 +19,7 @@ import javax.annotation.Resource;
  * @date 2020/3/26 11:06
  */
 @RestController
-@RequestMapping("/User")
+@RequestMapping("/register")
 public class RegisterController {
     private static final Logger logger = LoggerFactory.getLogger(RegisterController.class);
     @Resource
@@ -32,7 +32,7 @@ public class RegisterController {
      * @Author : Embrace
      * @Date : 2020-03-26
      */
-    @PostMapping("addUser")
+    @PostMapping("clientRegister")
     public AppResponse addUser(UserInfo userInfo) {
         try {
             AppResponse appResponse = registerService.addUser(userInfo);

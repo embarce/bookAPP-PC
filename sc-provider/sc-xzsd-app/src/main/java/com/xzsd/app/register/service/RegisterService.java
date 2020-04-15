@@ -31,19 +31,24 @@ public class RegisterService {
     @Transactional(rollbackFor = Exception.class)
     public AppResponse addUser(UserInfo userInfo) {
         //检查用户是否存在
-        int countUserById = registerDao.countUserById(userInfo.getUserAcct());
+        int countUserById = registerDao.countById(userInfo.getUserAcct());
         if (0 != countUserById) {
-            return AppResponse.repeat("用户已存在,请重新输入");
+            return AppResponse.repeat("用户账号存在,请重新输入");
         }
         userInfo.setUserId(StringUtil.getCommonCode(2));
         userInfo.setIsDeleted(0);
         userInfo.setUserPwd(PasswordUtils.generatePassword(userInfo.getUserPwd()));
+        if(userInfo.getPictureUrl()==null){
+            //默认头像url
+            userInfo.setPictureUrl("https://test-1300625833.cos.ap-guangzhou.myqcloud.com/https%3A/test-1300625833.cos.ap-guangzhou.myqcloud.com/ciao.jpg");
+        }
         //新增用户
+        System.out.println(userInfo.getPictureUrl());
         int count = registerDao.clientRegister(userInfo);
         int num=registerDao.addCustomer(userInfo.getUserId());
         if (0 == count||0==num) {
-            return AppResponse.bizError("新增失败，请重试");
+            return AppResponse.bizError("注册失败，请重试");
         }
-        return AppResponse.success("新增成功");
+        return AppResponse.success("注册成功");
     }
 }

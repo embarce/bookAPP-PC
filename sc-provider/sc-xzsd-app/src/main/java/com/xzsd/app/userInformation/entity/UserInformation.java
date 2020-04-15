@@ -1,21 +1,24 @@
-package com.xzsd.app.register.entity;
+package com.xzsd.app.userInformation.entity;
 
 import java.util.Date;
 
 /**
- * 用户实体类
  * @author Embrace
- * @date 2020/3/26 11:15
+ * @date 2020/4/15 16:26
  */
-public class UserInfo {
+public class UserInformation {
     /**
-     * 页码
+     * userName
+     * userImage
+     * role
+     * storeId
+     * storeName
+     * inviteCode
+     * address
+     * phone
+     * driverName
+     * version
      */
-    private int pageSize;
-    /**
-     * 页数
-     */
-    private int pageNum;
     /**
      * 用户id
      */
@@ -52,6 +55,9 @@ public class UserInfo {
      * 角色
      */
     private int role;
+    /**
+     * 邀请码
+     */
     private String inId;
     /**
      * 备注
@@ -89,38 +95,6 @@ public class UserInfo {
      * 头像图片url
      */
     private String pictureUrl;
-
-    public String getPictureUrl() {
-        return pictureUrl;
-    }
-
-    public void setPictureUrl(String pictureUrl) {
-        this.pictureUrl = pictureUrl;
-    }
-
-    public String getInId() {
-        return inId;
-    }
-
-    public void setInId(String inId) {
-        this.inId = inId;
-    }
-
-    public int getPageSize() {
-        return pageSize;
-    }
-
-    public void setPageSize(int pageSize) {
-        this.pageSize = pageSize;
-    }
-
-    public int getPageNum() {
-        return pageNum;
-    }
-
-    public void setPageNum(int pageNum) {
-        this.pageNum = pageNum;
-    }
 
     public String getUserId() {
         return userId;
@@ -194,6 +168,14 @@ public class UserInfo {
         this.role = role;
     }
 
+    public String getInId() {
+        return inId;
+    }
+
+    public void setInId(String inId) {
+        this.inId = inId;
+    }
+
     public String getRemark() {
         return remark;
     }
@@ -256,5 +238,13 @@ public class UserInfo {
 
     public void setVersion(String version) {
         this.version = version;
+    }
+
+    public String getPictureUrl() {
+        return pictureUrl;
+    }
+
+    public void setPictureUrl(String pictureUrl) {
+        this.pictureUrl = pictureUrl;
     }
 }
