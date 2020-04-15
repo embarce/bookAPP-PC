@@ -5,6 +5,7 @@
         select count(driver_acct)
         from t_driver_info_table
         where driver_acct=#{driverAcct}
+        and is_delete=0
     </select>
     <insert id="addDriver" parameterType="com.xzsd.pc.driver.entity.DriverInfo">
         insert into t_driver_info_table

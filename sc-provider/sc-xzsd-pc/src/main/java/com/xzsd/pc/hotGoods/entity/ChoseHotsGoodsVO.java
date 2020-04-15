@@ -20,7 +20,6 @@ public class ChoseHotsGoodsVO {
      *
      * 二级分类
      */
-
     private String goodsId;
     private String goodsName;
     private String status;

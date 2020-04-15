@@ -95,7 +95,7 @@ public class GoodsService {
     public AppResponse deleteGoods(String goodsId,String userId) {
         List<String> listCode = Arrays.asList(goodsId.split(","));
         AppResponse appResponse = AppResponse.success("删除成功！");
-        // 删除用户
+        // 删除商品
         int count = goodsDao.deleteGoods(listCode,userId);
         if(0 == count) {
             appResponse = AppResponse.bizError("删除失败，请重试！");

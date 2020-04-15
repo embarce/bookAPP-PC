@@ -57,4 +57,13 @@ public class MenuService {
             return AppResponse.success("删除成功");
         }
     }
+    //findMenuById
+    public AppResponse findMenuById(String menuCode){
+        MenuInfo menuInfo=menuDao.findMenuById(menuCode);
+        if(menuInfo==null){
+            return AppResponse.bizError("查询失败");
+        }else {
+            return AppResponse.success("查询成功",menuInfo);
+        }
+    }
 }

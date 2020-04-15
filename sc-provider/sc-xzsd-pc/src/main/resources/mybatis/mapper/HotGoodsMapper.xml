@@ -5,6 +5,7 @@
         select count(*)
         from t_hot_table
         where goods_id=#{goodsId}
+        and is_delete=0
     </select>
     <select id="findNumByNum" parameterType="int" resultType="int">
         select count(*)

@@ -29,14 +29,6 @@ public class CarouserlInfo {
      */
     private String status;
 
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
     /**
      * 有效期
      */
@@ -75,6 +67,13 @@ public class CarouserlInfo {
     private String version;
     private int pageNum;
     private int pageSize;
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
 
     public int getPageNum() {
         return pageNum;

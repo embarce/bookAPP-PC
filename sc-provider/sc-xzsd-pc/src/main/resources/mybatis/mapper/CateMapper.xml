@@ -6,6 +6,7 @@
         select count(*)
         from  t_cate_table
         where cate_name=#{cateName}
+        and is_delete=0
     </select>
     <!--新增分类-->
     <insert id="addCate" parameterType="com.xzsd.pc.cate.entity.CateInfo">
@@ -48,6 +49,7 @@
             cate_name cateName
         from t_cate_table
         where cate_id_parent =0
+        and is_delete=0
     </select>
     <!--查询父类的子类-->
     <select id="findCateById" parameterType="java.lang.String" resultType="com.xzsd.pc.cate.entity.cateParentInfo">
@@ -56,12 +58,14 @@
             cate_name cateName
         from t_cate_table
         where cate_id_parent=#{chId}
+        and is_delete=0
     </select>
     <select id="chekChiById" parameterType="java.lang.String" resultType="int">
         select
             count(*)
         from t_cate_table
         where cate_id_parent=#{cateId}
+        and is_delete=0
     </select>
 <!--    删除分类-->
     <update id="delectCateById" parameterType="java.lang.String" >

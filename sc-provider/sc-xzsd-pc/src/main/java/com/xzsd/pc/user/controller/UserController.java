@@ -87,13 +87,13 @@ public class UserController {
     /**
      * 查询指定用户数据
      *
-     * @param userAcct
+     * @param userId
      * @return
      */
     @RequestMapping(value = "getUserById")
-    public AppResponse getUserById(String userAcct) {
+    public AppResponse getUserById(String userId) {
         try {
-            return userService.getUserById(userAcct);
+            return userService.getUserById(userId);
         } catch (Exception e) {
             logger.error("查询用户异常", e);
             System.out.println(e.toString());

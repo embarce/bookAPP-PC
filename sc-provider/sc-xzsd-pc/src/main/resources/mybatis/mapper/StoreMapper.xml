@@ -8,6 +8,7 @@
             t_store_table
         WHERE
             store_name = #{name}
+        and is_delete=0
     </select>
 
     <select id="countBusiness" parameterType="java.lang.String" resultType="int">
@@ -17,6 +18,7 @@
             t_store_table
         WHERE
             business = #{business}
+        and is_delete=0
     </select>
     <insert id="addStore" parameterType="com.xzsd.pc.store.entity.StoreInfo">
         insert into  t_store_table
@@ -147,5 +149,6 @@
             t_store_table
         WHERE
             stroe_no = #{storeCode}
+         and is_delete=0
     </select>
 </mapper>

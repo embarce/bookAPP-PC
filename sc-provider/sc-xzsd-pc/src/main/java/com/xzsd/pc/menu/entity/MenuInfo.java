@@ -24,6 +24,10 @@ public class MenuInfo {
      */
     private int level;
     /**
+     * 备注
+     */
+    private String remake;
+    /**
      * 序号
      */
     private int sortNo;
@@ -47,6 +51,14 @@ public class MenuInfo {
      * 版本号
      */
     private String version;
+
+    public String getRemake() {
+        return remake;
+    }
+
+    public void setRemake(String remake) {
+        this.remake = remake;
+    }
 
     public String getMenuCode() {
         return menuCode;

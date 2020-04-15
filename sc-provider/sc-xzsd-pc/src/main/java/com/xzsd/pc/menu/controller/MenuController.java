@@ -51,4 +51,14 @@ public class MenuController {
             throw e;
         }
     }
+    @PostMapping("findMenuById")
+    public AppResponse findMenuById(String menuCode){
+        try{
+            AppResponse appResponse=menuService.findMenuById(menuCode);
+            return appResponse;
+        }catch (Exception e){
+            logger.error("查询失败",e);
+            throw e;
+        }
+    }
 }

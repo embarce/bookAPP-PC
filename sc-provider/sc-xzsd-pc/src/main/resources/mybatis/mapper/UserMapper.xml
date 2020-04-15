@@ -97,7 +97,7 @@
           a.user_pwd userPwd,
           a.version version
         from t_sys_user a
-        where user_acct=#{userAcct}
+        where user_code=#{userAcct}
     </select>
     <!--统计用户账号数量-->
     <select id="countUserAcct" parameterType="com.xzsd.pc.user.entity.UserInfo" resultType="int">
