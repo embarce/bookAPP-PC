@@ -93,8 +93,7 @@ public class GoodsController {
     @PostMapping("deleteGoods")
     public AppResponse deleteGoods(String goodsList){
         try {
-            String userId = AuthUtils.getCurrentUserId();
-            return goodsService.deleteGoods(goodsList,userId);
+            return goodsService.deleteGoods(goodsList);
         }catch (Exception e){
             logger.error("商品删除错误", e);
             System.out.println(e.toString());
@@ -148,8 +147,7 @@ public class GoodsController {
     @PostMapping("updateGoodsUpper")
     public AppResponse updateGoodsUpper(String goodsList){
         try{
-            String userId = AuthUtils.getCurrentUserId();
-            return goodsService.updateGoodsUpper(goodsList,userId);
+            return goodsService.updateGoodsUpper(goodsList);
         }catch (Exception e){
             logger.error("商品信息错误");
             System.out.println(e.toString());
@@ -159,8 +157,7 @@ public class GoodsController {
     @PostMapping("updateGoodsLower")
     public AppResponse updateGoodsLower(String goodsList){
         try{
-            String userId = AuthUtils.getCurrentUserId();
-            return goodsService.updateGoodsLower(goodsList,userId);
+            return goodsService.updateGoodsLower(goodsList);
         }catch (Exception e){
             logger.error("商品信息错误");
             System.out.println(e.toString());

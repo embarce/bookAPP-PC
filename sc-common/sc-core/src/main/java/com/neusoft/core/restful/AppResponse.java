@@ -57,6 +57,18 @@ public class AppResponse<T> implements Serializable {
     }
 
     /**
+     * 返回了重复错误
+     * @return
+     */
+    public static AppResponse repeat(){return builder().code(AppResponseStatus.REPEAT).build();}
+    public static AppResponse repeat(String msg) {
+        return builder().code(AppResponseStatus.REPEAT).msg(msg).build();
+    }
+    public static <T> AppResponse repeat(String msg, T data) {
+        return builder().code(AppResponseStatus.REPEAT).msg(msg).data(data).build();
+    }
+
+    /**
      * 构建操作成功返回体
      * <p>
      * * @param msg  操作说明

@@ -41,7 +41,7 @@ public class DriverService {
         driverInfo.setDriverCode(userId);
         driverInfo.setCreateBy(SecurityUtils.getCurrentUserId());
         if (count!=0) {
-            return AppResponse.success("司机账号已存在");
+            return AppResponse.repeat("司机账号已存在");
         } else {
             int num = driverDao.addDriver(driverInfo);
             //封装司机进用户类新增用户和司机

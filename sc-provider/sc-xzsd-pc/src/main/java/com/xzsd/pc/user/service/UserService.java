@@ -39,7 +39,7 @@ public class UserService {
         //检查用户是否存在
         int countUserById = userDao.countUserById(userInfo.getUserAcct());
         if (0 != countUserById) {
-            return AppResponse.bizError("用户已存在,请重新输入");
+            return AppResponse.repeat("用户已存在,请重新输入");
         }
         userInfo.setUserId(StringUtil.getCommonCode(2));
         userInfo.setIsDeleted(0);
@@ -118,7 +118,7 @@ public class UserService {
         //
         int countUserAcct = userDao.countUserAcct(userInfo);
         if (0 != countUserAcct) {
-            return AppResponse.bizError("用户账号已存在，请重新输入！");
+            return AppResponse.repeat("用户账号已存在，请重新输入！");
         }
         //修改
         int count = userDao.updateUser(userInfo);

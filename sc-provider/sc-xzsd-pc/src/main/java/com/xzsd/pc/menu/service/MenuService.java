@@ -32,7 +32,7 @@ public class MenuService {
                 return AppResponse.bizError("新增失败");
             }
         }else {
-            return AppResponse.success("菜单已存在");
+            return AppResponse.repeat("菜单已存在");
         }
     }
     public AppResponse listMenu(){

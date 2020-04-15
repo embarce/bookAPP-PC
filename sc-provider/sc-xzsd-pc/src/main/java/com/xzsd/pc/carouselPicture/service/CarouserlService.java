@@ -4,6 +4,7 @@ package com.xzsd.pc.carouselPicture.service;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.neusoft.core.restful.AppResponse;
+import com.neusoft.security.client.utils.SecurityUtils;
 import com.neusoft.util.StringUtil;
 import com.xzsd.pc.carouselPicture.dao.CarouserlDao;
 import com.xzsd.pc.carouselPicture.entity.CarouserlInfo;
@@ -33,7 +34,7 @@ public class CarouserlService {
     public AppResponse addCarouserl(CarouserlInfo carouserlInfo){
         carouserlInfo.setBannerCode(StringUtil.getCommonCode(2));
         carouserlInfo.setIsDeleted(0);
-        carouserlInfo.setCreateBy("1");
+        carouserlInfo.setCreateBy(SecurityUtils.getCurrentUserId());
         //新增
         int count=carouserlDao.addCarouserl(carouserlInfo);
         if(0==count){
@@ -45,11 +46,11 @@ public class CarouserlService {
     /**
      * 删除轮播图
      * @param listString
-     * @param lastModifiedBy
      * @return
      */
     @Transactional(rollbackFor = Exception.class)
-    public AppResponse deleteCarouserl(String listString,String lastModifiedBy){
+    public AppResponse deleteCarouserl(String listString){
+        String lastModifiedBy=SecurityUtils.getCurrentUserId();
         List<String> listCode = Arrays.asList(listString.split(","));
         int count=carouserlDao.deleteCarouserl(listCode,lastModifiedBy);
         if(0==count){
@@ -72,7 +73,8 @@ public class CarouserlService {
     }
 
     @Transactional(rollbackFor = Exception.class)
-    public AppResponse updateStatusOpen(String listString,String lastModifiedBy){
+    public AppResponse updateStatusOpen(String listString){
+        String lastModifiedBy=SecurityUtils.getCurrentUserId();
         List<String> listCode = Arrays.asList(listString.split(","));
         int count=carouserlDao.updateStatusOpen(listCode,lastModifiedBy);
         if(0==count){
@@ -82,7 +84,8 @@ public class CarouserlService {
     }
 
     @Transactional(rollbackFor = Exception.class)
-    public AppResponse updateStatusOff(String listString,String lastModifiedBy){
+    public AppResponse updateStatusOff(String listString){
+        String lastModifiedBy=SecurityUtils.getCurrentUserId();
         List<String> listCode = Arrays.asList(listString.split(","));
         int count=carouserlDao.updateStatusOff(listCode,lastModifiedBy);
         if(0==count){

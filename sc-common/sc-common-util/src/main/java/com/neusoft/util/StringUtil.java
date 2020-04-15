@@ -676,7 +676,13 @@ label0:
 		String suffix = RandomUtil.radmonkey(8);
 		return prefix + suffix;
 	}
-	
+    public static String getCode(int num){
+        String prefix = new SimpleDateFormat("yy").format(new Date());
+        String suffix = RandomUtil.radmonkey(num);
+        String rd=RandomUtil.radmonkey(num);
+        return prefix + suffix + rd;
+    }
+
   	/**
   	  * 部门：软件开发事业部
   	  * 功能：生成code
@@ -729,6 +735,5 @@ label0:
 	
 	
     public static void main(String[] args) {
-    
     }
 }

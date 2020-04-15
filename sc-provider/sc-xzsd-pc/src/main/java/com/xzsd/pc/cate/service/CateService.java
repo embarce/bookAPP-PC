@@ -2,6 +2,7 @@ package com.xzsd.pc.cate.service;
 
 
 import com.neusoft.core.restful.AppResponse;
+import com.neusoft.security.client.utils.SecurityUtils;
 import com.neusoft.util.StringUtil;
 import com.xzsd.pc.cate.dao.CateDao;
 import com.xzsd.pc.cate.entity.CateInfo;
@@ -37,7 +38,7 @@ public class CateService {
     public AppResponse addCate(CateInfo cateInfo){
         cateInfo.setCateId(StringUtil.getCommonCode(2));
         cateInfo.setIsDeleted(0);
-        cateInfo.setCreateBy("1");
+        cateInfo.setCreateBy(SecurityUtils.getCurrentUserId());
         int num=cateDao.countCateByName(cateInfo.getCateName());
 //        producerController.sendQueue(cateInfo);
         //新增
@@ -49,7 +50,7 @@ public class CateService {
             return AppResponse.success("新增成功");
         }
         else {
-            return AppResponse.success("分类已存在");
+            return AppResponse.repeat("分类已存在");
         }
     }
     /**
@@ -106,7 +107,7 @@ public class CateService {
      */
     public AppResponse delectCateById(String cateId){
         int count=cateDao.chekChiById(cateId);
-        String lastModifiedBy="embrace";
+        String lastModifiedBy=SecurityUtils.getCurrentUserId();
         if(count==0){
             int num=cateDao.delectCateById(cateId,lastModifiedBy);
             if(num>0){
@@ -120,7 +121,8 @@ public class CateService {
         }
     }
     public AppResponse updateCateById(CateInfo cateInfo){
-        cateInfo.setLastModifiedBy("embrace");
+        String lastModifiedBy=SecurityUtils.getCurrentUserId();
+        cateInfo.setLastModifiedBy(lastModifiedBy);
         int count=cateDao.updateCateById(cateInfo);
         if(count==0){
             return AppResponse.bizError("修改失败");

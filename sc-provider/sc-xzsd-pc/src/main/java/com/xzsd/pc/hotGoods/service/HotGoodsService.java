@@ -33,7 +33,7 @@ public class HotGoodsService {
         int count=hotGoodsDao.countHotGoods(hotGoodsInfo.getGoodsId());
         int Id=hotGoodsDao.findNumByNum(hotGoodsInfo.getNum());
         if(count>0){
-            return AppResponse.success("商品已存在热门位，请前往修改");
+            return AppResponse.repeat("商品已存在热门位，请前往修改");
         }else {
             if(Id==0){
                 hotGoodsInfo.setCreateBy(StringUtil.getCommonCode(2));
@@ -45,7 +45,7 @@ public class HotGoodsService {
                 }
             }
             else {
-                return AppResponse.success("序号已存在请前往修改");
+                return AppResponse.repeat("序号已存在请前往修改");
             }
         }
     }
@@ -98,7 +98,7 @@ public class HotGoodsService {
     public AppResponse updateHotGoodsById(HotGoodsDO hotGoodsDO){
         int Id=hotGoodsDao.findNumByNum(hotGoodsDO.getHotGoodsSort());
         if(Id>0){
-            return AppResponse.success("序号已存在，请更改别的序号");
+            return AppResponse.repeat("序号已存在，请更改别的序号");
         }else {
             String userId= SecurityUtils.getCurrentUserId();
             hotGoodsDO.setUserId(userId);

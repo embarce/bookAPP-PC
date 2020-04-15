@@ -12,6 +12,10 @@ public enum AppResponseStatus {
      * 操作成功
      */
     SUCCESS(0),
+    /**
+     * 数据重复
+     */
+    REPEAT(-20),
 
     /**
      * 服务繁忙
@@ -61,12 +65,13 @@ public enum AppResponseStatus {
     /**
      * 业务异常
      */
-    BIZ_ERROR(10000),
+    BIZ_ERROR(-20),
 
     /**
      * 验证码错误
      */
     INVALID_IMAGE(6000);
+
 
     int code;
 

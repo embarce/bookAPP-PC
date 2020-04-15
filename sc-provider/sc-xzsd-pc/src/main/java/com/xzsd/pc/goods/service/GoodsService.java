@@ -3,6 +3,7 @@ package com.xzsd.pc.goods.service;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.neusoft.core.restful.AppResponse;
+import com.neusoft.security.client.utils.SecurityUtils;
 import com.neusoft.util.JsonUtils;
 import com.neusoft.util.StringUtil;
 import com.xzsd.pc.TencentUtil.CosController;
@@ -52,7 +53,7 @@ public class GoodsService {
         // 校验商品是否存在
         int countgoodsBybookId = goodsDao.countgoodsBybookId(goodsInfo.getBookId());
         if(0 !=countgoodsBybookId ) {
-            return AppResponse.bizError("商品账号已存在，请重新输入！");
+            return AppResponse.repeat("商品账号已存在，请重新输入！");
         }
         goodsInfo.setGoodId(StringUtil.getCommonCode(2));
         goodsInfo.setIsDeleted(0);
@@ -92,11 +93,12 @@ public class GoodsService {
      * @return AppResponse
      */
     @Transactional(rollbackFor = Exception.class)
-    public AppResponse deleteGoods(String goodsId,String userId) {
+    public AppResponse deleteGoods(String goodsId) {
         List<String> listCode = Arrays.asList(goodsId.split(","));
         AppResponse appResponse = AppResponse.success("删除成功！");
+        String lastModifiedBy=SecurityUtils.getCurrentUserId();
         // 删除商品
-        int count = goodsDao.deleteGoods(listCode,userId);
+        int count = goodsDao.deleteGoods(listCode,lastModifiedBy);
         if(0 == count) {
             appResponse = AppResponse.bizError("删除失败，请重试！");
         }
@@ -113,6 +115,7 @@ public class GoodsService {
         AppResponse appResponse=AppResponse.success("修改成功");
         // 校验商品是否存在
         int countgoodsBybookId = goodsDao.countgoodsBybookId(goodsInfo.getGoodId());
+        goodsInfo.setLastModifiedBy(SecurityUtils.getCurrentUserId());
         if(0 ==countgoodsBybookId ) {
             return AppResponse.bizError("商品账号不存在，请重新输入！");
         }
@@ -138,14 +141,14 @@ public class GoodsService {
     /**
      * 上下架商品
      * @param goodsId
-     * @param userId
      * @return
      */
     @Transactional(rollbackFor = Exception.class)
-    public AppResponse updateGoodsUpper(String goodsId,String userId){
+    public AppResponse updateGoodsUpper(String goodsId){
         List<String> listCode = Arrays.asList(goodsId.split(","));
+        String lastModifiedBy= SecurityUtils.getCurrentUserId();
         AppResponse appResponse=AppResponse.success("上架成功");
-        int count = goodsDao.updateGoodsUpper(listCode,userId);
+        int count = goodsDao.updateGoodsUpper(listCode,lastModifiedBy);
         if(0==count){
             appResponse = AppResponse.bizError("上架失败，请重试！");
         }
@@ -153,10 +156,11 @@ public class GoodsService {
     }
 
     @Transactional(rollbackFor = Exception.class)
-    public AppResponse updateGoodsLower(String goodsId,String userId){
+    public AppResponse updateGoodsLower(String goodsId){
         List<String> listCode = Arrays.asList(goodsId.split(","));
+        String lastModifiedBy=SecurityUtils.getCurrentUserId();
         AppResponse appResponse=AppResponse.success("下架成功");
-        int count = goodsDao.updateGoodsLower(listCode,userId);
+        int count = goodsDao.updateGoodsLower(listCode,lastModifiedBy);
         if(0==count){
             appResponse = AppResponse.bizError("下架失败，请重试！");
         }

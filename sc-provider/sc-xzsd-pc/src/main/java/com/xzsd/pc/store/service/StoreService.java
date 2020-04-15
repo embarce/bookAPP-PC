@@ -29,7 +29,10 @@ public class StoreService {
         int num = storeDao.findStoreByStoreName(storeInfo.getStoreName());
         if (count == 0) {
             if (num == 0) {
+                //随机一个店铺码
                 storeInfo.setStoreCode(StringUtil.getCommonCode(2));
+                 //随机获取自己一个邀请码
+                storeInfo.setInvitation(StringUtil.getCode(2));
                 int add = storeDao.addStore(storeInfo);
                 if (add != 0) {
                     return AppResponse.success("新增成功");
@@ -37,10 +40,10 @@ public class StoreService {
                     return AppResponse.success("新增失败");
                 }
             } else {
-                return AppResponse.success("商店名已经存在");
+                return AppResponse.repeat("商店名已经存在");
             }
         } else {
-            return AppResponse.success("营业执照已经存在");
+            return AppResponse.repeat("营业执照已经存在");
         }
     }
 

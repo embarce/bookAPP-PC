@@ -40,9 +40,9 @@ public class CarouserlController {
         }
     }
     @PostMapping("deleteCarouserl")
-    public AppResponse deleteCarouserl(String listString,String lastModifiedBy){
+    public AppResponse deleteCarouserl(String listString){
         try{
-            AppResponse appResponse=carouserlService.deleteCarouserl(listString,lastModifiedBy);
+            AppResponse appResponse=carouserlService.deleteCarouserl(listString);
             return appResponse;
         }catch (Exception e){
             logger.error("删除轮播图失败",e);
@@ -61,9 +61,9 @@ public class CarouserlController {
         }
     }
     @PostMapping("updateStatusOpen")
-    public AppResponse updateStatusOpen(String listString,String lastModifiedBy){
+    public AppResponse updateStatusOpen(String listString){
         try{
-            AppResponse appResponse=carouserlService.updateStatusOpen(listString,lastModifiedBy);
+            AppResponse appResponse=carouserlService.updateStatusOpen(listString);
             return appResponse;
         }catch (Exception e){
             logger.error("启用轮播图失败",e);
@@ -72,9 +72,9 @@ public class CarouserlController {
         }
     }
     @PostMapping("updateStatusOff")
-    public AppResponse updateStatusOff(String listString,String lastModifiedBy){
+    public AppResponse updateStatusOff(String listString){
         try{
-            AppResponse appResponse=carouserlService.updateStatusOff(listString,lastModifiedBy);
+            AppResponse appResponse=carouserlService.updateStatusOff(listString);
             return appResponse;
         }catch (Exception e){
             logger.error("启用轮播图失败",e);
