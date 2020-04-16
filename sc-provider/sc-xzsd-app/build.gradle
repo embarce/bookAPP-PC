@@ -10,7 +10,7 @@ dependencies {
             'org.springframework.boot:spring-boot-starter-data-redis',
             'org.springframework.session:spring-session-data-redis'
     // https://mvnrepository.com/artifact/javax.ws.rs/javax.ws.rs-api
-    compile group: 'javax.ws.rs', name: 'javax.ws.rs-api', version: '2.0-m02'
+    compile group: 'javax.ws.rs', name: 'javax.ws.rs-api', version: '2.0-m02','com.qcloud:cos_api:5.6.19'
 
 
 }

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xzsd.app.clientHome.dao.HomeDao">
+    <select id="listRotationCharHome" resultType="com.xzsd.app.clientHome.entity.HomeCrossImageVO">
+        SELECT
+            image_url slideshowPath,
+            goods_id goodsId
+        FROM
+            t_picture_table
+        WHERE
+            STATUS = 1
+            AND is_delete =0
+    </select>
+    <select id="listHotGoods" resultType="com.xzsd.app.clientHome.entity.HomeHotGoodsVO">
+        SELECT
+            a.goods_id goodsId,
+            b.goods_name goodsName,
+            b.picture goodsImagePath,
+            b.price goodsPrice
+        FROM
+            t_hot_table a,
+            t_goods_table b
+        WHERE
+            a.goods_id = b.good_id
+            AND a.is_delete =0
+            ORDER BY a.no_id
+    </select>
+</mapper>

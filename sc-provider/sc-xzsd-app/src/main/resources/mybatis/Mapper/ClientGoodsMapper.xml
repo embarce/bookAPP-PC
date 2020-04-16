@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xzsd.app.clientGoods.dao.ClientGoodsDao">
+    <select id="getGoods" parameterType="java.lang.String" resultType="com.xzsd.app.clientGoods.entity.ClientGoodsVO">
+        SELECT
+            goods_name goodsName,
+            bookId isbn,
+            introduction goodsDescribe,
+            price goodsPrice,
+            picture goodsImagePath,
+            star_level goodsEvaluateScore,
+            author goodsAuthor,
+            publisher goodsPress
+        FROM
+            t_goods_table
+        WHERE
+            good_id =  #{goodsId}
+            AND is_delete =0
+    </select>
+    <select id="getEvaluates" parameterType="java.lang.String" resultType="com.xzsd.app.clientGoods.entity.ClientGoodsEvaluatesVO">
+        SELECT
+            b.user_acct userAcct,
+            a.appraise_txt evaluateContent,
+            a.star_level evaluateScore,
+            a.create_time createTime
+        FROM
+            t_appraise_table a,
+            t_sys_user b
+        WHERE
+            a.user_id = b.user_code
+    </select>
+</mapper>
