@@ -20,24 +20,35 @@ public class ClientGoodsController {
     private static final Logger logger = LoggerFactory.getLogger(ClientGoodsController.class);
     @Resource
     private ClientGoodsService clientGoodsService;
+
+    /**
+     * 获取商品信息
+     * @param goodsId
+     * @return
+     */
     @PostMapping("getGoods")
-    public AppResponse getGoods(String goodsId){
+    public AppResponse getGoods(String goodsId) {
         try {
-            AppResponse appResponse=clientGoodsService.getGoods(goodsId);
+            AppResponse appResponse = clientGoodsService.getGoods(goodsId);
             return appResponse;
-        }catch (Exception e){
-            logger.error("查询失败",e);
+        } catch (Exception e) {
+            logger.error("查询失败", e);
             throw e;
         }
     }
 
+    /**
+     * 获取商品评价
+     * @param goodsId
+     * @return
+     */
     @PostMapping("getEvaluates")
-    public AppResponse getEvaluates(String goodsId){
+    public AppResponse getEvaluates(String goodsId) {
         try {
-            AppResponse appResponse=clientGoodsService.getEvaluates(goodsId);
+            AppResponse appResponse = clientGoodsService.getEvaluates(goodsId);
             return appResponse;
-        }catch (Exception e){
-            logger.error("查询失败",e);
+        } catch (Exception e) {
+            logger.error("查询失败", e);
             throw e;
         }
     }

@@ -9,4 +9,5 @@ import org.apache.ibatis.annotations.Param;
 public interface ClientGoodsDao {
     ClientGoodsVO getGoods(@Param("goodsId") String goodsId);
     ClientGoodsEvaluatesVO getEvaluates(@Param("goodsId") String goodsId);
+
 }
