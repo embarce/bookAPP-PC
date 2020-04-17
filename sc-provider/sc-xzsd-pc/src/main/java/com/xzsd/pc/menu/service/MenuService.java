@@ -35,6 +35,11 @@ public class MenuService {
             return AppResponse.repeat("菜单已存在");
         }
     }
+
+    /**
+     * 查询菜单，根据权限来查询
+     * @return
+     */
     public AppResponse listMenu(){
         List<MenuInfo> menuInfos=menuDao.listMenu();
         int role=menuDao.checkRole(SecurityUtils.getCurrentUserId());
@@ -64,6 +69,17 @@ public class MenuService {
             return AppResponse.bizError("查询失败");
         }else {
             return AppResponse.success("查询成功",menuInfo);
+        }
+    }
+    @Transactional(rollbackFor = Exception.class)
+    public AppResponse updateMenu (MenuInfo menuInfo){
+        String userId=SecurityUtils.getCurrentUserId();
+        menuInfo.setLastModifiedBy(userId);
+        int num=menuDao.updateMenu(menuInfo);
+        if(0==num){
+            return AppResponse.bizError("修改失败");
+        }else {
+            return AppResponse.success("修改成功");
         }
     }
 }

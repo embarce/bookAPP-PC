@@ -53,12 +53,12 @@ public class GoodsController {
      * @Date 2020年3月24日 22:16:34
      */
     @PostMapping("addGoods")
-    public AppResponse addGoods(goodsInfo goodsInfo, MultipartFile file) throws Exception {
+    public AppResponse addGoods(goodsInfo goodsInfo) {
         try {
             //获取用户id 用于修改后的记录
             String userId = AuthUtils.getCurrentUserId();
             goodsInfo.setCreateBy(userId);
-            AppResponse appResponse = goodsService.addGoods(goodsInfo,file);
+            AppResponse appResponse = goodsService.addGoods(goodsInfo);
             return appResponse;
         } catch (Exception e) {
             logger.error("商品新增失败", e);
@@ -73,10 +73,10 @@ public class GoodsController {
      * @author 72937
      * @Date 2020-2-25
      */
-    @RequestMapping(value="listGoods")
-    public AppResponse listGoods(goodsInfo goodsInfo){
+    @RequestMapping(value="listGoodsByPage")
+    public AppResponse listGoodsByPage(goodsInfo goodsInfo){
         try {
-            return goodsService.listGoods(goodsInfo);
+            return goodsService.listGoodsByPage(goodsInfo);
         } catch (Exception e){
             logger.error("查询商品列表异常", e);
             System.out.println(e.toString());
@@ -165,4 +165,32 @@ public class GoodsController {
         }
     }
 
+    /**
+     * 商品一级分类查询
+     * @return
+     */
+    @PostMapping("listGoodsClassify")
+    public AppResponse listGoodsClassify(){
+        try{
+            return goodsService.listGoodsClassify();
+        }catch (Exception e){
+            logger.error("查询失败",e);
+            throw e;
+        }
+    }
+
+    /**
+     * 商品二级分类查询
+     * @param classifyId
+     * @return
+     */
+    @PostMapping("listGoodsClassifyByPid")
+    public AppResponse listGoodsClassifyByPid(String classifyId){
+        try{
+            return goodsService.listGoodsClassifyByPid(classifyId);
+        }catch (Exception e){
+            logger.error("查询失败",e);
+            throw e;
+        }
+    }
 }

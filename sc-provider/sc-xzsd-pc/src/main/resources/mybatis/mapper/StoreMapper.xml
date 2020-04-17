@@ -104,7 +104,8 @@
             a.stroe_phone storePhone,
             a.invitation invitation,
             a.version version,
-            b.user_name userName
+            b.user_name userName,
+            b.user_acct userAcct
         FROM
         t_store_table a
         JOIN t_sys_user b ON a.user_code = b.user_code

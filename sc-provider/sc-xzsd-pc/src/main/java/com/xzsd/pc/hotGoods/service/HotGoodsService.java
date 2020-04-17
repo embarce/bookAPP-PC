@@ -31,12 +31,13 @@ public class HotGoodsService {
      */
     public AppResponse addHotGoods(HotGoodsInfo hotGoodsInfo){
         int count=hotGoodsDao.countHotGoods(hotGoodsInfo.getGoodsId());
-        int Id=hotGoodsDao.findNumByNum(hotGoodsInfo.getNum());
+        int Id=hotGoodsDao.findNumByNum(hotGoodsInfo.getNoId());
         if(count>0){
             return AppResponse.repeat("商品已存在热门位，请前往修改");
         }else {
             if(Id==0){
-                hotGoodsInfo.setCreateBy(StringUtil.getCommonCode(2));
+                hotGoodsInfo.setCreateBy(SecurityUtils.getCurrentUserId());
+                hotGoodsInfo.setHotGoodsCode(StringUtil.getCommonCode(2));
                 int num=hotGoodsDao.addHotGoods(hotGoodsInfo);
                 if(num==0){
                     return AppResponse.bizError("新增失败");
@@ -73,6 +74,10 @@ public class HotGoodsService {
         }else {
           return  AppResponse.success("修改成功");
         }
+    }
+    public AppResponse showTheNum(){
+        int showNum=hotGoodsDao.showTheNum();
+        return AppResponse.success("查询成功",showNum);
     }
 
     /**

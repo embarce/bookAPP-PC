@@ -16,10 +16,10 @@ import java.util.List;
 public interface CarouserlDao {
     /**
      * 统计轮播图个数
-     * @param bannerCode
+     * @param num
      * @return
      */
-    int countCarouserlById(@Param("bannerCode") String bannerCode);
+    int countCarouserlById(@Param("num") int num);
 
     /**
      * 新增轮播图

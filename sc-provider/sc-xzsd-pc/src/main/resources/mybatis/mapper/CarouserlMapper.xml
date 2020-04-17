@@ -1,12 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.xzsd.pc.carouselPicture.dao.CarouserlDao">
+    <select id="countCarouserlById" parameterType="int" resultType="int">
+        select count(*)
+        from t_picture_table
+        where num=#{num}
+        and is_delete=0
+    </select>
     <!--新增轮播图-->
     <insert id="addCarouserl" parameterType="com.xzsd.pc.carouselPicture.entity.CarouserlInfo">
         insert into t_picture_table
         (image_url,
          banner_code,
-         title,
          goods_id,
          is_delete,
          create_name,
@@ -21,7 +26,6 @@
            (
            #{imageUrl},
            #{bannerCode},
-           #{title},
            #{goodsId},
            0,
            #{createBy},
@@ -53,7 +57,8 @@
             a.num num,
             a.status status,
             a.start_time startTime,
-            a.end_time endTime
+            a.end_time endTime,
+            a.version version
         from t_picture_table a
         where is_delete = 0
         <if test="status != null and status != ''">

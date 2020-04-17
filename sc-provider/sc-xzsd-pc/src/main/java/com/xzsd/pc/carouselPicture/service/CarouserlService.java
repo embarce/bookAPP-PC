@@ -35,12 +35,18 @@ public class CarouserlService {
         carouserlInfo.setBannerCode(StringUtil.getCommonCode(2));
         carouserlInfo.setIsDeleted(0);
         carouserlInfo.setCreateBy(SecurityUtils.getCurrentUserId());
-        //新增
-        int count=carouserlDao.addCarouserl(carouserlInfo);
-        if(0==count){
-            return AppResponse.bizError("新增失败，请重试");
+        int num=carouserlDao.countCarouserlById(carouserlInfo.getSortNo());
+        if(num==0){
+            //新增
+            int count=carouserlDao.addCarouserl(carouserlInfo);
+            if(0==count){
+                return AppResponse.bizError("新增失败，请重试");
+            }
+            return AppResponse.success("新增成功");
         }
-        return AppResponse.success("新增成功");
+      else {
+          return AppResponse.repeat("序号存在");
+        }
     }
 
     /**
@@ -75,6 +81,7 @@ public class CarouserlService {
     @Transactional(rollbackFor = Exception.class)
     public AppResponse updateStatusOpen(String listString){
         String lastModifiedBy=SecurityUtils.getCurrentUserId();
+        System.out.println(lastModifiedBy);
         List<String> listCode = Arrays.asList(listString.split(","));
         int count=carouserlDao.updateStatusOpen(listCode,lastModifiedBy);
         if(0==count){

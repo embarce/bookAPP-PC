@@ -13,4 +13,5 @@ public interface MenuDao {
     int checkRole(@Param("userId")String userId);
     int deleteMenu(@Param("menuCode")String menuCode,@Param("userId") String userId);
     MenuInfo findMenuById(@Param("menuCode")String menuCode);
+    int updateMenu(MenuInfo menuInfo);
 }

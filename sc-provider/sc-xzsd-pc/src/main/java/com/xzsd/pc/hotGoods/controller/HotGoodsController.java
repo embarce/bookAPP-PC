@@ -23,6 +23,12 @@ public class HotGoodsController {
     private static final Logger logger = LoggerFactory.getLogger(HotGoodsController.class);
     @Resource
     private HotGoodsService hotGoodsService;
+
+    /**
+     * 新增热门
+     * @param hotGoodsInfo
+     * @return
+     */
     @PostMapping("addHotGoods")
     public AppResponse addHotGoods(HotGoodsInfo hotGoodsInfo){
         try{
@@ -34,6 +40,12 @@ public class HotGoodsController {
             throw e;
         }
     }
+
+    /**
+     * 选择商品
+     * @param choseHotsGoodsVO
+     * @return
+     */
     @RequestMapping(value="choseGoodsByPage")
     public AppResponse choseGoodsByPage(ChoseHotsGoodsVO choseHotsGoodsVO){
         try{
@@ -44,6 +56,12 @@ public class HotGoodsController {
             throw e;
         }
     }
+
+    /**
+     * 修改展示数字
+     * @param showNum
+     * @return
+     */
     @PostMapping("changeShowNum")
     public AppResponse changeShowNum(String showNum){
         try{
@@ -54,6 +72,26 @@ public class HotGoodsController {
             throw e;
         }
     }
+    /**
+     * 展示数字
+     * @return
+     */
+    @PostMapping("showTheNum")
+    public AppResponse showTheNum(){
+        try{
+            AppResponse appResponse=hotGoodsService.showTheNum();
+            return appResponse;
+        }catch (Exception e){
+            logger.error("查询失败");
+            throw e;
+        }
+    }
+
+    /**
+     * 删除热门
+     * @param hotGoodsIdList
+     * @return
+     */
     @PostMapping("deleteHotGoods")
     public AppResponse deleteHotGoods(String hotGoodsIdList){
         try{
@@ -64,6 +102,12 @@ public class HotGoodsController {
             throw e;
         }
     }
+
+    /**
+     * 修改热门
+     * @param hotGoodsDO
+     * @return
+     */
     @PostMapping("updateHotGoodsById")
     public AppResponse updateHotGoodsById(HotGoodsDO hotGoodsDO){
         try{
@@ -74,6 +118,13 @@ public class HotGoodsController {
             throw e;
         }
     }
+
+    /**
+     * 查询热门分页
+     * @param goodsId
+     * @param goodsNam
+     * @return
+     */
     @RequestMapping(value="listHotGoodsByPage")
     public AppResponse listHotGoodsByPage(String goodsId,String goodsNam){
         try{

@@ -4,7 +4,7 @@
     <select id="listMenu" resultType="com.xzsd.pc.menu.entity.MenuInfo">
         select *
         from t_menu_table
-        and  is_deleted=0
+        where  is_deleted=0
     </select>
     <select id="findMenuByName" parameterType="java.lang.String" resultType="int">
         select count(*)
@@ -60,4 +60,16 @@
         from t_menu_table
         where menuCode=#{menuCode}
     </select>
+    <update id="updateMenu" parameterType="com.xzsd.pc.menu.entity.MenuInfo">
+        UPDATE t_menu_table
+        SET menuName = #{menuName},
+        menuUrl = #{menuUrl},
+        remake = #{remake},
+        level = #{level},
+        gmtModified = now(),
+        lastModifiedBy = #{lastModifiedBy},
+        version = version + 1
+        WHERE
+            menuCode = #{menuCode}
+    </update>
 </mapper>

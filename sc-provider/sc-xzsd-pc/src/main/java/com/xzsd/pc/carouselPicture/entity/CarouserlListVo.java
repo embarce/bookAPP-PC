@@ -25,6 +25,15 @@ public class CarouserlListVo{
      * 序号
      */
     private int sortNo;
+    private int version;
+
+    public int getVersion() {
+        return version;
+    }
+
+    public void setVersion(int version) {
+        this.version = version;
+    }
 
     public String getStatus() {
         return status;

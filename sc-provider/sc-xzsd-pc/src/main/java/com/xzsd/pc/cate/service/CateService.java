@@ -120,6 +120,12 @@ public class CateService {
             return AppResponse.bizError("存在子类，删除失败");
         }
     }
+
+    /**
+     * 修改分类
+     * @param cateInfo
+     * @return
+     */
     public AppResponse updateCateById(CateInfo cateInfo){
         String lastModifiedBy=SecurityUtils.getCurrentUserId();
         cateInfo.setLastModifiedBy(lastModifiedBy);
@@ -129,6 +135,20 @@ public class CateService {
         }
         else {
             return AppResponse.success("修改成功");
+        }
+    }
+
+    /**
+     * 查询商品分类详情
+     * @param cateId
+     * @return
+     */
+    public AppResponse findCateById(String cateId){
+        CateInfo cateInfo=cateDao.getCateById(cateId);
+        if(cateInfo==null){
+            return AppResponse.bizError("查询失败");
+        }else {
+            return AppResponse.success("查询成功",cateInfo);
         }
     }
 }

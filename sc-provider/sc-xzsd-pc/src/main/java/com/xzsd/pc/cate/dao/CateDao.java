@@ -29,7 +29,7 @@ public interface CateDao {
      * @param chId
      * @return
      */
-    List<cateParentInfo> findCateById(@Param("chId")String chId);
+    CateInfo findCateById(@Param("chId")String chId);
 //
 //    int addMq(String json);
 
@@ -54,5 +54,5 @@ public interface CateDao {
      */
     int updateCateById(CateInfo cateInfo);
     List<CateInfo> listMenus();
-
+    CateInfo getCateById(@Param("cateId")String cateId);
 }

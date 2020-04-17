@@ -23,6 +23,11 @@ public class StoreService {
     @Resource
     private StoreDao storeDao;
 
+    /**
+     * 新增门店
+     * @param storeInfo
+     * @return
+     */
     @Transactional(rollbackFor = Exception.class)
     public AppResponse addStore(StoreInfo storeInfo) {
         int count = storeDao.countBusiness(storeInfo.getBusiness());
@@ -47,6 +52,11 @@ public class StoreService {
         }
     }
 
+    /**
+     * 删除门店
+     * @param listCode
+     * @return
+     */
     @Transactional(rollbackFor = Exception.class)
     public AppResponse deleteStore(String listCode) {
         List<String> storeList = Arrays.asList(listCode.split(","));
@@ -59,6 +69,11 @@ public class StoreService {
         }
     }
 
+    /**
+     * 修改门店
+     * @param storeInfo
+     * @return
+     */
     @Transactional(rollbackFor = Exception.class)
     public AppResponse updateStore(StoreInfo storeInfo) {
         String userId = SecurityUtils.getCurrentUserId();
@@ -71,6 +86,11 @@ public class StoreService {
         }
     }
 
+    /**
+     * 分页查询门店
+     * @param storeDO
+     * @return
+     */
     public AppResponse listStoreByPage(StoreDO storeDO) {
         List<StoreVO> storeVOList = storeDao.listStoreByPage(storeDO);
         if (storeVOList == null) {
@@ -80,6 +100,11 @@ public class StoreService {
         }
     }
 
+    /**
+     * 查门店详情
+     * @param storeCode
+     * @return
+     */
     public AppResponse findStoreById(String storeCode) {
         StoreInfo storeInfo = storeDao.findStoreById(storeCode);
         if (storeInfo == null) {

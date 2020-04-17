@@ -3,6 +3,7 @@ package com.xzsd.pc.user.dao;
 
 import com.xzsd.pc.user.entity.CustomerInfo;
 import com.xzsd.pc.user.entity.CustomerVO;
+import com.xzsd.pc.user.entity.TopVo;
 import com.xzsd.pc.user.entity.UserInfo;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -81,4 +82,6 @@ public interface UserDao {
     int addCustomer(@Param("userId")String userId);
 
     List<CustomerVO> listCustomer(CustomerInfo customerInfo);
+    List<CustomerVO> listCustomerByRole(CustomerInfo customerInfo);
+    TopVo getTopOfColumn(@Param("userId")String userId);
 }

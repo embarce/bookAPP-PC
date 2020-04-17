@@ -23,7 +23,13 @@
          introduction,
          bookId,
          status,
-         picture
+         picture,
+         category,
+         stock,
+         introduce,
+         cost_price,
+         outside_name,
+         cateCode
          )
         values
            (#{goodsName},
@@ -34,22 +40,46 @@
             now(),
             0,
             #{author},
-            #{outsideName},
+            #{publisher},
             #{introduction},
             #{bookId},
-            #{status},
-            #{picture}
+            0,
+            #{picture},
+            #{category},
+            #{stock},
+            #{introduce},
+            #{cost},
+            #{outsideName},
+            #{cateCode}
             )
     </insert>
     <!--查询商品列表分页查询-->
-    <select id="listGoodsByPage" parameterType="com.xzsd.pc.goods.entity.goodsInfo" resultType="com.xzsd.pc.goods.entity.goodsInfo">
+    <select id="listGoodsByPage" parameterType="com.xzsd.pc.goods.entity.goodsInfo" resultType="com.xzsd.pc.goods.entity.goodsVO">
         select
             a.goods_name goodsName,
             a.good_id goodId,
             a.price price,
-            a.is_delete isDeleted
-        from t_goods_table a
-        where is_delete = 0
+            a.goodsSales goodsSales,
+            b.cate_name cate,
+            c.cate_name cateName,
+            a.goodsSales goodsSales,
+            a.introduce  introduce,
+            a.introduction introduction,
+            a.status status,
+            a.goodsShelfTime goodsShelfTime,
+            a.browse_volume goodsViewsNum,
+            a.outside_name outsideName,
+            a.picture picture,
+            a.stock stock,
+            a.bookId bookId
+        FROM
+            t_goods_table a,
+            t_cate_table b,
+            t_cate_table c
+        WHERE
+            a.is_delete = 0
+        and a.category = c.cate_id
+        AND c.cate_id_parent = b.cate_id
         <if test="publisher != null and publisher != ''">
             and a.publisher like concat('%', #{publisher}, '%')
         </if>
@@ -63,7 +93,7 @@
             and a.introduce like concat('%', #{introduce}, '%')
         </if>
         <if test="outsideName != null and outsideName != ''">
-            and a.outside_name like concat('%', #{outsideName}, '%')
+            and a.goods_name like concat('%', #{goodsName}, '%')
         </if>
         order by good_id desc
     </select>
@@ -91,44 +121,56 @@
             introduce        = #{introduce},
             picture        = #{picture},
             category       = #{category},
+            cateCode=#{cateCode},
             cost_price       = #{cost},
             outside_name       = #{outsideName},
             author       = #{author},
             publisher       = #{publisher},
             introduction = #{introduction},
             status       =#{status},
-            bookId = #{bookId},
             change_name   = #{lastModifiedBy},
             version      = version + 1
-         where good_id = #{goodId}
+         where bookId = #{bookId}
          and version = #{version}
     </update>
     <!--查询商品详情信息-->
     <select id="getGoodsByGoodsId" parameterType="java.lang.String" resultType="com.xzsd.pc.goods.entity.goodsInfo">
-        select
-            a.goods_name    goodsName,
-            a.good_id       goodId,
-            a.price         price,
-            a.stock         stock,
-            a.introduce     introduce,
-            a.picture       picture,
-            a.category      category,
-            a.cost_price    cost_price,
-            a.outside_name  outside_name,
-            a.author        author,
-            a.publisher     publisher,
-            a.introduction  introduction,
-            a.status        status,
-            a.bookId        bookId
-        from t_goods_table a
-        where good_id=#{goodsId}
+        SELECT
+            a.goods_name goodsName,
+            a.good_id goodId,
+            a.price price,
+            a.stock stock,
+            a.introduce introduce,
+            a.picture picture,
+            a.category category,
+            a.cateCode cateCode,
+            a.cost_price cost_price,
+            a.outside_name outsideName,
+            a.author author,
+            a.publisher publisher,
+            a.introduction introduction,
+            a.STATUS status,
+            a.bookId bookId,
+            a.goodsShelfTime goodsShelfTime,
+            a.browse_volume  browseVolume,
+            b.cate_name cate,
+            c.cate_name cateName
+        FROM
+            t_goods_table a,
+            t_cate_table b,
+            t_cate_table c
+        WHERE
+            good_id=#{goodsId}
+            AND a.category = c.cate_id
+            AND c.cate_id_parent = b.cate_id
     </select>
 
     <!--上架商品-->
     <update id="updateGoodsUpper" parameterType="com.xzsd.pc.goods.entity.goodsInfo">
         update t_goods_table
         set
-        status = 1,
+        status = 0,
+        goodsShelfTime=now(),
         change_time = now(),
         version = version + 1
         where good_id in
@@ -140,7 +182,7 @@
     <update id="updateGoodsLower" parameterType="com.xzsd.pc.goods.entity.goodsInfo">
         update t_goods_table
         set
-        status = 0,
+        status = 1,
         change_time = now(),
         version = version + 1
         where good_id in
@@ -148,4 +190,22 @@
             #{item}
         </foreach>
     </update>
+    <select id="listGoodsClassify" resultType="com.xzsd.pc.goods.entity.classifVO">
+        SELECT
+            cate_id classifyId,
+            cate_name classifyName
+        FROM
+            t_cate_table
+        WHERE
+            cate_id_parent =0
+    </select>
+    <select id="listGoodsClassifyByPid" parameterType="java.lang.String" resultType="com.xzsd.pc.goods.entity.classifVO">
+        SELECT
+            cate_id classifyId,
+            cate_name classifyName
+        FROM
+            t_cate_table
+        WHERE
+            cate_id_parent =#{classifyId}
+    </select>
 </mapper>

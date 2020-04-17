@@ -60,4 +60,10 @@ public interface HotGoodsDao {
      * @return
      */
     List<HotGoodsVO> listHotGoodsByPage(@Param("goodsId") String goodsId,@Param("goodsName") String goodsName);
+
+    /**
+     * 展示数量
+     * @return
+     */
+    int showTheNum();
 }

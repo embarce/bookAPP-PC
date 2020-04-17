@@ -3,8 +3,8 @@ package com.xzsd.pc.goods.entity;
 import java.util.Date;
 
 /**
- * @class goodsInfo
  * @author 72937
+ * @class goodsInfo
  */
 public class goodsInfo {
 
@@ -100,6 +100,79 @@ public class goodsInfo {
      * 状态
      */
     private String status;
+    /**
+     * 二级分类名称
+     */
+    private String cateName;
+    /**
+     * 一级分类编号
+     */
+    private String cateCode;
+    /**
+     * 一级分类
+     */
+    private String cate;
+    /**
+     * 销售量
+     */
+    private int goodsSales;
+    /**
+     * 上架时间
+     */
+    private String goodsShelfTime;
+    /**
+     * 浏览量
+     */
+    private int browseVolume;
+
+
+    public int getBrowseVolume() {
+        return browseVolume;
+    }
+
+    public void setBrowseVolume(int browseVolume) {
+        this.browseVolume = browseVolume;
+    }
+
+    public String getGoodsShelfTime() {
+        return goodsShelfTime;
+    }
+
+    public void setGoodsShelfTime(String goodsShelfTime) {
+        this.goodsShelfTime = goodsShelfTime;
+    }
+
+    public int getGoodsSales() {
+        return goodsSales;
+    }
+
+    public void setGoodsSales(int goodsSales) {
+        this.goodsSales = goodsSales;
+    }
+
+    public String getCateName() {
+        return cateName;
+    }
+
+    public void setCateName(String cateName) {
+        this.cateName = cateName;
+    }
+
+    public String getCateCode() {
+        return cateCode;
+    }
+
+    public void setCateCode(String cateCode) {
+        this.cateCode = cateCode;
+    }
+
+    public String getCate() {
+        return cate;
+    }
+
+    public void setCate(String cate) {
+        this.cate = cate;
+    }
 
     public int getPageSize() {
         return pageSize;

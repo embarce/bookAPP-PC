@@ -10,6 +10,29 @@ public class CustomerInfo {
     private int sex;
     private String email;
     private String IdCard;
+    private int role;
+    private int pageSize;
+    private String userCode;
+    /**
+     * 页数
+     */
+    private int pageNum;
+
+    public String getUserCode() {
+        return userCode;
+    }
+
+    public void setUserCode(String userCode) {
+        this.userCode = userCode;
+    }
+
+    public int getRole() {
+        return role;
+    }
+
+    public void setRole(int role) {
+        this.role = role;
+    }
 
     public int getPageSize() {
         return pageSize;
@@ -27,11 +50,6 @@ public class CustomerInfo {
         this.pageNum = pageNum;
     }
 
-    private int pageSize;
-    /**
-     * 页数
-     */
-    private int pageNum;
     public String getCustomerAccount() {
         return customerAccount;
     }

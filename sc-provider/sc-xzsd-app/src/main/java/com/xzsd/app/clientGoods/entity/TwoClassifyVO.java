@@ -1,16 +1,15 @@
 package com.xzsd.app.clientGoods.entity;
 
+import java.util.List;
+
 /**
  * @author Embrace
- * @date 2020/4/16 15:14
+ * @date 2020/4/16 16:50
  */
-public class listOneGoodsClassifyVO {
-    /**
-     * 一级商品分类编号
-     * 一级商品分类名称
-     */
+public class TwoClassifyVO {
     private String classifyId;
     private String classifyName;
+    private List<TwoClassifyGoodsVO> goodsList;
 
     public String getClassifyId() {
         return classifyId;
@@ -26,5 +25,13 @@ public class listOneGoodsClassifyVO {
 
     public void setClassifyName(String classifyName) {
         this.classifyName = classifyName;
+    }
+
+    public List<TwoClassifyGoodsVO> getGoodsList() {
+        return goodsList;
+    }
+
+    public void setGoodsList(List<TwoClassifyGoodsVO> goodsList) {
+        this.goodsList = goodsList;
     }
 }

@@ -112,6 +112,7 @@
              b.goods_name goodsName,
              a.price price,
              a.price salesPrice,
+             a.create_by userId,
              a.num num
         FROM
             t_goods_order_table_cp a

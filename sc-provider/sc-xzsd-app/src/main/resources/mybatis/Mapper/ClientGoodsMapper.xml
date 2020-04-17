@@ -17,7 +17,7 @@
             good_id =  #{goodsId}
             AND is_delete =0
     </select>
-    <select id="getEvaluates" parameterType="java.lang.String" resultType="com.xzsd.app.clientGoods.entity.ClientGoodsEvaluatesVO">
+    <select id="getEvaluatesByPage" parameterType="com.xzsd.app.clientGoods.entity.EvaluateScoreDo" resultType="com.xzsd.app.clientGoods.entity.ClientGoodsEvaluatesVO">
         SELECT
             b.user_acct userAcct,
             a.appraise_txt evaluateContent,
@@ -28,5 +28,17 @@
             t_sys_user b
         WHERE
             a.user_id = b.user_code
+        <if test="evaluateScore != null and evaluateScore != ''">
+            and a.star_level = #{evaluateScore}
+        </if>
+    </select>
+    <select id="listGetClassGoods" resultType="com.xzsd.app.clientGoods.entity.ListOneGoodsClassifyVO">
+        SELECT
+            cate_id classifyId,
+            cate_name classifyName
+        FROM
+            t_cate_table
+        WHERE
+            cate_id_parent =0
     </select>
 </mapper>

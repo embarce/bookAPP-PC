@@ -25,6 +25,15 @@ public class HotGoodsVO {
     private String goodsName;
     private String goodsIntroduction;
     private int version;
+    private String hotGoodsId;
+
+    public String getHotGoodsId() {
+        return hotGoodsId;
+    }
+
+    public void setHotGoodsId(String hotGoodsId) {
+        this.hotGoodsId = hotGoodsId;
+    }
 
     public int getVersion() {
         return version;

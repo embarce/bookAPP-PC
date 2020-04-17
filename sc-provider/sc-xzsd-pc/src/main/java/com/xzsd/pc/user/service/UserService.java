@@ -8,6 +8,7 @@ import com.neusoft.util.StringUtil;
 import com.xzsd.pc.user.dao.UserDao;
 import com.xzsd.pc.user.entity.CustomerInfo;
 import com.xzsd.pc.user.entity.CustomerVO;
+import com.xzsd.pc.user.entity.TopVo;
 import com.xzsd.pc.user.entity.UserInfo;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -123,16 +124,36 @@ public class UserService {
         //修改
         int count = userDao.updateUser(userInfo);
         if (0 == count) {
-            appResponse = AppResponse.versionError("修改成功，刷新页面");
+            appResponse = AppResponse.versionError("修改失败请检查数据");
             return appResponse;
         }
         return appResponse;
     }
     public AppResponse listCustomer(CustomerInfo customerInfo){
         PageHelper.startPage(customerInfo.getPageNum(), customerInfo.getPageSize());
-        List<CustomerVO> customerList = userDao.listCustomer(customerInfo);
+        List<CustomerVO> customerList;
+        System.out.println(customerInfo.getRole());
+        if(customerInfo.getRole()==1){
+            System.out.println("店长");
+            customerInfo.setUserCode(SecurityUtils.getCurrentUserId());
+            customerList=userDao.listCustomerByRole(customerInfo);
+        }
+        else if(customerInfo.getRole()==0){
+            System.out.println("管理员");
+            customerList= userDao.listCustomer(customerInfo);
+        }else {
+            return AppResponse.success("你无权访问");
+        }
         // 包装Page对象
         PageInfo<CustomerVO> pageData = new PageInfo<CustomerVO>(customerList);
         return AppResponse.success("查询成功",pageData);
+    }
+    public AppResponse getTopOfColumn(){
+        TopVo topVo=userDao.getTopOfColumn(SecurityUtils.getCurrentUserId());
+        if(topVo==null){
+            return AppResponse.bizError("查询失败");
+        }else {
+            return AppResponse.success("查询成功",topVo);
+        }
     }
 }

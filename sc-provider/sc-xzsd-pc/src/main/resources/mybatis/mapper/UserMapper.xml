@@ -153,11 +153,47 @@
         WHERE
         is_deleted =0
         <if test="customerName != null and customerName != ''">
-            and a.user_name like concat('%', #{userName}, '%')
+            and a.user_name like concat('%', #{customerName}, '%')
         </if>
         <if test="customerAccount != null and customerAccount != ''">
-            and a.user_acct like concat('%', #{userAcct}, '%')
+            and a.user_acct like concat('%', #{customerAccount}, '%')
         </if>
         order by create_time desc
+    </select>
+    <select id="listCustomerByRole" parameterType="com.xzsd.pc.user.entity.CustomerInfo" resultType="com.xzsd.pc.user.entity.CustomerVO">
+        SELECT
+        a.user_acct customerAccount,
+        a.user_name customerName,
+        a.id_card IdCard,
+        a.sex sex,
+        a.phone phone,
+        a.email email
+        FROM
+        t_sys_user a,
+        t_customer_info_table b,
+        t_store_table c
+        WHERE
+        a.is_deleted = 0
+        AND a.user_code = b.customer_id
+        AND b.in_id = c.invitation
+        AND c.user_code = #{userCode}
+        <if test="customerName != null and customerName != ''">
+            and a.user_name like concat('%', #{customerName}, '%')
+        </if>
+        <if test="customerAccount != null and customerAccount != ''">
+            and a.user_acct like concat('%', #{customerAccount}, '%')
+        </if>
+        order by b.create_time desc
+    </select>
+    <select id="getTopOfColumn" parameterType="java.lang.String" resultType="com.xzsd.pc.user.entity.TopVo">
+        SELECT
+            user_name userName,
+            pictureUrl userImage,
+            user_code userId,
+            role role
+        FROM
+            t_sys_user
+        WHERE
+	        user_code = #{userId}
     </select>
 </mapper>

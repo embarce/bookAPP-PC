@@ -7,6 +7,7 @@ import java.util.Date;
  * @date 2020/4/9 9:57
  */
 public class HotGoodsInfo {
+    private String hotGoodsCode;
     private int noId;
     private String goodsId;
     private int num;
@@ -34,6 +35,14 @@ public class HotGoodsInfo {
      * 版本号
      */
     private String version;
+
+    public String getHotGoodsCode() {
+        return hotGoodsCode;
+    }
+
+    public void setHotGoodsCode(String hotGoodsCode) {
+        this.hotGoodsCode = hotGoodsCode;
+    }
 
     public int getNum() {
         return num;

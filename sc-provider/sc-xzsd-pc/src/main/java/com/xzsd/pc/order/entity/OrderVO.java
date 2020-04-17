@@ -9,7 +9,6 @@ public class OrderVO {
      * 订单号
      */
     private String orderId;
-
     /**
      * 总价
      */
@@ -35,6 +34,15 @@ public class OrderVO {
      */
     private String receiverNo;
     private String phone;
+    private String storeId;
+
+    public String getStoreId() {
+        return storeId;
+    }
+
+    public void setStoreId(String storeId) {
+        this.storeId = storeId;
+    }
 
     public String getPhone() {
         return phone;

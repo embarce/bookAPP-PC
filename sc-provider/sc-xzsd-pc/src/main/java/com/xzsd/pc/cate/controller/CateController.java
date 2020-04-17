@@ -22,6 +22,12 @@ public class CateController {
     private static final Logger logger = LoggerFactory.getLogger(CateController.class);
     @Resource
     private CateService cateService;
+
+    /**
+     * 新增分类
+     * @param cateInfo
+     * @return
+     */
     @PostMapping("addCate")
     public AppResponse addCate(CateInfo cateInfo){
         try {
@@ -34,6 +40,11 @@ public class CateController {
             throw  e;
         }
     }
+
+    /**
+     * 获取分类
+     * @return
+     */
     @PostMapping("getCate")
     public AppResponse getCate(){
         try {
@@ -59,6 +70,21 @@ public class CateController {
             return  appResponse;
         }catch (Exception e){
             return AppResponse.bizError("修改失败");
+        }
+    }
+
+    /**
+     * 查询详情
+     * @param cateId
+     * @return
+     */
+    @PostMapping("findCateById")
+    public AppResponse findCateById(String cateId){
+        try{
+            AppResponse appResponse=cateService.findCateById(cateId);
+            return  appResponse;
+        }catch (Exception e){
+            return AppResponse.bizError("查询失败");
         }
     }
 }

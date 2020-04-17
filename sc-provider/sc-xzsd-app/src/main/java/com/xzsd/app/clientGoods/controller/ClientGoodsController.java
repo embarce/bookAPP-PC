@@ -1,6 +1,7 @@
 package com.xzsd.app.clientGoods.controller;
 
 import com.neusoft.core.restful.AppResponse;
+import com.xzsd.app.clientGoods.entity.EvaluateScoreDo;
 import com.xzsd.app.clientGoods.service.ClientGoodsService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,6 +24,7 @@ public class ClientGoodsController {
 
     /**
      * 获取商品信息
+     *
      * @param goodsId
      * @return
      */
@@ -39,13 +41,25 @@ public class ClientGoodsController {
 
     /**
      * 获取商品评价
-     * @param goodsId
+     *
+     * @param evaluateScoreDo
      * @return
      */
-    @PostMapping("getEvaluates")
-    public AppResponse getEvaluates(String goodsId) {
+    @PostMapping("getEvaluatesByPage")
+    public AppResponse getEvaluatesByPage(EvaluateScoreDo evaluateScoreDo) {
         try {
-            AppResponse appResponse = clientGoodsService.getEvaluates(goodsId);
+            AppResponse appResponse = clientGoodsService.getEvaluatesByPage(evaluateScoreDo);
+            return appResponse;
+        } catch (Exception e) {
+            logger.error("查询失败", e);
+            throw e;
+        }
+    }
+
+    @PostMapping("listGetClassGoods")
+    public AppResponse listGetClassGoods() {
+        try {
+            AppResponse appResponse = clientGoodsService.listGetClassGoods();
             return appResponse;
         } catch (Exception e) {
             logger.error("查询失败", e);

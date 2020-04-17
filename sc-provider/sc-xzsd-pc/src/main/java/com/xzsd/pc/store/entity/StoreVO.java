@@ -32,6 +32,15 @@ public class StoreVO {
      */
     private String version;
     private String userName;
+    private String userAcct;
+
+    public String getUserAcct() {
+        return userAcct;
+    }
+
+    public void setUserAcct(String userAcct) {
+        this.userAcct = userAcct;
+    }
 
     public String getUserName() {
         return userName;

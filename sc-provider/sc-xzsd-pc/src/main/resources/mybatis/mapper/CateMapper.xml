@@ -46,7 +46,8 @@
     <select id="getCate" resultType="com.xzsd.pc.cate.entity.CateInfo">
         select
             cate_id cateId,
-            cate_name cateName
+            cate_name cateName,
+            version version
         from t_cate_table
         where cate_id_parent =0
         and is_delete=0
@@ -54,10 +55,10 @@
     <!--查询父类的子类-->
     <select id="findCateById" parameterType="java.lang.String" resultType="com.xzsd.pc.cate.entity.cateParentInfo">
         select
-            cate_id cateId,
-            cate_name cateName
+            cate_name cateName,
+            remake remake
         from t_cate_table
-        where cate_id_parent=#{chId}
+        where cate_id=#{chId}
         and is_delete=0
     </select>
     <select id="chekChiById" parameterType="java.lang.String" resultType="int">
@@ -81,6 +82,7 @@
         update t_cate_table
         set
             cate_name=#{cateName},
+            cate_id_parent=#{cateIdParent},
             remake=#{remake},
             change_time = now(),
             change_name=#{lastModifiedBy},
@@ -117,5 +119,13 @@
         from t_cate_table
         where is_delete = 0
         order by cate_id
+    </select>
+    <select id="getCateById" parameterType="java.lang.String" resultType="com.xzsd.pc.cate.entity.CateInfo">
+        select
+           cate_name cateName,
+           remake
+        from t_cate_table
+        where cate_id=#{cateId}
+        and is_delete = 0
     </select>
 </mapper>

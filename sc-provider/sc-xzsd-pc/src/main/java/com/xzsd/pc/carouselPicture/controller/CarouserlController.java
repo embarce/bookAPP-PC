@@ -39,6 +39,12 @@ public class CarouserlController {
             throw e;
         }
     }
+
+    /**
+     * 删除轮播图
+     * @param listString
+     * @return
+     */
     @PostMapping("deleteCarouserl")
     public AppResponse deleteCarouserl(String listString){
         try{
@@ -50,6 +56,12 @@ public class CarouserlController {
             throw e;
         }
     }
+
+    /**
+     * 分页查询轮播图
+     * @param carouserlInfo
+     * @return
+     */
     @RequestMapping(value="carouserlListByPage")
     public AppResponse carouserlListByPage(CarouserlInfo carouserlInfo){
         try {
@@ -60,6 +72,12 @@ public class CarouserlController {
             throw e;
         }
     }
+
+    /**
+     * 轮播图修改接口
+     * @param listString
+     * @return
+     */
     @PostMapping("updateStatusOpen")
     public AppResponse updateStatusOpen(String listString){
         try{
@@ -77,7 +95,7 @@ public class CarouserlController {
             AppResponse appResponse=carouserlService.updateStatusOff(listString);
             return appResponse;
         }catch (Exception e){
-            logger.error("启用轮播图失败",e);
+            logger.error("停用轮播图失败",e);
             System.out.println(e.toString());
             throw e;
         }

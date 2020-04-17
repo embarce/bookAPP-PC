@@ -124,7 +124,6 @@ public class OrderService {
                 orderDTO.setVersion(Vlist.get(i));
                 orderDTO.setLastModifiedBy(userId);
                 orderDTOList.add(orderDTO);
-
             }
             int count = oredrDao.updateOrderStatus(orderDTOList);
             if (count == 0) {

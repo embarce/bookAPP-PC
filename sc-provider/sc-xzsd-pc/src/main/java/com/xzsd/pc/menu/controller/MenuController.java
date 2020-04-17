@@ -61,4 +61,23 @@ public class MenuController {
             throw e;
         }
     }
+    /**
+     * menuId
+     * menuName
+     * menuUrl
+     * remake
+     * level
+     * 修改菜单忘记了，回头补上
+     * updateMenu
+     */
+    @PostMapping("updateMenu")
+    public AppResponse updateMenu(MenuInfo menuInfo){
+        try {
+            AppResponse appResponse=menuService.updateMenu(menuInfo);
+            return appResponse;
+        }catch (Exception e){
+            logger.error("修改失败",e);
+            throw e;
+        }
+    }
 }
