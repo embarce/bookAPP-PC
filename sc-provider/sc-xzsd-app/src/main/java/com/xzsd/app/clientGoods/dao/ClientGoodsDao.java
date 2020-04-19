@@ -1,9 +1,6 @@
 package com.xzsd.app.clientGoods.dao;
 
-import com.xzsd.app.clientGoods.entity.ClientGoodsEvaluatesVO;
-import com.xzsd.app.clientGoods.entity.ClientGoodsVO;
-import com.xzsd.app.clientGoods.entity.ListOneGoodsClassifyVO;
-import com.xzsd.app.clientGoods.entity.EvaluateScoreDo;
+import com.xzsd.app.clientGoods.entity.*;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -29,4 +26,5 @@ public interface ClientGoodsDao {
      */
     List<ListOneGoodsClassifyVO> listGetClassGoods();
 
+    List<cateListVO> listGoodsByCateId(@Param("cateId")String cateId);
 }

@@ -66,4 +66,14 @@ public class ClientGoodsController {
             throw e;
         }
     }
+    @PostMapping("listGoodsByCateId")
+    public AppResponse listGoodsByCateId(String cateId){
+        try {
+            AppResponse appResponse=clientGoodsService.listGoodsByCateId(cateId);
+            return appResponse;
+        }catch (Exception e){
+            logger.error("查询失败",e);
+            throw e;
+        }
+    }
 }

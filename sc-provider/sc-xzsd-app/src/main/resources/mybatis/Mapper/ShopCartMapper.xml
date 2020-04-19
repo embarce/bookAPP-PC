@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xzsd.app.clientShopCart.dao.ShopCartDao">
+    <select id="countByGoodsId" parameterType="java.lang.String" resultType="int">
+        select count(*)
+        from t_shopping_car_table
+        where goods_id=#{goodsId}
+    </select>
+    <insert id="addShopCart" parameterType="com.xzsd.app.clientShopCart.entity.ShopCartInfo">
+        insert into t_shopping_car_table
+        (
+        is_delete,
+        create_name,
+        create_time,
+        version,
+        user_id,
+        cnt,
+        goods_id,
+        shopping_car_id
+        )values (
+        0,
+        #{createName},
+        now(),
+        0,
+        #{userCode},
+        #{cnt},
+        #{goodsId},
+        #{shoppingCartCode}
+        )
+    </insert>
+    <select id="listShoppingCarts" parameterType="java.lang.String" resultType="com.xzsd.app.clientShopCart.entity.ShopCartVO">
+        SELECT
+            b.goods_name goodsName,
+            b.good_id goodsId,
+            b.price goodsPrice,
+            a.cnt cartGoodsCount,
+            b.picture goodsImagePath,
+            a.shopping_car_id shopCartId
+        FROM
+            t_shopping_car_table a,
+            t_goods_table b
+        WHERE
+            a.is_delete = 0
+            AND a.user_id = #{userCode}
+            AND a.goods_id = b.good_id
+    </select>
+</mapper>

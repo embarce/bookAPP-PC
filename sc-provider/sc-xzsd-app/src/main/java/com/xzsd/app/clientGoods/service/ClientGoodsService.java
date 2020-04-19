@@ -4,10 +4,7 @@ import com.neusoft.core.page.PageUtils;
 import com.neusoft.core.restful.AppResponse;
 
 import com.xzsd.app.clientGoods.dao.ClientGoodsDao;
-import com.xzsd.app.clientGoods.entity.ClientGoodsEvaluatesVO;
-import com.xzsd.app.clientGoods.entity.ClientGoodsVO;
-import com.xzsd.app.clientGoods.entity.EvaluateScoreDo;
-import com.xzsd.app.clientGoods.entity.ListOneGoodsClassifyVO;
+import com.xzsd.app.clientGoods.entity.*;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -43,6 +40,9 @@ public class ClientGoodsService {
      */
     public AppResponse getEvaluatesByPage(EvaluateScoreDo evaluateScoreDo) {
         List<ClientGoodsEvaluatesVO> evaluatesVO = clientGoodsDao.getEvaluatesByPage(evaluateScoreDo);
+        if(evaluateScoreDo.getGoodsId()==null){
+            return AppResponse.success("商品id为空");
+        }
         if (evaluatesVO == null) {
             return AppResponse.bizError("查询失败");
         } else {
@@ -61,5 +61,12 @@ public class ClientGoodsService {
         } else {
             return AppResponse.success("查询成功", listOneGoodsClassifyVOS);
         }
+    }
+    /**
+     * 查询2级分类及其以下商品
+     */
+    public AppResponse listGoodsByCateId(String cateId){
+        List<cateListVO> cateListVOS=clientGoodsDao.listGoodsByCateId(cateId);
+        return AppResponse.success("成功",cateListVOS);
     }
 }

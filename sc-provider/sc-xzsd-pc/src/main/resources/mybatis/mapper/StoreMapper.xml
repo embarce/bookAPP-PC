@@ -95,6 +95,7 @@
         invitation=#{invitation},
         business=#{business}
         where stroe_no=#{storeCode}
+        and version=#{version}
     </update>
     <select id="listStoreByPage" parameterType="com.xzsd.pc.store.entity.StoreDO" resultType="com.xzsd.pc.store.entity.StoreVO">
         SELECT
