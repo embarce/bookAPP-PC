@@ -10,21 +10,32 @@ import java.util.List;
 public interface ClientGoodsDao {
     /**
      * 获取商品
+     *
      * @param goodsId
      * @return
      */
     ClientGoodsVO getGoods(@Param("goodsId") String goodsId);
+
     /**
      * 获取商品评价
+     *
      * @param evaluateScoreDo
      * @return
      */
     List<ClientGoodsEvaluatesVO> getEvaluatesByPage(EvaluateScoreDo evaluateScoreDo);
+
     /**
      * 查找一级分类
+     *
      * @return
      */
     List<ListOneGoodsClassifyVO> listGetClassGoods();
 
-    List<cateListVO> listGoodsByCateId(@Param("cateId")String cateId);
+    /**
+     * 查询分类商品
+     *
+     * @param cateId
+     * @return
+     */
+    List<cateListVO> listGoodsByCateId(@Param("cateId") String cateId);
 }

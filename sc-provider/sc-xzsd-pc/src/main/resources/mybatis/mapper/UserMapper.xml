@@ -56,6 +56,7 @@
     <!--分页查询用户信息-->
     <select id="listUserByPage" parameterType="com.xzsd.pc.user.entity.UserInfo" resultType="com.xzsd.pc.user.entity.UserInfo">
         select
+          a.user_code userId,
           a.user_acct userAcct,
           a.user_name userName,
           a.id_card idCard,

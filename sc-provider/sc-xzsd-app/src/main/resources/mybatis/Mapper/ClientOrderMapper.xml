@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xzsd.app.clientOrder.dao.ClientOrderDao">
+    <insert id="addOrder" parameterType="com.xzsd.app.clientOrder.entity.OrderInfo">
+        insert into t_goods_order_table
+        (order_id,
+        is_deleted,
+        create_by,
+        gmt_create,
+        version,
+        user_id,
+        shipping_user,
+        order_status,
+        receiver_no,
+        pay_time,
+        price,
+        goodsNum
+        )
+        values (
+        #{orderId},
+        0,
+        #{createBy},
+        now(),
+        0,
+        #{userId},
+        #{shippingUser},
+        0,
+        #{storeId},
+        now(),
+        #{price},
+        #{goodsNum}
+        )
+    </insert>
+    <insert id="addOrderDetail" parameterType="java.util.List">
+        <selectKey resultType ="java.lang.Integer" keyProperty= "id"
+                         order= "AFTER">
+                        SELECT LAST_INSERT_ID()
+         </selectKey >
+        insert into t_goods_order_table_cp
+        (order_id,
+        is_deleted,
+        create_by,
+        gmt_create,
+        version,
+        goods_Id,
+        price,
+        num
+        )
+        values
+        <foreach collection="list" item="orderInfo" separator="," close=";">
+            (
+            #{orderInfo.orderId},
+            0,
+            #{orderInfo.userId},
+            now(),
+            0,
+            #{orderInfo.goodsId},
+            #{orderInfo.price},
+            #{orderInfo.num}
+            )
+        </foreach >
+    </insert>
+    <update id="updateGoodsStock" parameterType="java.util.List">
+        <selectKey resultType ="java.lang.Integer" keyProperty= "id"
+                   order= "AFTER">
+            SELECT LAST_INSERT_ID()
+        </selectKey >
+        <foreach collection="list" item="orderInfo" open="" close="" separator=";">
+            update t_goods_table
+            <set>
+                stock=stock-${orderInfo.num}
+            </set>
+            where good_id = #{orderInfo.goodsId}
+        </foreach >
+    </update>
+    <!--映射-->
+    <resultMap id="cateList" type="com.xzsd.app.clientOrder.entity.ClientOrderVO">
+        <id property="orderId" column="order_id"></id>
+        <result property="orderStateId" column="order_status"></result>
+        <result property="orderAllCost" column="goodsNum"></result>
+        <result property="version" column="version"></result>
+        <collection property="goodsList" ofType="goodsList" javaType="java.util.List" column="order_id" select="getGoodsByCode"></collection>
+    </resultMap>
+    <!--    查询该用户的订单列表-->
+    <select id="listOrder" parameterType="java.lang.String" resultMap="cateList">
+        SELECT
+            order_id ,
+            order_status ,
+            price ,
+            goodsNum,
+            version
+        FROM
+            t_goods_order_table
+        WHERE
+            user_id = #{userId}
+    </select>
+    <!--    查询该订单商品列表-->
+    <select id="getGoodsByCode" parameterType="java.lang.String" resultType="com.xzsd.app.clientOrder.entity.ClientOrderGoodsVO">
+        SELECT
+        a.goods_name goodsName,
+        a.picture goodsImagePath,
+        a.introduce goodsDescribe,
+        b.price goodsPrice,
+        b.num cartGoodsCount,
+        a.good_Id goodsId
+        FROM
+            t_goods_table a,
+            t_goods_order_table_cp b,
+            t_goods_order_table c
+        WHERE
+            b.is_deleted=0
+            and b.goods_Id=a.good_id
+            and c.order_id=b.order_id
+            and c.order_id=#{order_id}
+            ORDER BY b.change_time
+    </select>
+    <select id="chGoodsNum" parameterType="java.lang.String" resultType="int">
+        select
+        stock
+        from t_goods_table
+        where is_delete=0
+        and good_id in
+        <foreach item="item" index="index" collection="goodsId" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </select>
+    <update id="updateOrderState" parameterType="com.xzsd.app.clientOrder.entity.OrderDO">
+        update t_goods_order_table
+        set
+        order_status=#{orderStateId},
+        version=version+1,
+        change_name=#{userId},
+        change_time=now()
+        where is_deleted=0
+        and order_id=#{orderId}
+        and version=#{version}
+    </update>
+    <select id="listOrderDeepen" parameterType="java.lang.String" resultType="com.xzsd.app.clientOrder.entity.ClientOrderVO">
+        SELECT
+            a.goodsNum orderAllGoodsCount,
+            a.order_id orderId,
+            a.pay_time crateTime,
+            a.order_status orderStateId,
+            a.price orderAllCost,
+            b.store_name storeName,
+            b.stroe_address address
+        FROM
+            t_goods_order_table a,
+            t_store_table b
+        WHERE
+            a.is_deleted = 0
+            AND a.receiver_no = b.stroe_no
+            and a.order_id=#{orderId}
+    </select>
+    <select id="getGoodsByOrderId" parameterType="java.lang.String" resultType="com.xzsd.app.clientOrder.entity.ClientOrderGoodsVO">
+        SELECT
+            b.goods_name goodsName,
+            b.price goodsPrice,
+            b.picture goodsImagePath,
+            a.num cartGoodsCount,
+            b.good_id goodsId
+        FROM
+            t_goods_order_table_cp a,
+            t_goods_table b
+        WHERE
+            a.is_deleted = 0
+            AND b.good_id = a.goods_id
+            and a.order_id=#{orderId}
+    </select>
+    <select id="listGoodsForEvaluate" parameterType="java.lang.String" resultType="com.xzsd.app.clientOrder.entity.ClientOrderGoodsList">
+        SELECT
+        a.goods_Id goodsId,
+        b.picture prgoodsImagePath
+        FROM
+        t_goods_order_table_cp a,
+        t_goods_table b
+        where
+        a.goods_Id=b.good_id
+        and
+        a.order_id=#{orderId}
+    </select>
+
+    <insert id="addGoodsEvaluate" parameterType="java.util.List">
+        <selectKey resultType ="java.lang.Integer" keyProperty= "id"
+                   order= "AFTER">
+            SELECT LAST_INSERT_ID()
+        </selectKey >
+        insert into t_appraise_table
+        (user_id,
+        goods_id,
+        is_delete,
+        appraise_txt,
+        star_level,
+        create_time,
+        appraise_user_time,
+        appraise_publishtime,
+        version,
+        create_name,
+        appraise_category,
+        appraise_id,
+        appraise_image
+        )
+        values
+        <foreach collection="list" item="evaluate" separator="," close=";">
+            (
+            #{evaluate.userId},
+            #{evaluate.goodsId},
+            0,
+            #{evaluate.txt},
+            #{evaluate.level},
+            now(),
+            now(),
+            now(),
+            0,
+            #{evaluate.userId},
+            #{evaluate.level},
+            #{evaluate.appraiseId},
+            #{evaluate.image}
+            )
+        </foreach >
+    </insert>
+</mapper>

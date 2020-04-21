@@ -51,7 +51,7 @@
         <collection property="goodsList" ofType="goodsList" javaType="java.util.List" column="cate_id" select="getByCateCode"></collection>
     </resultMap>
     <!--    查询该分类的子分类列表-->
-    <select id="listGoodsByCateId" parameterType="java.lang.String" resultMap="cateList">
+    <select id="listOrder" parameterType="java.lang.String" resultMap="cateList">
         select
         cate_id ,
         cate_name

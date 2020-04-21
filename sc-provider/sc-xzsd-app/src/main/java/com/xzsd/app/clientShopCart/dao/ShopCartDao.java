@@ -9,7 +9,51 @@ import java.util.List;
 
 @Mapper
 public interface ShopCartDao {
-    int countByGoodsId(@Param("goodsId")String goodsId);
+    /**
+     * 查重
+     *
+     * @param goodsId
+     * @return
+     */
+    int countByGoodsId(@Param("goodsId") String goodsId);
+
+    /**
+     * 新增
+     *
+     * @param shopCartInfo
+     * @return
+     */
     int addShopCart(ShopCartInfo shopCartInfo);
-    List<ShopCartVO> listShoppingCarts(@Param("userCode")String userCode);
+
+    /**
+     * 查询购物车列表
+     *
+     * @param userCode
+     * @return
+     */
+    List<ShopCartVO> listShoppingCarts(@Param("userCode") String userCode);
+
+    /**
+     * 修改购物车
+     *
+     * @param shopCartInfo
+     * @return
+     */
+    int updateShoppingCart(ShopCartInfo shopCartInfo);
+
+    /**
+     * 删除购物车
+     *
+     * @param listCode
+     * @return
+     */
+    int deleteShoppingCart(@Param("listCode") List<String> listCode, @Param("userCode") String userCode);
+
+    /**
+     * 获取价格
+     *
+     * @param goodsId
+     * @return
+     */
+    String getPrice(@Param("goodsId") String goodsId);
 }

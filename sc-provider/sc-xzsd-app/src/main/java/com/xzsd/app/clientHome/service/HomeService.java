@@ -17,20 +17,32 @@ import java.util.List;
 public class HomeService {
     @Resource
     private HomeDao homeDao;
-    public AppResponse listRotationCharHome(){
-        List<HomeCrossImageVO>slideShowList =homeDao.listRotationCharHome();
-        if(slideShowList==null){
+
+    /**
+     * 轮播图
+     *
+     * @return
+     */
+    public AppResponse listRotationCharHome() {
+        List<HomeCrossImageVO> slideShowList = homeDao.listRotationCharHome();
+        if (slideShowList == null) {
             return AppResponse.bizError("查询失败");
-        }else {
-            return AppResponse.success("查询成功",slideShowList);
+        } else {
+            return AppResponse.success("查询成功", slideShowList);
         }
     }
-    public AppResponse listHotGoods(){
-        List<HomeHotGoodsVO> list=homeDao.listHotGoods();
-        if(list==null){
+
+    /**
+     * 查询热门商品接口
+     *
+     * @return
+     */
+    public AppResponse listHotGoods() {
+        List<HomeHotGoodsVO> list = homeDao.listHotGoods();
+        if (list == null) {
             return AppResponse.bizError("查询失败");
-        }else {
-            return AppResponse.success("查询成功",list);
+        } else {
+            return AppResponse.success("查询成功", list);
         }
     }
 }

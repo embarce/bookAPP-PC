@@ -21,22 +21,43 @@ public class ShopCartController {
     private static final Logger logger = LoggerFactory.getLogger(ShopCartController.class);
     @Resource
     private ShopCartService shopCartService;
+
     @PostMapping("addShoppingCart")
-    public AppResponse addShoppingCart(ShopCartInfo shopCartInfo){
+    public AppResponse addShoppingCart(ShopCartInfo shopCartInfo) {
         try {
-            AppResponse appResponse=shopCartService.addShopCart(shopCartInfo);
+            AppResponse appResponse = shopCartService.addShopCart(shopCartInfo);
             return appResponse;
-        }catch (Exception e){
-            logger.error("新增失败",e);
+        } catch (Exception e) {
+            logger.error("新增失败", e);
             throw e;
         }
     }
+
     @PostMapping("listShoppingCarts")
-    public AppResponse listShoppingCarts(){
+    public AppResponse listShoppingCarts() {
         try {
             return shopCartService.listShoppingCarts();
-        }catch (Exception e){
-            logger.error("查询失败",e);
+        } catch (Exception e) {
+            logger.error("查询失败", e);
+            throw e;
+        }
+    }
+
+    @PostMapping("updateShoppingCart")
+    public AppResponse updateShoppingCart(ShopCartInfo shopCartInfo) {
+        try {
+            return shopCartService.updateShoppingCart(shopCartInfo);
+        } catch (Exception e) {
+            logger.error("修改失败", e);
+            throw e;
+        }
+    }
+    @PostMapping("deleteShoppingCart")
+    public AppResponse deleteShoppingCart(String shopCartId){
+        try{
+            return shopCartService.deleteShoppingCart(shopCartId);
+        }catch (Exception e) {
+            logger.error("删除失败", e);
             throw e;
         }
     }

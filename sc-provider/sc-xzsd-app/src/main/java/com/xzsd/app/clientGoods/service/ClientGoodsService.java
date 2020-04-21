@@ -21,6 +21,7 @@ public class ClientGoodsService {
 
     /**
      * 获取商品详情
+     *
      * @param goodsId
      * @return
      */
@@ -35,12 +36,13 @@ public class ClientGoodsService {
 
     /**
      * 查指定商品评价
+     *
      * @param evaluateScoreDo
      * @return
      */
     public AppResponse getEvaluatesByPage(EvaluateScoreDo evaluateScoreDo) {
         List<ClientGoodsEvaluatesVO> evaluatesVO = clientGoodsDao.getEvaluatesByPage(evaluateScoreDo);
-        if(evaluateScoreDo.getGoodsId()==null){
+        if (evaluateScoreDo.getGoodsId() == null) {
             return AppResponse.success("商品id为空");
         }
         if (evaluatesVO == null) {
@@ -52,6 +54,7 @@ public class ClientGoodsService {
 
     /**
      * 查询一级分类
+     *
      * @return
      */
     public AppResponse listGetClassGoods() {
@@ -62,11 +65,12 @@ public class ClientGoodsService {
             return AppResponse.success("查询成功", listOneGoodsClassifyVOS);
         }
     }
+
     /**
      * 查询2级分类及其以下商品
      */
-    public AppResponse listGoodsByCateId(String cateId){
-        List<cateListVO> cateListVOS=clientGoodsDao.listGoodsByCateId(cateId);
-        return AppResponse.success("成功",cateListVOS);
+    public AppResponse listGoodsByCateId(String cateId) {
+        List<cateListVO> cateListVOS = clientGoodsDao.listGoodsByCateId(cateId);
+        return AppResponse.success("成功", cateListVOS);
     }
 }

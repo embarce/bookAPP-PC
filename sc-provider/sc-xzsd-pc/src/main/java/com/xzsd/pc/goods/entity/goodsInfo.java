@@ -43,7 +43,7 @@ public class goodsInfo {
     /**
      * 商品类别
      */
-    private int category;
+    private String category;
     /**
      * 商品成本
      */
@@ -125,6 +125,13 @@ public class goodsInfo {
      */
     private int browseVolume;
 
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
 
     public int getBrowseVolume() {
         return browseVolume;
@@ -236,14 +243,6 @@ public class goodsInfo {
 
     public void setPicture(String picture) {
         this.picture = picture;
-    }
-
-    public int getCategory() {
-        return category;
-    }
-
-    public void setCategory(int category) {
-        this.category = category;
     }
 
     public float getCost() {

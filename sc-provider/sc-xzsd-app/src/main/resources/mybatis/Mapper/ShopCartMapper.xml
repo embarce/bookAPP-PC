@@ -16,7 +16,8 @@
         user_id,
         cnt,
         goods_id,
-        shopping_car_id
+        shopping_car_id,
+        price
         )values (
         0,
         #{createName},
@@ -25,7 +26,8 @@
         #{userCode},
         #{cnt},
         #{goodsId},
-        #{shoppingCartCode}
+        #{shoppingCartCode},
+        #{price}
         )
     </insert>
     <select id="listShoppingCarts" parameterType="java.lang.String" resultType="com.xzsd.app.clientShopCart.entity.ShopCartVO">
@@ -43,5 +45,32 @@
             a.is_delete = 0
             AND a.user_id = #{userCode}
             AND a.goods_id = b.good_id
+    </select>
+    <update id="updateShoppingCart" parameterType="com.xzsd.app.clientShopCart.entity.ShopCartInfo">
+        update t_shopping_car_table
+        set
+        version=version+1,
+        cnt=#{cnt},
+        change_name=#{changeName},
+        change_time=now()
+        where shopping_car_id=#{shoppingCartCode}
+    </update>
+    <update id="deleteShoppingCart" parameterType="java.lang.String">
+        update t_shopping_car_table
+        set
+        is_delete = 1,
+        version=version+1,
+        change_name=#{userCode},
+        change_time=now()
+        where shopping_car_id in
+        <foreach item="item" index="index" collection="listCode" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </update>
+    <select id="getPrice" parameterType="java.lang.String" resultType="java.lang.String">
+        select
+            price
+        from t_goods_table
+        where good_id=#{goodsId}
     </select>
 </mapper>

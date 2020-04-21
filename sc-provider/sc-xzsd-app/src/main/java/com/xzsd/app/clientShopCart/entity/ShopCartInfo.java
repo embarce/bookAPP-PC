@@ -36,6 +36,15 @@ public class ShopCartInfo {
     private String changeTime;
     private String version;
     private String createName;
+    private String price;
+
+    public String getPrice() {
+        return price;
+    }
+
+    public void setPrice(String price) {
+        this.price = price;
+    }
 
     public String getUserCode() {
         return userCode;

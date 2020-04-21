@@ -7,9 +7,18 @@ package com.xzsd.pc.user.entity;
 public class CustomerVO {
     private String customerAccount;
     private String customerName;
+    private String phone;
     private int sex;
     private String email;
     private String IdCard;
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
 
     public String getCustomerAccount() {
         return customerAccount;

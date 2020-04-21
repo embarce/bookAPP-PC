@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xzsd.app.clientInformation.dao.ManangerOrderDao">
+    <!--映射-->
+    <resultMap id="cateList" type="com.xzsd.app.clientInformation.entity.ClientOrderVO">
+        <id property="orderId" column="order_id"></id>
+        <result property="orderStateId" column="order_status"></result>
+        <result property="userId" column="user_code"></result>
+        <result property="userName" column="user_name"></result>
+        <result property="phone" column="phone"></result>
+        <result property="orderAllCost" column="goodsNum"></result>
+        <result property="version" column="version"></result>
+        <collection property="goodsList" ofType="goodsList" javaType="java.util.List" column="order_id" select="getGoodsByCode"></collection>
+    </resultMap>
+    <!--    查询该用户的订单列表-->
+            <select id="listOrder" parameterType="java.lang.String" resultMap="cateList">
+                SELECT
+                    order_id,
+                    order_status,
+                    c.user_code,
+                    c.user_name,
+                    c.phone
+                FROM
+                    t_goods_order_table a,
+                    t_store_table b,
+                    t_sys_user c
+                WHERE
+                    a.is_deleted = 0
+                    and a.receiver_no = b.stroe_no
+                    AND b.user_code = #{userId}
+                     AND c.user_code = a.user_id
+                <if test="orderStateId != null and orderStateId != ''">
+                    and order_status = #{orderStateId}
+                </if>
+              </select>
+            <!--    查询该订单商品列表-->
+            <select id="getGoodsByCode" parameterType="java.lang.String" resultType="com.xzsd.app.clientInformation.entity.ClientOrderGoodsVO">
+                SELECT
+                a.goods_name goodsName,
+                a.picture goodsImagePath,
+                a.introduce goodsDescribe,
+                b.price goodsPrice,
+                b.num cartGoodsCount,
+                a.good_Id goodsId
+                FROM
+                t_goods_table a,
+                t_goods_order_table_cp b,
+                t_goods_order_table c
+                WHERE
+                b.is_deleted=0
+                and b.goods_Id=a.good_id
+                and c.order_id=b.order_id
+                and c.order_id=#{order_id}
+                ORDER BY b.change_time
+            </select>
+    <update id="updateManangerOrderState" parameterType="com.xzsd.app.clientInformation.entity.OrderDO">
+        update t_goods_order_table
+        set
+        order_status=#{orderStateId},
+        version=version+1,
+        change_name=#{userId},
+        change_time=now()
+        where is_deleted=0
+        and order_id=#{orderId}
+        and version=#{version}
+    </update>
+
+    <!--映射-->
+    <resultMap id="orderList" type="com.xzsd.app.clientInformation.entity.ClientOrderVO">
+        <id property="orderId" column="order_id"></id>
+        <result property="orderStateId" column="order_status"></result>
+        <result property="userId" column="user_code"></result>
+        <result property="userName" column="user_name"></result>
+        <result property="phone" column="phone"></result>
+        <result property="orderAllCost" column="goodsNum"></result>
+        <result property="version" column="version"></result>
+        <result property="storeName" column="store_name"></result>
+        <result property="address" column="stroe_address"></result>
+        <result property="crateTime" column="pay_time"></result>
+        <collection property="goodsList" ofType="goodsList" javaType="java.util.List" column="order_id" select="getGoodsByOrderId"></collection>
+    </resultMap>
+    <!--    查询该用户的订单列表-->
+    <select id="listManagerOrderDeepen" parameterType="java.lang.String" resultMap="orderList">
+        SELECT
+            order_id,
+            order_status,
+            c.user_code,
+            c.user_name,
+            c.phone,
+            b.store_name ,
+            b.stroe_address ,
+            a.pay_time
+        FROM
+            t_goods_order_table a,
+            t_store_table b,
+            t_sys_user c
+        WHERE
+            a.is_deleted = 0
+            AND a.receiver_no = b.stroe_no
+            AND a.order_id = #{orderId}
+            AND c.user_code = a.user_id
+    </select>
+    <!--    查询该订单商品列表-->
+    <select id="getGoodsByOrderId" parameterType="java.lang.String" resultType="com.xzsd.app.clientInformation.entity.ClientOrderGoodsVO">
+                SELECT
+                a.goods_name goodsName,
+                a.picture goodsImagePath,
+                a.introduce goodsDescribe,
+                b.price goodsPrice,
+                b.num cartGoodsCount,
+                a.good_Id goodsId
+                FROM
+                t_goods_table a,
+                t_goods_order_table_cp b,
+                t_goods_order_table c
+                WHERE
+                b.is_deleted=0
+                and b.goods_Id=a.good_id
+                and c.order_id=b.order_id
+                and c.order_id=#{order_id}
+                ORDER BY b.change_time
+     </select>
+    <select id="listManangerDrivers" parameterType="java.lang.String" resultType="com.xzsd.app.clientInformation.entity.DriverInfo">
+        select
+         b.user_name userName,
+         b.phone phone
+        FROM
+        t_store_table a,
+        t_sys_user b,
+        t_driver_info_table c
+        where
+        a.user_code=#{userId}
+        and a.county_no=c.county_no
+        and c.driver_id=b.user_code
+    </select>
+    <select id="listDriverStores" parameterType="java.lang.String" resultType="com.xzsd.app.clientInformation.entity.StoreInfo">
+        SELECT
+            b.stroe_no storeId,
+            b.store_name storeName,
+            b.stroe_address address,
+            c.user_name userName,
+            c.phone phone
+        FROM
+            t_driver_info_table a,
+            t_store_table b,
+            t_sys_user c
+        WHERE
+            a.driver_id = #{userId}
+            AND a.county_no = b.county_no
+            AND b.user_code = c.user_code
+    </select>
+</mapper>
