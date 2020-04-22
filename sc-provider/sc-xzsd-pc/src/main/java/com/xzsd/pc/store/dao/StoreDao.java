@@ -23,4 +23,5 @@ public interface StoreDao {
     List<StoreVO> listStoreByPage(StoreDO storeDO);
 
     StoreInfo findStoreById(@Param("storeCode") String storeCode);
+    List<StoreVO> listStoreByPageByUserId(StoreDO storeDO);
 }

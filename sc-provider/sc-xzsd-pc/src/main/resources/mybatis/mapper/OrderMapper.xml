@@ -78,10 +78,11 @@
         a.price price,
         a.user_id userId,
         b.phone,
-        b.user_name shippingUser,
+        b.user_name userName,
         a.pay_time payTime,
         a.order_status orderStatus,
-        a.receiver_no receiverNo
+        a.version version,
+        a.receiver_no storeId
         FROM
         t_goods_order_table a
         JOIN t_sys_user b ON a.user_id = b.user_code

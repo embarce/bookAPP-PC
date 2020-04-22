@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -25,6 +26,7 @@ public class StoreService {
 
     /**
      * 新增门店
+     *
      * @param storeInfo
      * @return
      */
@@ -36,7 +38,7 @@ public class StoreService {
             if (num == 0) {
                 //随机一个店铺码
                 storeInfo.setStoreCode(StringUtil.getCommonCode(2));
-                 //随机获取自己一个邀请码
+                //随机获取自己一个邀请码
                 storeInfo.setInvitation(StringUtil.getCode(2));
                 int add = storeDao.addStore(storeInfo);
                 if (add != 0) {
@@ -54,6 +56,7 @@ public class StoreService {
 
     /**
      * 删除门店
+     *
      * @param listCode
      * @return
      */
@@ -71,6 +74,7 @@ public class StoreService {
 
     /**
      * 修改门店
+     *
      * @param storeInfo
      * @return
      */
@@ -88,11 +92,20 @@ public class StoreService {
 
     /**
      * 分页查询门店
+     *
      * @param storeDO
      * @return
      */
     public AppResponse listStoreByPage(StoreDO storeDO) {
-        List<StoreVO> storeVOList = storeDao.listStoreByPage(storeDO);
+        List<StoreVO> storeVOList = new ArrayList<>();
+        if (storeDO.getRole() == 0) {
+            storeVOList = storeDao.listStoreByPage(storeDO);
+        } else if (storeDO.getRole() == 1) {
+            String userId = SecurityUtils.getCurrentUserId();
+            System.out.println(userId);
+            storeDO.setUserCode(userId);
+            storeVOList = storeDao.listStoreByPageByUserId(storeDO);
+        }
         if (storeVOList == null) {
             return AppResponse.bizError("查询为空");
         } else {
@@ -102,6 +115,7 @@ public class StoreService {
 
     /**
      * 查门店详情
+     *
      * @param storeCode
      * @return
      */

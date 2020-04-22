@@ -5,6 +5,7 @@ package com.xzsd.pc.carouselPicture.entity;
  * @date 2020/3/27 15:37
  */
 public class CarouserlListVo{
+    private String goodsId;
     /**
      * 轮播图状态
      */
@@ -25,7 +26,24 @@ public class CarouserlListVo{
      * 序号
      */
     private int sortNo;
+    private String bannerCode;
     private int version;
+
+    public String getBannerCode() {
+        return bannerCode;
+    }
+
+    public void setBannerCode(String bannerCode) {
+        this.bannerCode = bannerCode;
+    }
+
+    public String getGoodsId() {
+        return goodsId;
+    }
+
+    public void setGoodsId(String goodsId) {
+        this.goodsId = goodsId;
+    }
 
     public int getVersion() {
         return version;

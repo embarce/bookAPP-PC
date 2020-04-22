@@ -135,6 +135,45 @@
         </if>
     </select>
 
+    <select id="listStoreByPageByUserId" parameterType="com.xzsd.pc.store.entity.StoreDO" resultType="com.xzsd.pc.store.entity.StoreVO">
+        SELECT
+        a.stroe_no storeCode,
+        a.store_name storeName,
+        a.stroe_address storeAddress,
+        a.stroe_phone storePhone,
+        a.invitation invitation,
+        a.version version,
+        b.user_name userName,
+        b.user_acct userAcct
+        FROM
+        t_store_table a
+        JOIN t_sys_user b ON a.user_code = b.user_code
+        WHERE
+        a.is_delete = 0
+        AND a.user_code = #{userCode}
+        <if test="storeCode != null and storeCode != ''">
+            and a.stroe_no like concat('%', #{storeCode}, '%')
+        </if>
+        <if test="storeName != null and storeName != ''">
+            and a.store_name like concat('%', #{storeName}, '%')
+        </if>
+        <if test="userName != null and userName != ''">
+            and b.user_name like concat('%', #{userName}, '%')
+        </if>
+        <if test="userCode != null and userCode != ''">
+            and b.user_code like concat('%', #{userCode}, '%')
+        </if>
+        <if test="provinceCode != null and provinceCode != ''">
+            and a.province_no like concat('%', #{provinceCode}, '%')
+        </if>
+        <if test="cityCode != null and cityCode != ''">
+            and a.city_no like concat('%', #{cityCode}, '%')
+        </if>
+        <if test="countyCode != null and countyCode != ''">
+            and a.county_no like concat('%', #{countyCode}, '%')
+        </if>
+    </select>
+
     <select id="findStoreById" parameterType="java.lang.String" resultType="com.xzsd.pc.store.entity.StoreInfo">
         SELECT
             stroe_no storeCode,

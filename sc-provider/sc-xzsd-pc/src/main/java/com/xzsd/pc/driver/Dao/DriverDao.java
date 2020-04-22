@@ -15,5 +15,6 @@ public interface DriverDao {
     int updateDriver(DriverInfo driverInfo);
     int deleteDriver(@Param("listCode") List<String> listCode, @Param("userCode") String userCode);
     List<DriverVO> listDriverByPage(DriverDo driverDo);
+    List<DriverVO> listDriverByPageByRole(@Param("userId")String userId);
     DriverInfo findDriverById(@Param("driverId")String driverId);
 }

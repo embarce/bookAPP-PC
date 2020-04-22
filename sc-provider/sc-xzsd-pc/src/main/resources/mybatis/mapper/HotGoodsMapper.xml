@@ -36,7 +36,7 @@
     <select id="choseGoods" resultType="com.xzsd.pc.hotGoods.entity.ChoseHotsGoodsVO" parameterType="com.xzsd.pc.hotGoods.entity.ChoseHotsGoodsVO">
         SELECT
         a.goods_name goodsName,
-        a.good_id goodId,
+        a.good_id goodsId,
         a.status  status,
         b.cate_name cateP,
         c.cate_name cate

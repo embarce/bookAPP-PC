@@ -35,6 +35,15 @@ public class DriverDo {
      */
     private String version;
     private String version1;
+    private int role;
+
+    public int getRole() {
+        return role;
+    }
+
+    public void setRole(int role) {
+        this.role = role;
+    }
 
     public String getDriverName() {
         return driverName;

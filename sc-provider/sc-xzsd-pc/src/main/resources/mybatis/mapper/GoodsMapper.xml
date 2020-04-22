@@ -33,7 +33,7 @@
          )
         values
            (#{goodsName},
-            #{goodId},
+            #{goodsId},
             #{price},
             #{isDeleted},
             #{createBy},
@@ -57,10 +57,10 @@
     <select id="listGoodsByPage" parameterType="com.xzsd.pc.goods.entity.goodsInfo" resultType="com.xzsd.pc.goods.entity.goodsVO">
         select
             a.goods_name goodsName,
-            a.good_id goodId,
+            a.cost_price cost,
+            a.good_id goodsId,
             a.price price,
-            a.goodsSales goodsSales,
-            b.cate_name cate,
+            b.cate_name code,
             c.cate_name cateName,
             a.goodsSales goodsSales,
             a.introduce  introduce,
@@ -71,6 +71,7 @@
             a.outside_name outsideName,
             a.picture picture,
             a.stock stock,
+            a.version version,
             a.bookId bookId
         FROM
             t_goods_table a,
@@ -92,25 +93,38 @@
         <if test="introduce != null and introduce != ''">
             and a.introduce like concat('%', #{introduce}, '%')
         </if>
-        <if test="outsideName != null and outsideName != ''">
+        <if test="goodsName != null and goodsName != ''">
             and a.goods_name like concat('%', #{goodsName}, '%')
         </if>
         order by good_id desc
     </select>
 
     <!--删除商品-->
-    <update id="deleteGoods" parameterType="com.xzsd.pc.goods.entity.goodsInfo">
+    <update id="deleteGoods" parameterType="java.lang.String">
         update t_goods_table
         set
         is_delete = 1,
         change_time = now(),
+        change_name=#{userId},
         version = version + 1
         where good_id in
         <foreach item="item" index="index" collection="listCode" open="(" separator="," close=")">
             #{item}
         </foreach>
     </update>
-
+    <!--删除热门商品-->
+    <update id="deleteHotGoodsByGoodsId" parameterType="java.lang.String">
+        update t_picture_table
+        set
+        is_delete = 1,
+        change_time = now(),
+        change_name=#{userId},
+        version = version + 1
+        where goods_id in
+        <foreach item="item" index="index" collection="listCode" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </update>
     <!--修改商品信息-->
     <update id="updateGoods" parameterType="com.xzsd.pc.goods.entity.goodsInfo">
         update t_goods_table
@@ -130,7 +144,7 @@
             status       =#{status},
             change_name   = #{lastModifiedBy},
             version      = version + 1
-         where bookId = #{bookId}
+         where good_id=#{goodsId}
          and version = #{version}
     </update>
     <!--查询商品详情信息-->

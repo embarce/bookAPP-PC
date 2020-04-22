@@ -12,7 +12,6 @@ public class goodsVO {
     private String code;
     private String cateName;
     private String introduce;
-    private String introduction;
     private String status;
     private String goodsShelfTime;
     private String goodsViewsNum;
@@ -22,6 +21,24 @@ public class goodsVO {
     private String bookId;
     private String goodsId;
     private String version;
+    private String cate;
+    private String introduction;
+
+    public String getIntroduction() {
+        return introduction;
+    }
+
+    public void setIntroduction(String introduction) {
+        this.introduction = introduction;
+    }
+
+    public String getCate() {
+        return cate;
+    }
+
+    public void setCate(String cate) {
+        this.cate = cate;
+    }
 
     public String getGoodsName() {
         return goodsName;
@@ -79,13 +96,6 @@ public class goodsVO {
         this.introduce = introduce;
     }
 
-    public String getIntroduction() {
-        return introduction;
-    }
-
-    public void setIntroduction(String introduction) {
-        this.introduction = introduction;
-    }
 
     public String getStatus() {
         return status;

@@ -60,8 +60,8 @@ public class GoodsService {
         if (0 != countgoodsBybookId) {
             return AppResponse.repeat("商品账号已存在，请重新输入！");
         }
-        String bookId=StringUtil.getCommonCode(2);
-        goodsInfo.setGoodId(bookId);
+        String bookId = StringUtil.getCommonCode(2);
+        goodsInfo.setGoodsId(bookId);
         goodsInfo.setBookId(bookId);
         goodsInfo.setIsDeleted(0);
 //        String filePath = CosController.upload(file);
@@ -110,6 +110,7 @@ public class GoodsService {
         String lastModifiedBy = SecurityUtils.getCurrentUserId();
         // 删除商品
         int count = goodsDao.deleteGoods(listCode, lastModifiedBy);
+        int num=goodsDao.deleteHotGoodsByGoodsId(listCode,lastModifiedBy);
         if (0 == count) {
             appResponse = AppResponse.bizError("删除失败，请重试！");
         }
@@ -132,7 +133,7 @@ public class GoodsService {
         if (0 != count) {
             appResponse = AppResponse.success("修改成功，请刷新页面");
             return appResponse;
-        }else {
+        } else {
             return AppResponse.bizError("修改失败");
         }
     }

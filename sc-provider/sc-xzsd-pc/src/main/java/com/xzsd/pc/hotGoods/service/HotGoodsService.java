@@ -26,26 +26,26 @@ public class HotGoodsService {
 
     /**
      * 新增热门位
+     *
      * @param hotGoodsInfo
      * @return
      */
-    public AppResponse addHotGoods(HotGoodsInfo hotGoodsInfo){
-        int count=hotGoodsDao.countHotGoods(hotGoodsInfo.getGoodsId());
-        int Id=hotGoodsDao.findNumByNum(hotGoodsInfo.getNoId());
-        if(count>0){
+    public AppResponse addHotGoods(HotGoodsInfo hotGoodsInfo) {
+        int count = hotGoodsDao.countHotGoods(hotGoodsInfo.getGoodsId());
+        int Id = hotGoodsDao.findNumByNum(hotGoodsInfo.getNoId());
+        if (count > 0) {
             return AppResponse.repeat("商品已存在热门位，请前往修改");
-        }else {
-            if(Id==0){
+        } else {
+            if (Id == 0) {
                 hotGoodsInfo.setCreateBy(SecurityUtils.getCurrentUserId());
                 hotGoodsInfo.setHotGoodsCode(StringUtil.getCommonCode(2));
-                int num=hotGoodsDao.addHotGoods(hotGoodsInfo);
-                if(num==0){
+                int num = hotGoodsDao.addHotGoods(hotGoodsInfo);
+                if (num == 0) {
                     return AppResponse.bizError("新增失败");
-                }else {
+                } else {
                     return AppResponse.success("新增成功");
                 }
-            }
-            else {
+            } else {
                 return AppResponse.repeat("序号已存在请前往修改");
             }
         }
@@ -53,64 +53,69 @@ public class HotGoodsService {
 
     /**
      * 查询可选择商品
+     *
      * @param choseHotsGoodsVO
      * @return
      */
-    public AppResponse choseGoodsByPage(ChoseHotsGoodsVO choseHotsGoodsVO){
-        List<ChoseHotsGoodsVO> choseHotsGoodsVOList=hotGoodsDao.choseGoods(choseHotsGoodsVO);
-        return AppResponse.success("查询成功",PageUtils.getPageInfo(choseHotsGoodsVOList));
+    public AppResponse choseGoodsByPage(ChoseHotsGoodsVO choseHotsGoodsVO) {
+        List<ChoseHotsGoodsVO> choseHotsGoodsVOList = hotGoodsDao.choseGoods(choseHotsGoodsVO);
+        return AppResponse.success("查询成功", PageUtils.getPageInfo(choseHotsGoodsVOList));
     }
 
     /**
      * 修改展示数量
+     *
      * @param showNum
      * @return
      */
-    public AppResponse changeShowNum(String showNum){
-        String userId= SecurityUtils.getCurrentUserId();
-        int num=hotGoodsDao.changeShowNum(showNum,userId);
-        if(num==0){
+    public AppResponse changeShowNum(String showNum) {
+        String userId = SecurityUtils.getCurrentUserId();
+        int num = hotGoodsDao.changeShowNum(showNum, userId);
+        if (num == 0) {
             return AppResponse.bizError("修改失败");
-        }else {
-          return  AppResponse.success("修改成功");
+        } else {
+            return AppResponse.success("修改成功");
         }
     }
-    public AppResponse showTheNum(){
-        int showNum=hotGoodsDao.showTheNum();
-        return AppResponse.success("查询成功",showNum);
+
+    public AppResponse showTheNum() {
+        int showNum = hotGoodsDao.showTheNum();
+        return AppResponse.success("查询成功", showNum);
     }
 
     /**
      * 删除热门
+     *
      * @param listCode
      * @return
      */
-    public AppResponse deleteHotGoods(String listCode){
-        List<String> hotGoodsList=Arrays.asList(listCode.split(","));
-        int num=hotGoodsDao.deleteHotGoods(hotGoodsList,SecurityUtils.getCurrentUserId());
-        if(num==0){
+    public AppResponse deleteHotGoods(String listCode) {
+        List<String> hotGoodsList = Arrays.asList(listCode.split(","));
+        int num = hotGoodsDao.deleteHotGoods(hotGoodsList, SecurityUtils.getCurrentUserId());
+        if (num == 0) {
             return AppResponse.bizError("删除失败");
-        }else {
+        } else {
             return AppResponse.success("删除成功");
         }
     }
 
     /**
      * 修改热门
+     *
      * @param hotGoodsDO
      * @return
      */
-    public AppResponse updateHotGoodsById(HotGoodsDO hotGoodsDO){
-        int Id=hotGoodsDao.findNumByNum(hotGoodsDO.getHotGoodsSort());
-        if(Id>0){
+    public AppResponse updateHotGoodsById(HotGoodsDO hotGoodsDO) {
+        int Id = hotGoodsDao.findNumByNum(hotGoodsDO.getHotGoodsSort());
+        if (Id > 0) {
             return AppResponse.repeat("序号已存在，请更改别的序号");
-        }else {
-            String userId= SecurityUtils.getCurrentUserId();
+        } else {
+            String userId = SecurityUtils.getCurrentUserId();
             hotGoodsDO.setUserId(userId);
-            int num=hotGoodsDao.updateHotGoodsById(hotGoodsDO);
-            if(num==0){
+            int num = hotGoodsDao.updateHotGoodsById(hotGoodsDO);
+            if (num == 0) {
                 return AppResponse.bizError("修改失败");
-            }else {
+            } else {
                 return AppResponse.success("修改成功");
             }
         }
@@ -118,12 +123,13 @@ public class HotGoodsService {
 
     /**
      * 分页查询热门商品
+     *
      * @param goodsId
      * @param goodsName
      * @return
      */
-    public AppResponse listHotGoodsByPage(String goodsId,String goodsName){
-        List<HotGoodsVO> listHotGoods=hotGoodsDao.listHotGoodsByPage(goodsId,goodsName);
-        return AppResponse.success("查询成功",PageUtils.getPageInfo(listHotGoods));
+    public AppResponse listHotGoodsByPage(String goodsId, String goodsName) {
+        List<HotGoodsVO> listHotGoods = hotGoodsDao.listHotGoodsByPage(goodsId, goodsName);
+        return AppResponse.success("查询成功", PageUtils.getPageInfo(listHotGoods));
     }
 }

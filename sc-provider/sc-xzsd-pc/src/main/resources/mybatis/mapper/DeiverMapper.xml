@@ -119,4 +119,23 @@
             a.is_delete = 0
             AND a.driver_id = #{driverId}
     </select>
+
+    <select id="listDriverByPageByRole" parameterType="java.lang.String" resultType="com.xzsd.pc.driver.entity.DriverVO">
+        SELECT
+            a.driver_acct driverAcct,
+            a.driver_id driverCode,
+            c.user_name driverName,
+            c.phone phone,
+            c.id_card IdCard,
+            a.version version,
+            b.version version1
+        FROM
+            t_driver_info_table a,
+            t_store_table b,
+            t_sys_user c
+        WHERE
+            b.user_code = #{userId}
+            AND a.county_no = b.county_no
+            AND b.user_code = c.user_code
+    </select>
 </mapper>

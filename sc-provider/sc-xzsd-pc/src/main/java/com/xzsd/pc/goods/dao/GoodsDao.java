@@ -40,7 +40,7 @@ public interface GoodsDao {
      * @param userId
      * @return
      */
-    int deleteGoods(@Param("listCode") List<String> listCode, @Param("goodId") String userId);
+    int deleteGoods(@Param("listCode") List<String> listCode, @Param("userId") String userId);
 
     /**
      * 修改商品信息
@@ -74,6 +74,19 @@ public interface GoodsDao {
      * @return
      */
     int updateGoodsLower(@Param("listCode") List<String> listCode, @Param("goodId") String userId);
+
+    /**
+     * 商品分类表
+     * @return
+     */
     List<classifVO> listGoodsClassify();
     List<classifVO> listGoodsClassifyByPid(@Param("classifyId") String classifyId);
+
+    /**
+     * 删除热门位商品
+     * @param listCode
+     * @param userId
+     * @return
+     */
+    int deleteHotGoodsByGoodsId(@Param("listCode") List<String> listCode, @Param("userId") String userId);
 }

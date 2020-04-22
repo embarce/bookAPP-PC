@@ -81,7 +81,24 @@ public interface UserDao {
      */
     int addCustomer(@Param("userId")String userId);
 
+    /**
+     * 查询客户
+     * @param customerInfo
+     * @return
+     */
     List<CustomerVO> listCustomer(CustomerInfo customerInfo);
+
+    /**
+     * 按角色查询客户
+     * @param customerInfo
+     * @return
+     */
     List<CustomerVO> listCustomerByRole(CustomerInfo customerInfo);
+
+    /**
+     * 顶部栏
+     * @param userId
+     * @return
+     */
     TopVo getTopOfColumn(@Param("userId")String userId);
 }

@@ -52,6 +52,11 @@ public class MenuService {
         return AppResponse.success("查询菜单成功",list);
     }
 
+    /**
+     * 删除菜单
+     * @param menuCode
+     * @return
+     */
     @Transactional(rollbackFor = Exception.class)
     public AppResponse deleteMenu(String menuCode){
         String userId=SecurityUtils.getCurrentUserId();
@@ -63,6 +68,12 @@ public class MenuService {
         }
     }
     //findMenuById
+
+    /**
+     * 菜单详情
+     * @param menuCode
+     * @return
+     */
     public AppResponse findMenuById(String menuCode){
         MenuInfo menuInfo=menuDao.findMenuById(menuCode);
         if(menuInfo==null){
@@ -71,6 +82,12 @@ public class MenuService {
             return AppResponse.success("查询成功",menuInfo);
         }
     }
+
+    /**
+     * 修改菜单
+     * @param menuInfo
+     * @return
+     */
     @Transactional(rollbackFor = Exception.class)
     public AppResponse updateMenu (MenuInfo menuInfo){
         String userId=SecurityUtils.getCurrentUserId();

@@ -129,6 +129,12 @@ public class UserService {
         }
         return appResponse;
     }
+
+    /**
+     * 查询客户
+     * @param customerInfo
+     * @return
+     */
     public AppResponse listCustomer(CustomerInfo customerInfo){
         PageHelper.startPage(customerInfo.getPageNum(), customerInfo.getPageSize());
         List<CustomerVO> customerList;
@@ -148,6 +154,11 @@ public class UserService {
         PageInfo<CustomerVO> pageData = new PageInfo<CustomerVO>(customerList);
         return AppResponse.success("查询成功",pageData);
     }
+
+    /**
+     * 顶部栏
+     * @return
+     */
     public AppResponse getTopOfColumn(){
         TopVo topVo=userDao.getTopOfColumn(SecurityUtils.getCurrentUserId());
         if(topVo==null){

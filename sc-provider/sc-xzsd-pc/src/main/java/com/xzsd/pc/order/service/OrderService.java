@@ -26,6 +26,7 @@ import java.util.List;
 public class OrderService {
     @Resource
     private OredrDao oredrDao;
+
     /**
      * 新增订单
      *
@@ -58,7 +59,7 @@ public class OrderService {
             sum = sum + (a * b);
             System.out.println(sum);
         }
-        int goods=oredrDao.updateGoodsStock(orderInfoList);
+        int goods = oredrDao.updateGoodsStock(orderInfoList);
         int num = oredrDao.addOrderDetail(orderInfoList);
 
         orderInfo.setPrice(sum);
@@ -69,6 +70,7 @@ public class OrderService {
             return AppResponse.success("新增成功");
         }
     }
+
     /**
      * 查询订单分页
      *
@@ -82,13 +84,15 @@ public class OrderService {
 
     /**
      * 查询订单明细详情
+     *
      * @param orderId
      * @return
      */
     public AppResponse findOrderById(String orderId) {
-        List<OrderDetailsVO> orderDetailsVO= oredrDao.findOrderById(orderId);
+        List<OrderDetailsVO> orderDetailsVO = oredrDao.findOrderById(orderId);
         return AppResponse.success("查询成功", orderDetailsVO);
     }
+
     /**
      * 订单各个状态修改 订单状态 0已下单，1已发货，2已取消，3已完成未评价，4已完成已评价
      *
@@ -108,17 +112,16 @@ public class OrderService {
     }
 
     @Transactional(rollbackFor = Exception.class)
-    public AppResponse updateOrderStatus(String orderList,String versionList,String status) {
+    public AppResponse updateOrderStatus(String orderList, String versionList, String status) {
         String userId = SecurityUtils.getCurrentUserId();
         List<String> Olist = Arrays.asList(orderList.split(","));
         List<String> Vlist = Arrays.asList(versionList.split(","));
-        List<OrderDTO> orderDTOList=new ArrayList<>();
-        if(Olist.size()!=Vlist.size()){
+        List<OrderDTO> orderDTOList = new ArrayList<>();
+        if (Olist.size() != Vlist.size()) {
             return AppResponse.bizError("版本号数量与订单数量不符合");
-        }
-        else {
-            for (int i = 0; i <Olist.size() ; i++) {
-                OrderDTO orderDTO=new OrderDTO();
+        } else {
+            for (int i = 0; i < Olist.size(); i++) {
+                OrderDTO orderDTO = new OrderDTO();
                 orderDTO.setOrderStatus(status);
                 orderDTO.setOrderId(Olist.get(i));
                 orderDTO.setVersion(Vlist.get(i));

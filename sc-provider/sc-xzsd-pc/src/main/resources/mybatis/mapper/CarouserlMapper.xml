@@ -53,8 +53,10 @@
     <!--查询轮播图分页-->
     <select id="carouserlListByPage" parameterType="com.xzsd.pc.carouselPicture.entity.CarouserlInfo" resultType="com.xzsd.pc.carouselPicture.entity.CarouserlListVo">
         select
+            a.banner_code bannerCode,
+            a.goods_id goodsId,
             a.image_url imageUrl,
-            a.num num,
+            a.num sortNo,
             a.status status,
             a.start_time startTime,
             a.end_time endTime,
@@ -64,7 +66,7 @@
         <if test="status != null and status != ''">
             and a.status like concat('%', #{status}, '%')
         </if>
-        order by num desc
+        order by a.num desc
     </select>
 
     <!--启用轮播图-->

@@ -31,7 +31,7 @@ public class goodsInfo {
     /**
      * 商品id
      */
-    private String goodId;
+    private String goodsId;
     /**
      * 商品广告语
      */
@@ -221,12 +221,12 @@ public class goodsInfo {
         this.stock = stock;
     }
 
-    public String getGoodId() {
-        return goodId;
+    public String getGoodsId() {
+        return goodsId;
     }
 
-    public void setGoodId(String goodId) {
-        this.goodId = goodId;
+    public void setGoodsId(String goodsId) {
+        this.goodsId = goodsId;
     }
 
     public String getIntroduce() {

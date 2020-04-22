@@ -45,6 +45,24 @@ public class StoreDO {
      * 区编码
      */
     private String countyCode;
+    private int role;
+    private String userId;
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
+    public int getRole() {
+        return role;
+    }
+
+    public void setRole(int role) {
+        this.role = role;
+    }
 
     public String getStoreCode() {
         return storeCode;
