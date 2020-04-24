@@ -43,7 +43,7 @@
             #{publisher},
             #{introduction},
             #{bookId},
-            0,
+            3,
             #{picture},
             #{category},
             #{stock},
@@ -183,7 +183,7 @@
     <update id="updateGoodsUpper" parameterType="com.xzsd.pc.goods.entity.goodsInfo">
         update t_goods_table
         set
-        status = 0,
+        status = 1,
         goodsShelfTime=now(),
         change_time = now(),
         version = version + 1
@@ -196,7 +196,7 @@
     <update id="updateGoodsLower" parameterType="com.xzsd.pc.goods.entity.goodsInfo">
         update t_goods_table
         set
-        status = 1,
+        status = 2,
         change_time = now(),
         version = version + 1
         where good_id in

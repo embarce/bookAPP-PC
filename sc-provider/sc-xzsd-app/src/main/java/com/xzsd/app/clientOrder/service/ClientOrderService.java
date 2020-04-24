@@ -52,17 +52,28 @@ public class ClientOrderService {
             orderDetailsVO.setPrice(new Float(goodsPrice.get(i)));
             orderDetailsVO.setNum(new Integer(goodsNum.get(i)));
             orderInfoList.add(orderDetailsVO);
-            System.out.println(orderInfoList);
             goodsNumSum = goodsNumSum + b;
             sum = sum + (a * b);
-            System.out.println(sum);
         }
         //检查库存
         List<Integer> listGoodsNum = clientOrderDao.chGoodsNum(goodsId);
+        List<Integer> listNum=new ArrayList<>();
+        List<String> goodsIdList=new ArrayList<>();
         for (int i = 0; i < listGoodsNum.size(); i++) {
-            if (listGoodsNum.get(i) < (new Integer(goodsNum.get(i)))) {
-                return AppResponse.bizError("新增失败库存不足");
+            int nowGoodsNum=(new Integer(goodsNum.get(i)));
+            if (listGoodsNum.get(i) < nowGoodsNum) {
+                listNum.add(i);
             }
+            if(listGoodsNum.get(i).intValue() == nowGoodsNum){
+                goodsIdList.add(goodsId.get(i));
+            }
+        }
+        //返回库存不够的商品序号
+        if(0!=listNum.size()){
+            return AppResponse.success("新增失败库存不足",listNum);
+        }
+        if(0!=goodsIdList.size()){
+            clientOrderDao.updateGoodsNumByGoodsList(goodsIdList);
         }
         int goods = clientOrderDao.updateGoodsStock(orderInfoList);
         int num = clientOrderDao.addOrderDetail(orderInfoList);

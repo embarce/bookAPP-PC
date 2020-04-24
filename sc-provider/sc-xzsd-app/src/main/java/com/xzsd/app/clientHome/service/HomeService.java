@@ -38,7 +38,8 @@ public class HomeService {
      * @return
      */
     public AppResponse listHotGoods() {
-        List<HomeHotGoodsVO> list = homeDao.listHotGoods();
+        int showNum=homeDao.showTheNum();
+        List<HomeHotGoodsVO> list = homeDao.listHotGoods(showNum);
         if (list == null) {
             return AppResponse.bizError("查询失败");
         } else {

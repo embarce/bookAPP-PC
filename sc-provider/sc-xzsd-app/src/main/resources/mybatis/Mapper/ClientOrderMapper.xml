@@ -219,4 +219,14 @@
             )
         </foreach >
     </insert>
+
+    <update id="updateGoodsNumByGoodsList" parameterType="java.util.List">
+        update t_goods_table
+        set
+        status = 0
+        where good_id in
+        <foreach item="item" index="index" collection="goodsIdList" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </update>
 </mapper>

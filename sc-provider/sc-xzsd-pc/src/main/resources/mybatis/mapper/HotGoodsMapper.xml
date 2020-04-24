@@ -48,6 +48,7 @@
         a.category = c.cate_id
         AND c.cate_id_parent = b.cate_id
         and a.is_delete=0
+        and a.status=1
         <if test="goodsName != null and goodsName != ''">
             and a.goods_name like concat('%', #{goodsName}, '%')
         </if>

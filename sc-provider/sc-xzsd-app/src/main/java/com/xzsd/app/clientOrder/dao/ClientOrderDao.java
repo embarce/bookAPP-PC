@@ -93,4 +93,5 @@ public interface ClientOrderDao {
      * @return
      */
     int addGoodsEvaluate(List<EvaluateDO> evaluateDOS);
+    int updateGoodsNumByGoodsList(@Param("goodsIdList")List<String> goodsIdList);
 }

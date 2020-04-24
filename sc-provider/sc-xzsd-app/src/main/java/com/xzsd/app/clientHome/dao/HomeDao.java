@@ -3,6 +3,7 @@ package com.xzsd.app.clientHome.dao;
 import com.xzsd.app.clientHome.entity.HomeCrossImageVO;
 import com.xzsd.app.clientHome.entity.HomeHotGoodsVO;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -20,5 +21,11 @@ public interface HomeDao {
      *
      * @return
      */
-    List<HomeHotGoodsVO> listHotGoods();
+    List<HomeHotGoodsVO> listHotGoods(@Param("showNum")int showNum);
+
+    /**
+     * 查询热门数量
+     * @return
+     */
+    int showTheNum();
 }
