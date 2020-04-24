@@ -6,10 +6,18 @@ package com.xzsd.pc.hotGoods.entity;
  */
 public class HotGoodsDO {
     private String hotGoodsId;
-    private int hotGoodsSort;
+    private int noId;
     private String goodsId;
     private String userId;
     private String version;
+
+    public int getNoId() {
+        return noId;
+    }
+
+    public void setNoId(int noId) {
+        this.noId = noId;
+    }
 
     public String getUserId() {
         return userId;
@@ -27,13 +35,6 @@ public class HotGoodsDO {
         this.hotGoodsId = hotGoodsId;
     }
 
-    public int getHotGoodsSort() {
-        return hotGoodsSort;
-    }
-
-    public void setHotGoodsSort(int hotGoodsSort) {
-        this.hotGoodsSort = hotGoodsSort;
-    }
 
     public String getGoodsId() {
         return goodsId;

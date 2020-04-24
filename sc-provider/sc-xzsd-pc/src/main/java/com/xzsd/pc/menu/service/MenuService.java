@@ -75,11 +75,13 @@ public class MenuService {
      * @return
      */
     public AppResponse findMenuById(String menuCode){
+        List<MenuInfo> menuInfos=new ArrayList<>();
         MenuInfo menuInfo=menuDao.findMenuById(menuCode);
+        menuInfos.add(menuInfo);
         if(menuInfo==null){
             return AppResponse.bizError("查询失败");
         }else {
-            return AppResponse.success("查询成功",menuInfo);
+            return AppResponse.success("查询成功",menuInfos);
         }
     }
 

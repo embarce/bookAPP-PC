@@ -101,6 +101,7 @@
 <!--        <result column="auth_code" property="authCode" jdbcType="VARCHAR" />-->
 <!--        <result column="remark" property="remark" jdbcType="VARCHAR" />-->
         <result column="is_delete" property="isDeleted" jdbcType="INTEGER" />
+        <result column="version" property="version" jdbcType="VARCHAR" />
 <!--        <result column="id" property="id" jdbcType="VARCHAR" />-->
 <!--        <result column="sort_no" property="sortNo" jdbcType="INTEGER" />-->
 <!--        <result column="gmt_create" property="gmtCreate" jdbcType="TIMESTAMP" />-->
@@ -115,7 +116,8 @@
         select
             cate_id ,
             cate_name ,
-            cate_id_parent
+            cate_id_parent,
+            version
         from t_cate_table
         where is_delete = 0
         order by cate_id

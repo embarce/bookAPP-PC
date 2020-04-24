@@ -192,4 +192,10 @@
             stroe_no = #{storeCode}
          and is_delete=0
     </select>
+    <select id="checkUserId" parameterType="java.lang.String" resultType="int">
+        select count(*)
+        FROM t_sys_user
+        where user_code=#{userId}
+        and is_deleted=0
+    </select>
 </mapper>

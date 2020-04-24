@@ -102,9 +102,9 @@
     <select id="findDriverById" parameterType="java.lang.String" resultType="com.xzsd.pc.driver.entity.DriverInfo">
         SELECT
             a.driver_acct driverAcct,
-            a.province province,
-            a.city city,
-            a.county county,
+            d.`name` province,
+            t.`name` city,
+            c.`name` county,
             a.store_id storeId,
             a.driver_id driverCode,
             b.user_name driverName,
@@ -113,10 +113,17 @@
             a.version version,
             b.version version1
         FROM
-            t_driver_info_table a
-            JOIN t_sys_user b ON a.driver_id = b.user_code
+            t_driver_info_table a,
+            t_sys_user b,
+            region c,
+            region d,
+            region t
         WHERE
             a.is_delete = 0
+            AND a.county_no = c.id
+            AND c.pid = t.id
+            and t.pid =d.id
+            AND a.driver_id = b.user_code
             AND a.driver_id = #{driverId}
     </select>
 

@@ -7,8 +7,6 @@ import com.neusoft.util.StringUtil;
 import com.xzsd.pc.cate.dao.CateDao;
 import com.xzsd.pc.cate.entity.CateInfo;
 import com.xzsd.pc.cate.entity.Tree;
-import com.xzsd.pc.cate.entity.cateParentInfo;
-import org.antlr.stringtemplate.language.Cat;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -96,6 +94,7 @@ public class CateService {
     }
     private void cateToTree(CateInfo cateInfo, Tree tree){
         tree.setId(cateInfo.getCateId());
+        tree.setVersion(cateInfo.getVersion());
         tree.setPid(cateInfo.getCateIdParent());
         tree.setLabel(cateInfo.getCateName());
         tree.setAttributes(cateInfo);

@@ -5,10 +5,7 @@ import com.neusoft.core.restful.AppResponse;
 import com.neusoft.security.client.utils.SecurityUtils;
 import com.neusoft.util.StringUtil;
 import com.xzsd.pc.hotGoods.dao.HotGoodsDao;
-import com.xzsd.pc.hotGoods.entity.ChoseHotsGoodsVO;
-import com.xzsd.pc.hotGoods.entity.HotGoodsDO;
-import com.xzsd.pc.hotGoods.entity.HotGoodsInfo;
-import com.xzsd.pc.hotGoods.entity.HotGoodsVO;
+import com.xzsd.pc.hotGoods.entity.*;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -106,7 +103,7 @@ public class HotGoodsService {
      * @return
      */
     public AppResponse updateHotGoodsById(HotGoodsDO hotGoodsDO) {
-        int Id = hotGoodsDao.findNumByNum(hotGoodsDO.getHotGoodsSort());
+        int Id = hotGoodsDao.findNumByNum(hotGoodsDO.getNoId());
         if (Id > 0) {
             return AppResponse.repeat("序号已存在，请更改别的序号");
         } else {
@@ -131,5 +128,13 @@ public class HotGoodsService {
     public AppResponse listHotGoodsByPage(String goodsId, String goodsName) {
         List<HotGoodsVO> listHotGoods = hotGoodsDao.listHotGoodsByPage(goodsId, goodsName);
         return AppResponse.success("查询成功", PageUtils.getPageInfo(listHotGoods));
+    }
+    public AppResponse getHotGoods(String hotGoodsId){
+        HotGoodsDelitVO hotGoodsDelitVO=hotGoodsDao.getHotGoods(hotGoodsId);
+        if(hotGoodsDelitVO==null){
+            return AppResponse.bizError("查询失败");
+        }else {
+            return AppResponse.success("查询成功",hotGoodsDelitVO);
+        }
     }
 }

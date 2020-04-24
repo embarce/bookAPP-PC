@@ -1,5 +1,7 @@
 package com.xzsd.pc.store.service;
 
+import com.github.pagehelper.PageHelper;
+import com.neusoft.core.page.PageUtils;
 import com.neusoft.core.restful.AppResponse;
 import com.neusoft.security.client.utils.SecurityUtils;
 import com.neusoft.util.StringUtil;
@@ -33,9 +35,9 @@ public class StoreService {
     @Transactional(rollbackFor = Exception.class)
     public AppResponse addStore(StoreInfo storeInfo) {
         int count = storeDao.countBusiness(storeInfo.getBusiness());
-        int num = storeDao.findStoreByStoreName(storeInfo.getStoreName());
+        int num = storeDao.checkUserId(storeInfo.getUserCode());
         if (count == 0) {
-            if (num == 0) {
+            if (num != 0) {
                 //随机一个店铺码
                 storeInfo.setStoreCode(StringUtil.getCommonCode(2));
                 //随机获取自己一个邀请码
@@ -47,7 +49,7 @@ public class StoreService {
                     return AppResponse.success("新增失败");
                 }
             } else {
-                return AppResponse.repeat("商店名已经存在");
+                return AppResponse.success("用户编码不正确");
             }
         } else {
             return AppResponse.repeat("营业执照已经存在");
@@ -100,17 +102,14 @@ public class StoreService {
         List<StoreVO> storeVOList = new ArrayList<>();
         if (storeDO.getRole() == 0) {
             storeVOList = storeDao.listStoreByPage(storeDO);
-        } else if (storeDO.getRole() == 1) {
+        }
+        if (storeDO.getRole() == 1) {
             String userId = SecurityUtils.getCurrentUserId();
             System.out.println(userId);
             storeDO.setUserCode(userId);
             storeVOList = storeDao.listStoreByPageByUserId(storeDO);
         }
-        if (storeVOList == null) {
-            return AppResponse.bizError("查询为空");
-        } else {
-            return AppResponse.success("查询成功", storeVOList);
-        }
+        return AppResponse.success("查询成功", PageUtils.getPageInfo(storeVOList));
     }
 
     /**
@@ -121,10 +120,12 @@ public class StoreService {
      */
     public AppResponse findStoreById(String storeCode) {
         StoreInfo storeInfo = storeDao.findStoreById(storeCode);
+        List<StoreInfo> storeInfos = new ArrayList<>();
+        storeInfos.add(storeInfo);
         if (storeInfo == null) {
             return AppResponse.bizError("查询失败");
         } else {
-            return AppResponse.success("查询成功", storeInfo);
+            return AppResponse.success("查询成功", storeInfos);
         }
     }
 }

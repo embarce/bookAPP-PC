@@ -8,6 +8,7 @@ import com.neusoft.security.client.utils.SecurityUtils;
 import com.neusoft.util.JsonUtils;
 import com.neusoft.util.StringUtil;
 import com.xzsd.pc.TencentUtil.CosController;
+import com.xzsd.pc.carouselPicture.dao.CarouserlDao;
 import com.xzsd.pc.goods.dao.GoodsDao;
 import com.xzsd.pc.goods.entity.classifVO;
 import com.xzsd.pc.goods.entity.goodsInfo;

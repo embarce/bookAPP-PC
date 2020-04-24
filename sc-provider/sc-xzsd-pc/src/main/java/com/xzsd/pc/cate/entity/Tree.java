@@ -13,6 +13,7 @@ public class Tree {
 
     private String id;
     private String label;
+    private String version;
     private String index;
     private Object attributes;
     private List<Tree> children = new ArrayList<Tree>();
@@ -20,6 +21,13 @@ public class Tree {
     private String code;
     private String type;
 
+    public String getVersion() {
+        return version;
+    }
+
+    public void setVersion(String version) {
+        this.version = version;
+    }
 
     public String getId() {
         return id;

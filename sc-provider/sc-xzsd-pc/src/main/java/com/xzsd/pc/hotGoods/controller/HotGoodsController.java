@@ -135,4 +135,14 @@ public class HotGoodsController {
             throw e;
         }
     }
+    @PostMapping("getHotGoods")
+    public AppResponse getHotGoods(String hotGoodsId){
+        try {
+            AppResponse appResponse=hotGoodsService.getHotGoods(hotGoodsId);
+            return appResponse;
+        }catch (Exception e){
+            logger.error("查询失败");
+            throw e;
+        }
+    }
 }

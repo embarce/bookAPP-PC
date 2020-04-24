@@ -118,11 +118,13 @@ public class DriverService {
     }
 
     public AppResponse findDriverById(String driverId) {
+        List<DriverInfo> driverInfos=new ArrayList<>();
         DriverInfo driverInfo = driverDao.findDriverById(driverId);
+        driverInfos.add(driverInfo);
         if (driverInfo == null) {
             return AppResponse.bizError("查询失败");
         } else {
-            return AppResponse.success("查询成功", driverInfo);
+            return AppResponse.success("查询成功", driverInfos);
         }
     }
 }

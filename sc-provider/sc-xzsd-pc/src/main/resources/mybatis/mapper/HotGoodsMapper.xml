@@ -84,7 +84,7 @@
     <update id="updateHotGoodsById" parameterType="com.xzsd.pc.hotGoods.entity.HotGoodsDO">
         update t_hot_table
         set
-        no_id =#{hotGoodsSort},
+        no_id =#{noId},
         goods_id=#{goodsId},
         change_name=#{userId},
         change_time=now(),
@@ -113,5 +113,20 @@
         </if>
         ORDER BY
             a.no_id
+    </select>
+    <select id="getHotGoods" parameterType="java.lang.String" resultType="com.xzsd.pc.hotGoods.entity.HotGoodsDelitVO">
+        SELECT
+            a.no_id hotGoodsNum,
+            a.goods_id goodsId,
+            b.goods_name goodsName,
+            a.hotGoodsId hotGoodsId,
+            a.version version
+        FROM
+            t_hot_table a,
+            t_goods_table b
+        WHERE
+            a.is_delete =0
+            and a.hotGoodsId=#{hotGoodsId}
+            and a.goods_id=b.good_id
     </select>
 </mapper>

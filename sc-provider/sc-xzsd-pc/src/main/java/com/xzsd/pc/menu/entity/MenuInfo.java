@@ -52,6 +52,14 @@ public class MenuInfo {
      */
     private String version;
 
+    public String getVersion() {
+        return version;
+    }
+
+    public void setVersion(String version) {
+        this.version = version;
+    }
+
     public String getRemake() {
         return remake;
     }
@@ -132,11 +140,4 @@ public class MenuInfo {
         this.lastModifiedBy = lastModifiedBy;
     }
 
-    public String getVersion() {
-        return version;
-    }
-
-    public void setVersion(String version) {
-        this.version = version;
-    }
 }

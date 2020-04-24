@@ -1,9 +1,6 @@
 package com.xzsd.pc.hotGoods.dao;
 
-import com.xzsd.pc.hotGoods.entity.ChoseHotsGoodsVO;
-import com.xzsd.pc.hotGoods.entity.HotGoodsDO;
-import com.xzsd.pc.hotGoods.entity.HotGoodsInfo;
-import com.xzsd.pc.hotGoods.entity.HotGoodsVO;
+import com.xzsd.pc.hotGoods.entity.*;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -66,4 +63,11 @@ public interface HotGoodsDao {
      * @return
      */
     int showTheNum();
+
+    /**
+     * 热门详情
+     * @param hotGoodsId
+     * @return
+     */
+    HotGoodsDelitVO getHotGoods(@Param("hotGoodsId")String hotGoodsId);
 }
