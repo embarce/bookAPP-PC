@@ -4,6 +4,7 @@ import java.util.Date;
 
 /**
  * 用户实体类
+ *
  * @author Embrace
  * @date 2020/3/26 11:15
  */
@@ -39,7 +40,7 @@ public class UserInfo {
     /**
      * 性别 0 男 1 女
      */
-    private int sex;
+    private String sex;
     /**
      * 手机号码
      */
@@ -51,7 +52,7 @@ public class UserInfo {
     /**
      * 角色
      */
-    private int role;
+    private String role;
     /**
      * 备注
      */
@@ -150,20 +151,20 @@ public class UserInfo {
         this.idCard = idCard;
     }
 
-    public int getSex() {
-        return sex;
-    }
-
-    public void setSex(int sex) {
-        this.sex = sex;
-    }
-
     public String getPhone() {
         return phone;
     }
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
     }
 
     public String getEmail() {
@@ -174,11 +175,11 @@ public class UserInfo {
         this.email = email;
     }
 
-    public int getRole() {
+    public String getRole() {
         return role;
     }
 
-    public void setRole(int role) {
+    public void setRole(String role) {
         this.role = role;
     }
 

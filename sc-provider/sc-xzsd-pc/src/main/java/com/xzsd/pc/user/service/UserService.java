@@ -16,6 +16,8 @@ import javax.annotation.Resource;
 import java.util.Arrays;
 import java.util.List;
 
+import static java.lang.Character.getType;
+
 /**
  * @author Embrace
  * @date 2020/3/26 11:22
@@ -47,7 +49,8 @@ public class UserService {
         userInfo.setUserPwd(PasswordUtils.generatePassword(userInfo.getUserPwd()));
         //新增用户
         int count = userDao.addUser(userInfo);
-        if (userInfo.getRole() == 3) {
+        int role=Integer.valueOf(userInfo.getRole());
+        if (role == 3) {
             userDao.addCustomer(userInfo.getUserId());
         }
         if (0 == count) {
@@ -116,11 +119,8 @@ public class UserService {
     @Transactional(rollbackFor = Exception.class)
     public AppResponse updateUser(UserInfo userInfo) {
         AppResponse appResponse = AppResponse.success("修改成功");
-        //
-        int countUserAcct = userDao.countUserAcct(userInfo);
-        if (0 != countUserAcct) {
-            return AppResponse.repeat("用户账号已存在，请重新输入！");
-        }
+        //加密密码
+        userInfo.setUserPwd(PasswordUtils.generatePassword(userInfo.getUserPwd()));
         //修改
         int count = userDao.updateUser(userInfo);
         if (0 == count) {
@@ -139,12 +139,13 @@ public class UserService {
         PageHelper.startPage(customerInfo.getPageNum(), customerInfo.getPageSize());
         List<CustomerVO> customerList;
         System.out.println(customerInfo.getRole());
-        if(customerInfo.getRole()==1){
+        int role=Integer.valueOf(customerInfo.getRole());
+        if(role==1){
             System.out.println("店长");
             customerInfo.setUserCode(SecurityUtils.getCurrentUserId());
             customerList=userDao.listCustomerByRole(customerInfo);
         }
-        else if(customerInfo.getRole()==0){
+        else if(role==0){
             System.out.println("管理员");
             customerList= userDao.listCustomer(customerInfo);
         }else {

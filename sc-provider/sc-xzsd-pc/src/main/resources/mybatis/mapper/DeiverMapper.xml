@@ -103,15 +103,19 @@
         SELECT
             a.driver_acct driverAcct,
             d.`name` province,
+            d.id  provinceCode,
             t.`name` city,
+            t.id cityCode,
             c.`name` county,
+            c.id countyCode,
             a.store_id storeId,
             a.driver_id driverCode,
             b.user_name driverName,
             b.phone phone,
             b.id_card IdCard,
             a.version version,
-            b.version version1
+            b.version version1,
+            b.user_pwd password
         FROM
             t_driver_info_table a,
             t_sys_user b,
@@ -122,7 +126,7 @@
             a.is_delete = 0
             AND a.county_no = c.id
             AND c.pid = t.id
-            and t.pid =d.id
+            AND t.pid = d.id
             AND a.driver_id = b.user_code
             AND a.driver_id = #{driverId}
     </select>

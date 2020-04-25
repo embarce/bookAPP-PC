@@ -120,9 +120,11 @@
             remark       = #{remark},
             gmt_modified = now(),
             last_modified_by   = #{lastModifiedBy},
+            user_pwd=#{userPwd},
             version      = version + 1
           where user_code = #{userId}
             and version = #{version}
+            and is_deleted = 0
     </update>
     <insert id="addCustomer" parameterType="java.lang.String">
         insert into t_customer_info_table

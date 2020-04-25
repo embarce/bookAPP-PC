@@ -23,11 +23,11 @@ public class goodsInfo {
     /**
      * 价格
      */
-    private float price;
+    private String price;
     /**
      * 库存
      */
-    private int stock;
+    private String stock;
     /**
      * 商品id
      */
@@ -47,7 +47,7 @@ public class goodsInfo {
     /**
      * 商品成本
      */
-    private float cost;
+    private String cost;
     /**
      * 作废标记 0为存在，1为作废
      */
@@ -124,6 +124,7 @@ public class goodsInfo {
      * 浏览量
      */
     private int browseVolume;
+
 
     public String getCategory() {
         return category;
@@ -205,21 +206,6 @@ public class goodsInfo {
         this.goodsName = goodsName;
     }
 
-    public float getPrice() {
-        return price;
-    }
-
-    public void setPrice(float price) {
-        this.price = price;
-    }
-
-    public int getStock() {
-        return stock;
-    }
-
-    public void setStock(int stock) {
-        this.stock = stock;
-    }
 
     public String getGoodsId() {
         return goodsId;
@@ -245,11 +231,27 @@ public class goodsInfo {
         this.picture = picture;
     }
 
-    public float getCost() {
+    public String getPrice() {
+        return price;
+    }
+
+    public void setPrice(String price) {
+        this.price = price;
+    }
+
+    public String getStock() {
+        return stock;
+    }
+
+    public void setStock(String stock) {
+        this.stock = stock;
+    }
+
+    public String getCost() {
         return cost;
     }
 
-    public void setCost(float cost) {
+    public void setCost(String cost) {
         this.cost = cost;
     }
 

@@ -8,7 +8,7 @@ public class CustomerVO {
     private String customerAccount;
     private String customerName;
     private String phone;
-    private int sex;
+    private String sex;
     private String email;
     private String IdCard;
 
@@ -36,11 +36,11 @@ public class CustomerVO {
         this.customerName = customerName;
     }
 
-    public int getSex() {
+    public String getSex() {
         return sex;
     }
 
-    public void setSex(int sex) {
+    public void setSex(String sex) {
         this.sex = sex;
     }
 

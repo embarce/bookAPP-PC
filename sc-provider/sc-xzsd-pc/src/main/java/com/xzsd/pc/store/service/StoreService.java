@@ -49,7 +49,7 @@ public class StoreService {
                     return AppResponse.success("新增失败");
                 }
             } else {
-                return AppResponse.success("用户编码不正确");
+                return AppResponse.success("用户编码不存在");
             }
         } else {
             return AppResponse.repeat("营业执照已经存在");
@@ -100,10 +100,11 @@ public class StoreService {
      */
     public AppResponse listStoreByPage(StoreDO storeDO) {
         List<StoreVO> storeVOList = new ArrayList<>();
-        if (storeDO.getRole() == 0) {
+        int role = Integer.valueOf(storeDO.getRole());
+        if (role == 0) {
             storeVOList = storeDao.listStoreByPage(storeDO);
         }
-        if (storeDO.getRole() == 1) {
+        if (role == 1) {
             String userId = SecurityUtils.getCurrentUserId();
             System.out.println(userId);
             storeDO.setUserCode(userId);

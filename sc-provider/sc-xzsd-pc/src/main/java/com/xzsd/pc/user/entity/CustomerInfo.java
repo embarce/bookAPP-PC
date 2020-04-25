@@ -7,10 +7,10 @@ package com.xzsd.pc.user.entity;
 public class CustomerInfo {
     private String customerAccount;
     private String customerName;
-    private int sex;
+    private String sex;
     private String email;
     private String IdCard;
-    private int role;
+    private String role;
     private int pageSize;
     private String userCode;
     /**
@@ -26,11 +26,19 @@ public class CustomerInfo {
         this.userCode = userCode;
     }
 
-    public int getRole() {
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
+    }
+
+    public String getRole() {
         return role;
     }
 
-    public void setRole(int role) {
+    public void setRole(String role) {
         this.role = role;
     }
 
@@ -66,13 +74,6 @@ public class CustomerInfo {
         this.customerName = customerName;
     }
 
-    public int getSex() {
-        return sex;
-    }
-
-    public void setSex(int sex) {
-        this.sex = sex;
-    }
 
     public String getEmail() {
         return email;

@@ -153,6 +153,9 @@ public class ClientOrderService {
             evaluateDO.setGoodsId(evaluateInfo.getGoodsId());
             evaluateDO.setTxt(evaluateInfo.getEvaluateContent());
             evaluateDO.setImage(evaluateInfo.getImageUrlList());
+            if(evaluateInfo.getEvaluateScore()==null){
+                evaluateInfo.setEvaluateScore("5");
+            }
             evaluateDO.setLevel(evaluateInfo.getEvaluateScore());
             evaluateDO.setOrderId(goodsEvaluateInfo.getOrderId());
             evaluateDO.setUserId(SecurityUtils.getCurrentUserId());

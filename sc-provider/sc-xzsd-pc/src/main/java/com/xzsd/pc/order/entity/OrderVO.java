@@ -28,7 +28,7 @@ public class OrderVO {
     /**
      * 订单状态；订单状态 0已下单，1已发货，2已取消，3已完成未评价，4已完成已评价
      */
-    private int orderStatus;
+    private String orderStatus;
     /**
      * 收货校边店id
      */
@@ -111,12 +111,11 @@ public class OrderVO {
         this.payTime = payTime;
     }
 
-
-    public int getOrderStatus() {
+    public String getOrderStatus() {
         return orderStatus;
     }
 
-    public void setOrderStatus(int orderStatus) {
+    public void setOrderStatus(String orderStatus) {
         this.orderStatus = orderStatus;
     }
 

@@ -151,7 +151,7 @@
     <select id="getGoodsByGoodsId" parameterType="java.lang.String" resultType="com.xzsd.pc.goods.entity.goodsInfo">
         SELECT
             a.goods_name goodsName,
-            a.good_id goodId,
+            a.good_id goodsId,
             a.price price,
             a.stock stock,
             a.introduce introduce,

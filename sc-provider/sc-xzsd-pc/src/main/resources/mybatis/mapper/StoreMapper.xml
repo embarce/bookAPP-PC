@@ -185,7 +185,10 @@
             province province,
             city city,
             county county,
-            invitation invitation
+            invitation invitation,
+            province_no provinceCode,
+            city_no cityCode,
+            county_no countyCode
         FROM
             t_store_table
         WHERE

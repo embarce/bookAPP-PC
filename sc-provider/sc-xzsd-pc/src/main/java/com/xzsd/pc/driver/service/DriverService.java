@@ -54,7 +54,7 @@ public class DriverService {
             userInfo.setUserName(driverInfo.getDriverName());
             userInfo.setIdCard(driverInfo.getIdCard());
             userInfo.setPhone(driverInfo.getPhone());
-            userInfo.setRole(2);
+            userInfo.setRole("2");
             int user = userDao.addUser(userInfo);
             if (user == 0 || num == 0) {
                 return AppResponse.bizError("新增失败");
@@ -74,6 +74,7 @@ public class DriverService {
     public AppResponse updateDriver(DriverInfo driverInfo) {
         driverInfo.setLastModifiedBy(SecurityUtils.getCurrentUserId());
         UserInfo userInfo = new UserInfo();
+        userInfo.setUserPwd(PasswordUtils.generatePassword(driverInfo.getPassword()));
         userInfo.setUserId(driverInfo.getDriverCode());
         userInfo.setUserAcct(driverInfo.getDriverAcct());
         userInfo.setUserName(driverInfo.getDriverName());
@@ -106,6 +107,11 @@ public class DriverService {
         return AppResponse.success("删除成功");
     }
 
+    /**
+     * 查询司机分页
+     * @param driverDo
+     * @return
+     */
     public AppResponse listDriverByPage(DriverDo driverDo) {
         int role =driverDo.getRole();
         List<DriverVO> driverVOList=new ArrayList<>();
@@ -117,6 +123,11 @@ public class DriverService {
         return AppResponse.success("查询成功", PageUtils.getPageInfo(driverVOList));
     }
 
+    /**
+     * 司机详情
+     * @param driverId
+     * @return
+     */
     public AppResponse findDriverById(String driverId) {
         List<DriverInfo> driverInfos=new ArrayList<>();
         DriverInfo driverInfo = driverDao.findDriverById(driverId);
