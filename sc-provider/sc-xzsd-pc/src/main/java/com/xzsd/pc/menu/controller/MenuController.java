@@ -21,6 +21,12 @@ public class MenuController {
     private static final Logger logger = LoggerFactory.getLogger(MenuController.class);
     @Resource
     private MenuService menuService;
+
+    /**
+     * 新增菜单
+     * @param menuInfo
+     * @return
+     */
     @PostMapping("addMenu")
     public AppResponse addMenu(MenuInfo menuInfo){
         try {
@@ -31,6 +37,11 @@ public class MenuController {
             throw e;
         }
     }
+
+    /**
+     * 查询菜单
+     * @return
+     */
     @RequestMapping(value="listMenu")
     public AppResponse listMenu(){
         try {
@@ -41,6 +52,12 @@ public class MenuController {
             throw e;
         }
     }
+
+    /**
+     * 删除菜单
+     * @param menuCode
+     * @return
+     */
     @PostMapping("deleteMenu")
     public AppResponse deleteMenu(String menuCode){
         try {
@@ -51,6 +68,12 @@ public class MenuController {
             throw e;
         }
     }
+
+    /**
+     * 菜单详情
+     * @param menuCode
+     * @return
+     */
     @PostMapping("findMenuById")
     public AppResponse findMenuById(String menuCode){
         try{
@@ -62,12 +85,7 @@ public class MenuController {
         }
     }
     /**
-     * menuId
-     * menuName
-     * menuUrl
-     * remake
-     * level
-     * 修改菜单忘记了，回头补上
+     * 修改菜单
      * updateMenu
      */
     @PostMapping("updateMenu")

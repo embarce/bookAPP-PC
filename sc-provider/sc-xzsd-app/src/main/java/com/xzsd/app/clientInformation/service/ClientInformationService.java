@@ -25,7 +25,12 @@ public class ClientInformationService {
      * @return
      */
     public AppResponse updateClientInvite(String inviteCode) {
-        clientInformationDao.updateClientInvite(inviteCode, SecurityUtils.getCurrentUserId());
-        return AppResponse.success("修改成功");
+        int count=clientInformationDao.countInvite(inviteCode);
+        if(count==0){
+            return AppResponse.success("邀请码不存在");
+        }else{
+            clientInformationDao.updateClientInvite(inviteCode, SecurityUtils.getCurrentUserId());
+            return AppResponse.success("修改成功");
+        }
     }
 }

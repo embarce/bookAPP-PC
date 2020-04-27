@@ -57,26 +57,27 @@ public class ClientOrderService {
         }
         //检查库存
         List<Integer> listGoodsNum = clientOrderDao.chGoodsNum(goodsId);
-        List<Integer> listNum=new ArrayList<>();
-        List<String> goodsIdList=new ArrayList<>();
+        List<Integer> listNum = new ArrayList<>();
+        List<String> goodsIdList = new ArrayList<>();
         for (int i = 0; i < listGoodsNum.size(); i++) {
-            int nowGoodsNum=(new Integer(goodsNum.get(i)));
+            int nowGoodsNum = (new Integer(goodsNum.get(i)));
             if (listGoodsNum.get(i) < nowGoodsNum) {
                 listNum.add(i);
             }
-            if(listGoodsNum.get(i).intValue() == nowGoodsNum){
+            if (listGoodsNum.get(i).intValue() == nowGoodsNum) {
                 goodsIdList.add(goodsId.get(i));
             }
         }
         //返回库存不够的商品序号
-        if(0!=listNum.size()){
-            return AppResponse.success("新增失败库存不足",listNum);
+        if (0 != listNum.size()) {
+            return AppResponse.success("新增失败库存不足", listNum);
         }
-        if(0!=goodsIdList.size()){
+        if (0 != goodsIdList.size()) {
             clientOrderDao.updateGoodsNumByGoodsList(goodsIdList);
         }
         int goods = clientOrderDao.updateGoodsStock(orderInfoList);
         int num = clientOrderDao.addOrderDetail(orderInfoList);
+        int updateNum=clientOrderDao.updateShoppingCar(goodsId);
         orderInfo.setPrice(sum);
         orderInfo.setGoodsNum(goodsNumSum);
         int count = clientOrderDao.addOrder(orderInfo);
@@ -153,7 +154,7 @@ public class ClientOrderService {
             evaluateDO.setGoodsId(evaluateInfo.getGoodsId());
             evaluateDO.setTxt(evaluateInfo.getEvaluateContent());
             evaluateDO.setImage(evaluateInfo.getImageUrlList());
-            if(evaluateInfo.getEvaluateScore()==null){
+            if (evaluateInfo.getEvaluateScore() == null) {
                 evaluateInfo.setEvaluateScore("5");
             }
             evaluateDO.setLevel(evaluateInfo.getEvaluateScore());

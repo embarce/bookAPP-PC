@@ -30,7 +30,8 @@ public class ShopCartService {
      */
     @Transactional(rollbackFor = Exception.class)
     public AppResponse addShopCart(ShopCartInfo shopCartInfo) {
-        int count = shopCartDao.countByGoodsId(shopCartInfo.getGoodsId());
+        String userId=SecurityUtils.getCurrentUserId();
+        int count = shopCartDao.countByGoodsId(shopCartInfo.getGoodsId(),userId);
         if (0 == count) {
             shopCartInfo.setShoppingCartCode(StringUtil.getCommonCode(2));
             shopCartInfo.setUserCode(SecurityUtils.getCurrentUserId());

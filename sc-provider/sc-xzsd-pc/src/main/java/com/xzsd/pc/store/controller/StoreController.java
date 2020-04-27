@@ -23,6 +23,11 @@ public class StoreController {
     @Resource
     private StoreService storeService;
 
+    /**
+     * 新增门店
+     * @param storeInfo
+     * @return
+     */
     @PostMapping("addStore")
     public AppResponse addStore(StoreInfo storeInfo) {
         try {
@@ -34,6 +39,11 @@ public class StoreController {
         }
     }
 
+    /**
+     * 删除门店
+     * @param storeList
+     * @return
+     */
     @PostMapping("deleteStore")
     public AppResponse deleteStore(String storeList) {
         try {
@@ -45,6 +55,11 @@ public class StoreController {
         }
     }
 
+    /**
+     * 修改门店
+     * @param storeInfo
+     * @return
+     */
     @PostMapping("updateStore")
     public AppResponse updateStore(StoreInfo storeInfo) {
         try {
@@ -56,6 +71,11 @@ public class StoreController {
         }
     }
 
+    /**
+     * 分页查询门店
+     * @param storeDO
+     * @return
+     */
     @PostMapping("listStoreByPage")
     public AppResponse listStoreByPage(StoreDO storeDO) {
         try {
@@ -67,6 +87,11 @@ public class StoreController {
         }
     }
 
+    /**
+     * 门店详情
+     * @param storeId
+     * @return
+     */
     @PostMapping("findStoreById")
     public AppResponse findStoreById(String storeId) {
         try {

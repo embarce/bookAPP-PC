@@ -23,6 +23,12 @@ public class OrderController {
     private static final Logger logger = LoggerFactory.getLogger(OrderController.class);
     @Resource
     private OrderService orderService;
+
+    /**
+     * 新增订单，可以忽略，这是当时用来测试的
+     * @param orderInfo
+     * @return
+     */
     @PostMapping("addOrder")
     public AppResponse addOrder(OrderInfo orderInfo){
         try {
@@ -34,6 +40,12 @@ public class OrderController {
             throw e;
         }
     }
+
+    /**
+     * 分页查询订单
+     * @param orderInfo
+     * @return
+     */
     @RequestMapping("listOrderByPage")
     public AppResponse listOrderByPage(OrderInfo orderInfo){
         try{
@@ -44,6 +56,12 @@ public class OrderController {
             throw e;
         }
     }
+
+    /**
+     * 查询订单详情
+     * @param orderId
+     * @return
+     */
     @RequestMapping("findOrderById")
     public AppResponse findOrderById(String orderId){
         try{
@@ -54,6 +72,13 @@ public class OrderController {
             throw  e;
         }
     }
+
+    /**
+     * 更新订单
+     * @param orderId
+     * @param status
+     * @return
+     */
     @PostMapping("updateOrderStatusById")
     public AppResponse CancelOrderById(String orderId,String status){
         try{
@@ -65,6 +90,13 @@ public class OrderController {
         }
     }
 
+    /**
+     * 跟新订单状态
+     * @param orderList
+     * @param versionList
+     * @param status
+     * @return
+     */
     @PostMapping("updateOrderStatus")
     public AppResponse updateOrderStatus(String orderList,String versionList,String status){
         try{

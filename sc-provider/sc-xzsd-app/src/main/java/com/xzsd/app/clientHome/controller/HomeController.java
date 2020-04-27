@@ -23,30 +23,32 @@ public class HomeController {
 
     /**
      * 轮播图获取
+     *
      * @return
      */
     @PostMapping("listRotationCharHome")
-    public AppResponse listRotationCharHome(){
+    public AppResponse listRotationCharHome() {
         try {
-            AppResponse appResponse=homeService.listRotationCharHome();
+            AppResponse appResponse = homeService.listRotationCharHome();
             return appResponse;
-        }catch (Exception e){
-            logger.error("查询失败",e);
+        } catch (Exception e) {
+            logger.error("查询失败", e);
             throw e;
         }
     }
 
     /**
      * 热门商品获取
+     *
      * @return
      */
     @PostMapping("listHotGoods")
-    public AppResponse listHotGoods(){
+    public AppResponse listHotGoods() {
         try {
-            AppResponse appResponse=homeService.listHotGoods();
+            AppResponse appResponse = homeService.listHotGoods();
             return appResponse;
-        }catch (Exception e){
-            logger.error("查询失败",e);
+        } catch (Exception e) {
+            logger.error("查询失败", e);
             throw e;
         }
     }

@@ -17,7 +17,6 @@ import java.io.File;
 /**
  * @author 72937
  * @time 2020年3月24日 11:31:48
- *
  */
 @RestController
 @RequestMapping("/goods")
@@ -47,6 +46,7 @@ public class GoodsController {
 
     /**
      * 新增商品
+     *
      * @param goodsInfo
      * @return AppResponse
      * @author 72937
@@ -66,35 +66,39 @@ public class GoodsController {
             throw e;
         }
     }
+
     /**
      * 查询商品列表（分页）
-     * @Param goodsInfo
+     *
      * @return AppResponse
+     * @Param goodsInfo
      * @author 72937
      * @Date 2020-2-25
      */
-    @RequestMapping(value="listGoodsByPage")
-    public AppResponse listGoodsByPage(goodsInfo goodsInfo){
+    @RequestMapping(value = "listGoodsByPage")
+    public AppResponse listGoodsByPage(goodsInfo goodsInfo) {
         try {
             return goodsService.listGoodsByPage(goodsInfo);
-        } catch (Exception e){
+        } catch (Exception e) {
             logger.error("查询商品列表异常", e);
             System.out.println(e.toString());
             throw e;
         }
     }
+
     /**
      * 删除商品
+     *
+     * @return AppResponse
      * @author 72937
      * @Date 2020-3-25
      * @Param goodsId   商品id
-     * @return AppResponse
      */
     @PostMapping("deleteGoods")
-    public AppResponse deleteGoods(String goodsList){
+    public AppResponse deleteGoods(String goodsList) {
         try {
             return goodsService.deleteGoods(goodsList);
-        }catch (Exception e){
+        } catch (Exception e) {
             logger.error("商品删除错误", e);
             System.out.println(e.toString());
             throw e;
@@ -103,19 +107,20 @@ public class GoodsController {
 
     /**
      * 修改商品信息
-     * @author 7293747
-     * @Date 2020-3-25
+     *
      * @param goodsInfo
      * @return
+     * @author 7293747
+     * @Date 2020-3-25
      */
     @PostMapping("updateGoods")
-    public AppResponse updateGoods(goodsInfo goodsInfo){
-        try{
+    public AppResponse updateGoods(goodsInfo goodsInfo) {
+        try {
             String userId = AuthUtils.getCurrentUserId();
             goodsInfo.setCreateBy(userId);
             goodsInfo.setLastModifiedBy(userId);
             return goodsService.updateGoods(goodsInfo);
-        }catch(Exception e){
+        } catch (Exception e) {
             logger.error("修改商品信息错误");
             System.out.println(e.toString());
             throw e;
@@ -124,15 +129,16 @@ public class GoodsController {
 
     /**
      * 查询商品详情
-     * @date 2020-3-26
+     *
      * @param goodsId
      * @return
+     * @date 2020-3-26
      */
-    @RequestMapping(value="getGoodsByGoodsId")
-    public AppResponse getGoodsByGoodsId(String goodsId){
-        try{
+    @RequestMapping(value = "getGoodsByGoodsId")
+    public AppResponse getGoodsByGoodsId(String goodsId) {
+        try {
             return goodsService.getGoodsByGoodsId(goodsId);
-        }catch (Exception e){
+        } catch (Exception e) {
             logger.error("商品查询错误", e);
             System.out.println(e.toString());
             throw e;
@@ -141,24 +147,26 @@ public class GoodsController {
 
     /**
      * 上架下架商品
+     *
      * @param goodsList
      * @return
      */
     @PostMapping("updateGoodsUpper")
-    public AppResponse updateGoodsUpper(String goodsList){
-        try{
+    public AppResponse updateGoodsUpper(String goodsList) {
+        try {
             return goodsService.updateGoodsUpper(goodsList);
-        }catch (Exception e){
+        } catch (Exception e) {
             logger.error("商品信息错误");
             System.out.println(e.toString());
             throw e;
         }
     }
+
     @PostMapping("updateGoodsLower")
-    public AppResponse updateGoodsLower(String goodsList){
-        try{
+    public AppResponse updateGoodsLower(String goodsList) {
+        try {
             return goodsService.updateGoodsLower(goodsList);
-        }catch (Exception e){
+        } catch (Exception e) {
             logger.error("商品信息错误");
             System.out.println(e.toString());
             throw e;
@@ -167,29 +175,31 @@ public class GoodsController {
 
     /**
      * 商品一级分类查询
+     *
      * @return
      */
     @PostMapping("listGoodsClassify")
-    public AppResponse listGoodsClassify(){
-        try{
+    public AppResponse listGoodsClassify() {
+        try {
             return goodsService.listGoodsClassify();
-        }catch (Exception e){
-            logger.error("查询失败",e);
+        } catch (Exception e) {
+            logger.error("查询失败", e);
             throw e;
         }
     }
 
     /**
      * 商品二级分类查询
+     *
      * @param classifyId
      * @return
      */
     @PostMapping("listGoodsClassifyByPid")
-    public AppResponse listGoodsClassifyByPid(String classifyId){
-        try{
+    public AppResponse listGoodsClassifyByPid(String classifyId) {
+        try {
             return goodsService.listGoodsClassifyByPid(classifyId);
-        }catch (Exception e){
-            logger.error("查询失败",e);
+        } catch (Exception e) {
+            logger.error("查询失败", e);
             throw e;
         }
     }

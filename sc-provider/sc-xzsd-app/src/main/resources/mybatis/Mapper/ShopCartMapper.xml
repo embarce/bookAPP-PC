@@ -5,6 +5,8 @@
         select count(*)
         from t_shopping_car_table
         where goods_id=#{goodsId}
+        and user_id=#{userId}
+        and is_delete=0
     </select>
     <insert id="addShopCart" parameterType="com.xzsd.app.clientShopCart.entity.ShopCartInfo">
         insert into t_shopping_car_table

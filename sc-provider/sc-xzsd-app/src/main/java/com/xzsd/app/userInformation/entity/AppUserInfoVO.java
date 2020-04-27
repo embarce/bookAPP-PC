@@ -14,7 +14,7 @@ public class AppUserInfoVO {
     private String inId;
     private String address;
     private String phone;
-    private int version;
+    private String version;
     public String getUserName() {
         return userName;
     }
@@ -87,11 +87,11 @@ public class AppUserInfoVO {
         this.phone = phone;
     }
 
-    public int getVersion() {
+    public String getVersion() {
         return version;
     }
 
-    public void setVersion(int version) {
+    public void setVersion(String version) {
         this.version = version;
     }
 }

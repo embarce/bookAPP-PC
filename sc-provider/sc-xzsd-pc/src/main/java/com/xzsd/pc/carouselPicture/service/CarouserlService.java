@@ -78,6 +78,11 @@ public class CarouserlService {
         return AppResponse.success("查询成功！",pageData);
     }
 
+    /**
+     * 轮播图状态修改
+     * @param listString
+     * @return
+     */
     @Transactional(rollbackFor = Exception.class)
     public AppResponse updateStatusOpen(String listString){
         String lastModifiedBy=SecurityUtils.getCurrentUserId();

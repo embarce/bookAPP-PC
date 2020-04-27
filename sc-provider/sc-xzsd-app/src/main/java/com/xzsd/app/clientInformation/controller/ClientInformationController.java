@@ -21,6 +21,11 @@ public class ClientInformationController {
     @Resource
     private ClientInformationService clientInformationService;
 
+    /**
+     * 修改邀请码
+     * @param inviteCode
+     * @return
+     */
     @PostMapping("updateClientInvite")
     public AppResponse updateClientInvite(String inviteCode) {
         try {

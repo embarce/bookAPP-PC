@@ -22,6 +22,12 @@ public class ShopCartController {
     @Resource
     private ShopCartService shopCartService;
 
+    /**
+     * 新增购物车
+     *
+     * @param shopCartInfo
+     * @return
+     */
     @PostMapping("addShoppingCart")
     public AppResponse addShoppingCart(ShopCartInfo shopCartInfo) {
         try {
@@ -33,6 +39,11 @@ public class ShopCartController {
         }
     }
 
+    /**
+     * 查询购物车
+     *
+     * @return
+     */
     @PostMapping("listShoppingCarts")
     public AppResponse listShoppingCarts() {
         try {
@@ -43,6 +54,12 @@ public class ShopCartController {
         }
     }
 
+    /**
+     * 更新购物车
+     *
+     * @param shopCartInfo
+     * @return
+     */
     @PostMapping("updateShoppingCart")
     public AppResponse updateShoppingCart(ShopCartInfo shopCartInfo) {
         try {
@@ -52,11 +69,18 @@ public class ShopCartController {
             throw e;
         }
     }
+
+    /**
+     * 删除购物车
+     *
+     * @param shopCartId
+     * @return
+     */
     @PostMapping("deleteShoppingCart")
-    public AppResponse deleteShoppingCart(String shopCartId){
-        try{
+    public AppResponse deleteShoppingCart(String shopCartId) {
+        try {
             return shopCartService.deleteShoppingCart(shopCartId);
-        }catch (Exception e) {
+        } catch (Exception e) {
             logger.error("删除失败", e);
             throw e;
         }

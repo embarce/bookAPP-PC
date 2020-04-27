@@ -20,6 +20,11 @@ public class ProvinceController {
     private static final Logger logger = LoggerFactory.getLogger(ProvinceController.class);
     @Resource
     private ProvinceService provinceService;
+
+    /**
+     * 查询省份
+     * @return
+     */
     @PostMapping("findProvince")
     public AppResponse findProvince(){
         try {
@@ -30,6 +35,12 @@ public class ProvinceController {
             throw e;
         }
     }
+
+    /**
+     * 下级城市或者区查询
+     * @param pid
+     * @return
+     */
     @PostMapping("findCityByProvinceId")
     public AppResponse findCityByProvinceId(String pid){
         try {

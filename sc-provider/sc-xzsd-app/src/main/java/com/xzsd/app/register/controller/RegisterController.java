@@ -24,6 +24,7 @@ public class RegisterController {
     private static final Logger logger = LoggerFactory.getLogger(RegisterController.class);
     @Resource
     private RegisterService registerService;
+
     /***
      * @ClassName
      * @Description : 新增用户

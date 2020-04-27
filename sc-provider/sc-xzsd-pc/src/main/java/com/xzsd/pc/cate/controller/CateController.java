@@ -25,65 +25,70 @@ public class CateController {
 
     /**
      * 新增分类
+     *
      * @param cateInfo
      * @return
      */
     @PostMapping("addCate")
-    public AppResponse addCate(CateInfo cateInfo){
+    public AppResponse addCate(CateInfo cateInfo) {
         try {
-            AppResponse appResponse=cateService.addCate(cateInfo);
-            return  appResponse;
+            AppResponse appResponse = cateService.addCate(cateInfo);
+            return appResponse;
 
-        }catch (Exception e){
+        } catch (Exception e) {
             logger.error("add the cate false");
             System.out.println(e.toString());
-            throw  e;
+            throw e;
         }
     }
 
     /**
      * 获取分类
+     *
      * @return
      */
     @PostMapping("getCate")
-    public AppResponse getCate(){
+    public AppResponse getCate() {
         try {
-            Map<String,Object> map=cateService.listCate("0");
+            Map<String, Object> map = cateService.listCate("0");
             return AppResponse.success("查询成功", map);
-        }catch (Exception e){
+        } catch (Exception e) {
             return AppResponse.bizError(e.toString());
         }
     }
+
     @PostMapping("delectCateById")
-    public AppResponse delectCateById(String cateId){
-        try{
-            AppResponse appResponse=cateService.delectCateById(cateId);
+    public AppResponse delectCateById(String cateId) {
+        try {
+            AppResponse appResponse = cateService.delectCateById(cateId);
             return appResponse;
-        }catch (Exception e){
+        } catch (Exception e) {
             return AppResponse.bizError(e.toString());
         }
     }
+
     @PostMapping("updateCateById")
-    public AppResponse updateCateById(CateInfo cateInfo){
-        try{
-            AppResponse appResponse=cateService.updateCateById(cateInfo);
-            return  appResponse;
-        }catch (Exception e){
+    public AppResponse updateCateById(CateInfo cateInfo) {
+        try {
+            AppResponse appResponse = cateService.updateCateById(cateInfo);
+            return appResponse;
+        } catch (Exception e) {
             return AppResponse.bizError("修改失败");
         }
     }
 
     /**
      * 查询详情
+     *
      * @param cateId
      * @return
      */
     @PostMapping("findCateById")
-    public AppResponse findCateById(String cateId){
-        try{
-            AppResponse appResponse=cateService.findCateById(cateId);
-            return  appResponse;
-        }catch (Exception e){
+    public AppResponse findCateById(String cateId) {
+        try {
+            AppResponse appResponse = cateService.findCateById(cateId);
+            return appResponse;
+        } catch (Exception e) {
             return AppResponse.bizError("查询失败");
         }
     }

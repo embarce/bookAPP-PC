@@ -15,7 +15,7 @@ public interface ShopCartDao {
      * @param goodsId
      * @return
      */
-    int countByGoodsId(@Param("goodsId") String goodsId);
+    int countByGoodsId(@Param("goodsId") String goodsId, @Param("userId")String userId);
 
     /**
      * 新增

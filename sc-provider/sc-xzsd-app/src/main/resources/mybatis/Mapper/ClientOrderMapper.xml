@@ -77,7 +77,8 @@
     <resultMap id="cateList" type="com.xzsd.app.clientOrder.entity.ClientOrderVO">
         <id property="orderId" column="order_id"></id>
         <result property="orderStateId" column="order_status"></result>
-        <result property="orderAllCost" column="goodsNum"></result>
+        <result property="orderAllCost" column="price"></result>
+        <result property="orderAllGoodsCount" column="goodsNum"></result>
         <result property="version" column="version"></result>
         <collection property="goodsList" ofType="goodsList" javaType="java.util.List" column="order_id" select="getGoodsByCode"></collection>
     </resultMap>
@@ -226,6 +227,15 @@
         status = 0
         where good_id in
         <foreach item="item" index="index" collection="goodsIdList" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </update>
+
+    <update id="updateShoppingCar" parameterType="java.lang.String">
+        update t_shopping_car_table
+        set is_delete=1
+        where goods_id in
+        <foreach item="item" index="index" collection="goodsId" open="(" separator="," close=")">
             #{item}
         </foreach>
     </update>

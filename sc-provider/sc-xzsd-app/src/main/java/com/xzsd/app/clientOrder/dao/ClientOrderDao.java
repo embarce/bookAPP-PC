@@ -93,5 +93,12 @@ public interface ClientOrderDao {
      * @return
      */
     int addGoodsEvaluate(List<EvaluateDO> evaluateDOS);
+
+    /**
+     * 跟新库存接口
+     * @param goodsIdList
+     * @return
+     */
     int updateGoodsNumByGoodsList(@Param("goodsIdList")List<String> goodsIdList);
+    int updateShoppingCar(@Param("goodsId") List<String> goodsId);
 }

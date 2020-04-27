@@ -9,4 +9,10 @@
         where is_delete=0
         and customer_id=#{userId}
     </update>
+    <select id="countInvite" parameterType="java.lang.String" resultType="int">
+        SELECT count(*)
+        FROM t_store_table
+        where invitation=#{ind}
+        and is_delete=0
+    </select>
 </mapper>

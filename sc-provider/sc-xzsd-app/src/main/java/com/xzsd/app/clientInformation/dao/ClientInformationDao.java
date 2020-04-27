@@ -13,4 +13,11 @@ public interface ClientInformationDao {
      * @return
      */
     int updateClientInvite(@Param("ind") String ind, @Param("userId") String userId);
+
+    /**
+     * 检查邀请码
+     * @param ind
+     * @return
+     */
+    int countInvite(@Param("ind") String ind);
 }
