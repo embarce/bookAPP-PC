@@ -45,7 +45,7 @@ public class ClientGoodsController {
      * @param evaluateScoreDo
      * @return
      */
-    @PostMapping("getEvaluatesByPage")
+    @PostMapping("listGoodsEvaluatesByPage")
     public AppResponse getEvaluatesByPage(EvaluateScoreDo evaluateScoreDo) {
         try {
             AppResponse appResponse = clientGoodsService.getEvaluatesByPage(evaluateScoreDo);
@@ -56,6 +56,11 @@ public class ClientGoodsController {
         }
     }
 
+    /**
+     * 查询一级商品分类列接口
+     *
+     * @return
+     */
     @PostMapping("listGetClassGoods")
     public AppResponse listGetClassGoods() {
         try {
@@ -67,6 +72,12 @@ public class ClientGoodsController {
         }
     }
 
+    /**
+     * 查询二级商品分类以及商品接口
+     *
+     * @param cateId
+     * @return
+     */
     @PostMapping("listGoodsByCateId")
     public AppResponse listGoodsByCateId(String cateId) {
         try {

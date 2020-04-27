@@ -7,7 +7,7 @@
         FROM
             t_sys_user
         WHERE
-            user_code = "测试用户"
+            user_code = #{userId}
     </select>
     <select id="getUserIsCustomer" parameterType="java.lang.String" resultType="com.xzsd.app.userInformation.entity.AppUserInfoVO">
         SELECT

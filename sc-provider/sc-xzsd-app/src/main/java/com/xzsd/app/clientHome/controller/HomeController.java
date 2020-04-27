@@ -20,6 +20,11 @@ public class HomeController {
     private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
     @Resource
     private HomeService homeService;
+
+    /**
+     * 轮播图获取
+     * @return
+     */
     @PostMapping("listRotationCharHome")
     public AppResponse listRotationCharHome(){
         try {
@@ -30,6 +35,11 @@ public class HomeController {
             throw e;
         }
     }
+
+    /**
+     * 热门商品获取
+     * @return
+     */
     @PostMapping("listHotGoods")
     public AppResponse listHotGoods(){
         try {

@@ -42,6 +42,9 @@ public class RegisterService {
             //默认头像url
             userInfo.setPictureUrl("https://test-1300625833.cos.ap-guangzhou.myqcloud.com/https%3A/test-1300625833.cos.ap-guangzhou.myqcloud.com/ciao.jpg");
         }
+        if(userInfo.getInId()==null){
+            userInfo.setInId("0");
+        }
         //新增用户
         System.out.println(userInfo.getPictureUrl());
         int count = registerDao.clientRegister(userInfo);
