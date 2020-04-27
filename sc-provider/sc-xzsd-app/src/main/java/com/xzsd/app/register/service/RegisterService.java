@@ -42,6 +42,7 @@ public class RegisterService {
             //默认头像url
             userInfo.setPictureUrl("https://test-1300625833.cos.ap-guangzhou.myqcloud.com/https%3A/test-1300625833.cos.ap-guangzhou.myqcloud.com/ciao.jpg");
         }
+        //绑定默认店铺，默认地址中国
         if(userInfo.getInId()==null){
             userInfo.setInId("0");
         }
