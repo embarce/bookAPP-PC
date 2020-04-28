@@ -5,9 +5,21 @@ package com.xzsd.app.clientOrder.entity;
  * @date 2020/4/20 16:29
  */
 public class OrderDO {
+    /**
+     * 订单id
+     */
     private String orderId;
+    /**
+     * 订单状态
+     */
     private String orderStateId;
+    /**
+     * 版本号
+     */
     private String version;
+    /**
+     * 用户id
+     */
     private String userId;
 
     public String getUserId() {

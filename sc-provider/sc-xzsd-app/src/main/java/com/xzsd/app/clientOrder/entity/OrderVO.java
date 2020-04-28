@@ -33,7 +33,13 @@ public class OrderVO {
      * 收货校边店id
      */
     private String receiverNo;
+    /**
+     * 电话
+     */
     private String phone;
+    /**
+     * 门店编号
+     */
     private String storeId;
 
     public String getStoreId() {

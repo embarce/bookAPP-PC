@@ -5,13 +5,37 @@ package com.xzsd.pc.user.entity;
  * @date 2020/4/6 18:04
  */
 public class CustomerInfo {
+    /**
+     * 客户账号
+     */
     private String customerAccount;
+    /**
+     * 客户名
+     */
     private String customerName;
+    /**
+     * 性别
+     */
     private String sex;
+    /**
+     * 邮箱
+     */
     private String email;
+    /**
+     * 身份证
+     */
     private String IdCard;
+    /**
+     * 角色
+     */
     private String role;
+    /**
+     * 页面大小
+     */
     private int pageSize;
+    /**
+     * 用户编码
+     */
     private String userCode;
     /**
      * 页数

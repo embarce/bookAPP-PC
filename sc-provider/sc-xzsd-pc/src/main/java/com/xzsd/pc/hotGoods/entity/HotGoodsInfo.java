@@ -7,9 +7,21 @@ import java.util.Date;
  * @date 2020/4/9 9:57
  */
 public class HotGoodsInfo {
+    /**
+     * 热门编号
+     */
     private String hotGoodsCode;
+    /**
+     * 排序
+     */
     private int noId;
+    /**
+     * 商品id
+     */
     private String goodsId;
+    /**
+     * 数量
+     */
     private int num;
     /**
      * 作废标记 0为存在，1为作废

@@ -16,8 +16,17 @@ public class GoodsEvaluateInfo {
      * 用户编号
      */
     private String userCode;
+    /**
+     * 订单号
+     */
     private String orderId;
+    /**
+     * 评价list
+     */
     private List<EvaluateInfo> evaluateInfos;
+    /**
+     * 是否删除
+     */
     private int isDeleted;
     /**
      * 创建时间

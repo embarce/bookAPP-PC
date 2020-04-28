@@ -5,23 +5,77 @@ package com.xzsd.pc.goods.entity;
  * @date 2020/4/17 12:09
  */
 public class goodsVO {
+    /**
+     * 商品名
+     */
     private String goodsName;
+    /**
+     * 成本
+     */
     private String cost;
+    /**
+     * 价格
+     */
     private String price;
+    /**
+     * 销售量
+     */
     private String goodsSales;
+    /**
+     * 分类
+     */
     private String code;
+    /**
+     * 分类名
+     */
     private String cateName;
+    /**
+     * 广告词
+     */
     private String introduce;
+    /**
+     * 状态
+     */
     private String status;
+    /**
+     * 上架海时间
+     */
     private String goodsShelfTime;
+    /**
+     * 浏览量
+     */
     private String goodsViewsNum;
+    /**
+     * 商家名
+     */
     private String outsideName;
+    /**
+     * 图片
+     */
     private String picture;
+    /**
+     * 库存
+     */
     private String stock;
+    /**
+     * 书号
+     */
     private String bookId;
+    /**
+     * 商品id
+     */
     private String goodsId;
+    /**
+     * 版本号
+     */
     private String version;
+    /**
+     * 一级分类
+     */
     private String cate;
+    /**
+     * 介绍
+     */
     private String introduction;
 
     public String getIntroduction() {

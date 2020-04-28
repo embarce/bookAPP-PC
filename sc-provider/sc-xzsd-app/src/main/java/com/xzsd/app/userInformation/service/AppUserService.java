@@ -25,13 +25,14 @@ public class AppUserService {
         String userId = SecurityUtils.getCurrentUserId();
         int role = appUserDao.getUserRole(userId);
         AppUserInfoVO userInfo = new AppUserInfoVO();
+        //权限验证获取信息
         if (role == 3) {
             userInfo = appUserDao.getUserIsCustomer(userId);
         } else if (role == 1) {
             userInfo = appUserDao.getUserIsOwner(userId);
-        } else if(role==2){
+        } else if (role == 2) {
             userInfo = appUserDao.getUserIsDriver(userId);
-        }else if(role==0){
+        } else if (role == 0) {
             return AppResponse.success("非使用角色");
         }
         if (userInfo == null) {
@@ -40,17 +41,18 @@ public class AppUserService {
             return AppResponse.success("查询成功", userInfo);
         }
     }
+
     @Transactional(rollbackFor = Exception.class)
-    public AppResponse updateUserPassword(String userPassword,String userNewPassword){
+    public AppResponse updateUserPassword(String userPassword, String userNewPassword) {
         String userId = SecurityUtils.getCurrentUserId();
         BCryptPasswordEncoder bcryptPasswordEncoder = new BCryptPasswordEncoder();
         //进行比较
-        boolean flag = bcryptPasswordEncoder.matches(userPassword,appUserDao.getPassword(userId));
-        if(flag==true){
-            userNewPassword= PasswordUtils.generatePassword(userPassword);
-            int num=appUserDao.updateUserPassword(userId,userNewPassword);
-            return AppResponse.success("成功",flag);
-        }else {
+        boolean flag = bcryptPasswordEncoder.matches(userPassword, appUserDao.getPassword(userId));
+        if (flag == true) {
+            userNewPassword = PasswordUtils.generatePassword(userPassword);
+            int num = appUserDao.updateUserPassword(userId, userNewPassword);
+            return AppResponse.success("成功", flag);
+        } else {
             return AppResponse.bizError("密码不一致");
         }
     }

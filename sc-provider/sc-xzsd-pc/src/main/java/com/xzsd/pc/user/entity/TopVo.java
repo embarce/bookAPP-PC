@@ -5,9 +5,21 @@ package com.xzsd.pc.user.entity;
  * @date 2020/4/17 9:41
  */
 public class TopVo {
+    /**
+     * 用户名
+     */
     private String userName;
+    /**
+     * 头像路径
+     */
     private String userImage;
+    /**
+     * 用户id
+     */
     private String userId;
+    /**
+     * 角色
+     */
     private String role;
 
     public String getUserName() {

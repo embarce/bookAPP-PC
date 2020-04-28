@@ -7,9 +7,11 @@ package com.xzsd.app.clientHome.entity;
 public class HomeCrossImageVO {
     /**
      * 轮播图片路径
-     * 商品编号
      */
     private String slideshowPath;
+    /**
+     * 商品编号
+     */
     private String goodsId;
 
     public String getSlideshowPath() {

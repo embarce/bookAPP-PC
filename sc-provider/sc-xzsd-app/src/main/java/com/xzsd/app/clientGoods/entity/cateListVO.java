@@ -7,8 +7,17 @@ import java.util.List;
  * @date 2020/4/19 17:26
  */
 public class cateListVO {
+    /**
+     * 节点头id
+     */
     private String id;
+    /**
+     * 分类名称
+     */
     private String classify;
+    /**
+     * 商品信息
+     */
     private List<goodsCateVO> goodsList;
 
     public String getId() {

@@ -6,12 +6,24 @@ package com.xzsd.pc.hotGoods.entity;
  */
 public class HotGoodsDelitVO {
     /**
-     * 详情返回类
+     * 热门数
      */
     private String hotGoodsNum;
+    /**
+     * 商品id
+     */
     private String goodsId;
+    /**
+     * 商品名
+     */
     private String goodsName;
+    /**
+     * 热门编号
+     */
     private String hotGoodsId;
+    /**
+     * 版本号
+     */
     private String version;
 
     public String getHotGoodsNum() {

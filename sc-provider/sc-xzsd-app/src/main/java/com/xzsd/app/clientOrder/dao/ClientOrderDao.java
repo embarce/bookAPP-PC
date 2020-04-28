@@ -100,5 +100,14 @@ public interface ClientOrderDao {
      * @return
      */
     int updateGoodsNumByGoodsList(@Param("goodsIdList")List<String> goodsIdList);
+
+    /**
+     * 清空购物车
+     * @param goodsId
+     * @param userId
+     * @return
+     */
     int updateShoppingCar(@Param("goodsId") List<String> goodsId,@Param("userId")String userId);
+    List<GoodsScoreInfo> getGoodsCountByGoodsId(@Param("goodsId")List<String> goodsId);
+    int updateGoodsScore(List<GoodsScoreDO> goodsScoreDO);
 }

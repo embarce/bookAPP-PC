@@ -52,6 +52,9 @@ public class UserInfo {
      * 角色
      */
     private int role;
+    /**
+     * 邀请码
+     */
     private String inId;
     /**
      * 备注

@@ -8,7 +8,8 @@
         <result property="userId" column="user_code"></result>
         <result property="userName" column="user_name"></result>
         <result property="phone" column="phone"></result>
-        <result property="orderAllCost" column="goodsNum"></result>
+        <result property="orderAllGoodsCount" column="goodsNum"></result>
+        <result property="orderAllCost" column="price"></result>
         <result property="version" column="version"></result>
         <collection property="goodsList" ofType="goodsList" javaType="java.util.List" column="order_id" select="getGoodsByCode"></collection>
     </resultMap>
@@ -19,6 +20,8 @@
                     order_status,
                     c.user_code,
                     c.user_name,
+                    a.goodsNum,
+                    a.price,
                     c.phone
                 FROM
                     t_goods_order_table a,
@@ -72,7 +75,8 @@
         <result property="userId" column="user_code"></result>
         <result property="userName" column="user_name"></result>
         <result property="phone" column="phone"></result>
-        <result property="orderAllCost" column="goodsNum"></result>
+        <result property="orderAllCost" column="price"></result>
+        <result property="orderAllGoodsCount" column="goodsNum"></result>
         <result property="version" column="version"></result>
         <result property="storeName" column="store_name"></result>
         <result property="address" column="stroe_address"></result>
@@ -88,7 +92,9 @@
             c.user_name,
             c.phone,
             b.store_name ,
-            b.stroe_address ,
+            b.stroe_address,
+            a.goodsNum,
+            a.price,
             a.pay_time
         FROM
             t_goods_order_table a,
@@ -120,6 +126,7 @@
                 and c.order_id=#{order_id}
                 ORDER BY b.change_time
      </select>
+<!--    店长的司机端-->
     <select id="listManangerDrivers" parameterType="java.lang.String" resultType="com.xzsd.app.clientInformation.entity.DriverInfo">
         select
          b.user_name userName,
@@ -133,6 +140,7 @@
         and a.county_no=c.county_no
         and c.driver_id=b.user_code
     </select>
+<!--    司机的门店端-->
     <select id="listDriverStores" parameterType="java.lang.String" resultType="com.xzsd.app.clientInformation.entity.StoreInfo">
         SELECT
             b.stroe_no storeId,

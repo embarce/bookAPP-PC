@@ -7,14 +7,23 @@ package com.xzsd.app.clientGoods.entity;
 public class ClientGoodsEvaluatesVO {
     /**
      * 用户账号
-     * 评价内容
-     * 商品等级(0-5表示0-5颗星)
-     * 评价时间
      */
     private String userAcct;
+    /**
+     * 评价内容
+     */
     private String evaluateContent;
+    /**
+     * 商品等级(0-5表示0-5颗星)
+     */
     private String evaluateScore;
+    /**
+     * 评价时间
+     */
     private String createTime;
+    /**
+     * 评价图片路径
+     */
     private String imagePath;
 
     public String getUserAcct() {

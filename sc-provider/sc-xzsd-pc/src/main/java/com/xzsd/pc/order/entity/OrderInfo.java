@@ -8,14 +8,6 @@ import java.util.Date;
  */
 public class OrderInfo {
     /**
-     * order_id
-     * goods_Id
-     * price
-     * user_id
-     * num
-     * id
-     */
-    /**
      * 订单号
      */
     private String orderId;

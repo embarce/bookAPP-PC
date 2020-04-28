@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.xzsd.app.clientShopCart.dao.ShopCartDao">
+<!--    检查购物车-->
     <select id="countByGoodsId" parameterType="java.lang.String" resultType="int">
         select count(*)
         from t_shopping_car_table
@@ -8,6 +9,7 @@
         and user_id=#{userId}
         and is_delete=0
     </select>
+<!--    新增购物车-->
     <insert id="addShopCart" parameterType="com.xzsd.app.clientShopCart.entity.ShopCartInfo">
         insert into t_shopping_car_table
         (
@@ -32,6 +34,7 @@
         #{price}
         )
     </insert>
+<!--    商品购物车查询-->
     <select id="listShoppingCarts" parameterType="java.lang.String" resultType="com.xzsd.app.clientShopCart.entity.ShopCartVO">
         SELECT
             b.goods_name goodsName,
@@ -48,6 +51,7 @@
             AND a.user_id = #{userCode}
             AND a.goods_id = b.good_id
     </select>
+<!--    跟新购物车-->
     <update id="updateShoppingCart" parameterType="com.xzsd.app.clientShopCart.entity.ShopCartInfo">
         update t_shopping_car_table
         set
@@ -57,6 +61,7 @@
         change_time=now()
         where shopping_car_id=#{shoppingCartCode}
     </update>
+<!--    删除购物车-->
     <update id="deleteShoppingCart" parameterType="java.lang.String">
         update t_shopping_car_table
         set
@@ -69,6 +74,7 @@
             #{item}
         </foreach>
     </update>
+<!--    获取价格-->
     <select id="getPrice" parameterType="java.lang.String" resultType="java.lang.String">
         select
             price

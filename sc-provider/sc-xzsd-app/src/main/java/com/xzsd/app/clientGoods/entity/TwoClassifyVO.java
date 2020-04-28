@@ -7,8 +7,17 @@ import java.util.List;
  * @date 2020/4/16 16:50
  */
 public class TwoClassifyVO {
+    /**
+     * 分类id
+     */
     private String classifyId;
+    /**
+     * 分类名称
+     */
     private String classifyName;
+    /**
+     * 商品信息
+     */
     private List<TwoClassifyGoodsVO> goodsList;
 
     public String getClassifyId() {

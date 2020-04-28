@@ -45,9 +45,9 @@ public class ShopCartController {
      * @return
      */
     @PostMapping("listShoppingCarts")
-    public AppResponse listShoppingCarts() {
+    public AppResponse listShoppingCartsByPage() {
         try {
-            return shopCartService.listShoppingCarts();
+            return shopCartService.listShoppingCartsByPage();
         } catch (Exception e) {
             logger.error("查询失败", e);
             throw e;

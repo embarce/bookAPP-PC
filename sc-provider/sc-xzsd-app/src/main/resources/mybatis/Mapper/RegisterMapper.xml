@@ -43,7 +43,7 @@
            3
             )
     </insert>
-
+<!--新增客户-->
     <insert id="addCustomer" parameterType="java.lang.String">
         insert into t_customer_info_table
         (customer_id,

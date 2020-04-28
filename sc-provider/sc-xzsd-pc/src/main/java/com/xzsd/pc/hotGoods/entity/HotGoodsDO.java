@@ -5,10 +5,25 @@ package com.xzsd.pc.hotGoods.entity;
  * @date 2020/4/13 9:10
  */
 public class HotGoodsDO {
+    /**
+     * 热门id
+     */
     private String hotGoodsId;
+    /**
+     * 排序
+     */
     private int noId;
+    /**
+     * 商品编号
+     */
     private String goodsId;
+    /**
+     * 用户id
+     */
     private String userId;
+    /**
+     * 版本号
+     */
     private String version;
 
     public int getNoId() {

@@ -7,23 +7,23 @@ package com.xzsd.pc.hotGoods.entity;
 public class ChoseHotsGoodsVO {
     /**
      * 商品编号
-     *
-     *
-     * 商品名称
-     *
-     *
-     * 商品状态
-     *
-     *
-     * 一级分类
-     *
-     *
-     * 二级分类
      */
     private String goodsId;
+    /**
+     * 商品名称
+     */
     private String goodsName;
+    /**
+     * 商品状态
+     */
     private String status;
+    /**
+     * 一级分类
+     */
     private String cateP;
+    /**
+     * 二级分类
+     */
     private String cate;
 
     public String getGoodsId() {

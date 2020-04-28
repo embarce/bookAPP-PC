@@ -19,12 +19,14 @@ public class SecurityUser extends User {
     private String id;
 
     private String name;
+    private String role;
 
 
     public SecurityUser(String id, String username, String name, String password, Collection<? extends GrantedAuthority> authorities) {
         super(username, password, authorities);
         this.id = id;
         this.name = name;
+        this.role=role;
     }
 
 

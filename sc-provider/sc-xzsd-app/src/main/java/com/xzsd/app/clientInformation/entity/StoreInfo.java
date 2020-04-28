@@ -5,10 +5,25 @@ package com.xzsd.app.clientInformation.entity;
  * @date 2020/4/21 16:31
  */
 public class StoreInfo {
+    /**
+     * 门店id
+     */
     private String storeId;
+    /**
+     * 门店名称
+     */
     private String storeName;
+    /**
+     * 详细地址
+     */
     private String address;
+    /**
+     * 用户名称
+     */
     private String userName;
+    /**
+     * 电话
+     */
     private String phone;
 
     public String getStoreId() {

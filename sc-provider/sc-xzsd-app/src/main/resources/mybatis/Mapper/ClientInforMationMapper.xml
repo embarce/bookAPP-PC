@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.xzsd.app.clientInformation.dao.ClientInformationDao">
+<!--    更改邀请码-->
     <update id="updateClientInvite" parameterType="java.lang.String">
         update t_customer_info_table
         set in_id=#{ind},
@@ -9,6 +10,7 @@
         where is_delete=0
         and customer_id=#{userId}
     </update>
+<!--    查询是否存在邀请码-->
     <select id="countInvite" parameterType="java.lang.String" resultType="int">
         SELECT count(*)
         FROM t_store_table

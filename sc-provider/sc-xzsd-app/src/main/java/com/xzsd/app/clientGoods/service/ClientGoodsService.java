@@ -28,20 +28,6 @@ public class ClientGoodsService {
     public AppResponse getGoods(String goodsId) {
         //获取商品详情
         ClientGoodsVO goodsInfo = clientGoodsDao.getGoods(goodsId);
-        //准备计算商品的评分
-        GoodsScoreInfo goodsScoreInfo=clientGoodsDao.getGoodsScoreByGoodsId(goodsId);
-        if(goodsScoreInfo.getGoodsSum()==null){
-            goodsScoreInfo.setGoodsSum("0");
-        }
-        float goodsSum=Float.valueOf(goodsScoreInfo.getGoodsSum());
-        int goodsNum=Integer.valueOf(goodsScoreInfo.getGoodsCount());
-        float goodsAve=goodsSum/goodsNum;
-        if(goodsNum!=0){
-            String goodsScore=String.valueOf(goodsAve);
-            goodsInfo.setGoodsScore(goodsScore);
-        }else {
-            goodsInfo.setGoodsScore("暂时没有评分");
-        }
         if (goodsInfo == null) {
             return AppResponse.bizError("查询失败");
         } else {

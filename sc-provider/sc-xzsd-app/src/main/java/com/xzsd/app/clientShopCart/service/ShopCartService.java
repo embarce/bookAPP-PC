@@ -1,5 +1,6 @@
 package com.xzsd.app.clientShopCart.service;
 
+import com.neusoft.core.page.PageUtils;
 import com.neusoft.core.restful.AppResponse;
 import com.neusoft.security.client.utils.SecurityUtils;
 import com.neusoft.util.StringUtil;
@@ -30,8 +31,8 @@ public class ShopCartService {
      */
     @Transactional(rollbackFor = Exception.class)
     public AppResponse addShopCart(ShopCartInfo shopCartInfo) {
-        String userId=SecurityUtils.getCurrentUserId();
-        int count = shopCartDao.countByGoodsId(shopCartInfo.getGoodsId(),userId);
+        String userId = SecurityUtils.getCurrentUserId();
+        int count = shopCartDao.countByGoodsId(shopCartInfo.getGoodsId(), userId);
         if (0 == count) {
             shopCartInfo.setShoppingCartCode(StringUtil.getCommonCode(2));
             shopCartInfo.setUserCode(SecurityUtils.getCurrentUserId());
@@ -52,13 +53,9 @@ public class ShopCartService {
      *
      * @return
      */
-    public AppResponse listShoppingCarts() {
+    public AppResponse listShoppingCartsByPage() {
         List<ShopCartVO> list = shopCartDao.listShoppingCarts(SecurityUtils.getCurrentUserId());
-        if (null != list) {
-            return AppResponse.success("查询成功", list);
-        } else {
-            return AppResponse.bizError("查询失败");
-        }
+        return AppResponse.success("查询成功", PageUtils.getPageInfo(list));
     }
 
     /**

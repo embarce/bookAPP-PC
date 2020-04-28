@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.xzsd.app.userInformation.dao.AppUserDao">
+<!--    获取角色-->
     <select id="getUserRole" parameterType="java.lang.String" resultType="int">
         SELECT
             role
@@ -9,6 +10,7 @@
         WHERE
             user_code = #{userId}
     </select>
+<!--    用户信息获取-->
     <select id="getUserIsCustomer" parameterType="java.lang.String" resultType="com.xzsd.app.userInformation.entity.AppUserInfoVO">
         SELECT
             a.user_name userName,
@@ -28,7 +30,7 @@
             a.user_code=c.customer_id and b.county_no=d.id and c.in_id=b.invitation
             and a.user_code=#{userId}
     </select>
-
+<!--司机信息获取-->
     <select id="getUserIsDriver" parameterType="java.lang.String" resultType="com.xzsd.app.userInformation.entity.AppUserInfoVO">
         SELECT
             a.user_name userName,
@@ -53,7 +55,7 @@
             AND c.store_id = b.invitation
             AND a.user_code = #{userId}
     </select>
-
+<!--店长信息获取-->
     <select id="getUserIsOwner" parameterType="java.lang.String" resultType="com.xzsd.app.userInformation.entity.AppUserInfoVO">
         SELECT
             a.user_name userName,
@@ -76,11 +78,13 @@
             AND b.county_no = d.id
             AND a.user_code = #{userId}
     </select>
+<!--    获取密码-->
     <select id="getPassword" parameterType="java.lang.String" resultType="java.lang.String">
         select user_pwd
         from t_sys_user
         where user_code = #{userId}
     </select>
+<!--    更新密码-->
     <update id="updateUserPassword" parameterType="java.lang.String">
         update t_sys_user
         set user_pwd=#{userNewPassword},

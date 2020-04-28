@@ -7,9 +7,11 @@ package com.xzsd.app.clientGoods.entity;
 public class ListOneGoodsClassifyVO {
     /**
      * 一级商品分类编号
-     * 一级商品分类名称
      */
     private String classifyId;
+    /**
+     * 一级商品分类名称
+     */
     private String classifyName;
 
     public String getClassifyId() {

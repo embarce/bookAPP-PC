@@ -7,13 +7,37 @@ import java.util.Date;
  * @date 2020/4/21 10:14
  */
 public class EvaluateDO {
+    /**
+     * 订单id
+     */
     private String orderId;
+    /**
+     * 用户id
+     */
     private String userId;
+    /**
+     * 商品id
+     */
     private String goodsId;
+    /**
+     * 文本
+     */
     private String txt;
+    /**
+     * 等级
+     */
     private String level;
+    /**
+     * 图片
+     */
     private String image;
+    /**
+     * 是否删除
+     */
     private int isDeleted;
+    /**
+     * 评价编号
+     */
     private String appraiseId;
     /**
      * 创建时间

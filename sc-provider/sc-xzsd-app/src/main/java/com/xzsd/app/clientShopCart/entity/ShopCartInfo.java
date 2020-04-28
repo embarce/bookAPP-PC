@@ -30,12 +30,33 @@ public class ShopCartInfo {
      * 购物车编号
      */
     private String shoppingCartCode;
+    /**
+     * 创建时间
+     */
     private String createTime;
+    /**
+     * 更改名称
+     */
     private String changeName;
+    /**
+     * 是否删除
+     */
     private String isDelete;
+    /**
+     * 修改时间
+     */
     private String changeTime;
+    /**
+     * 版本号
+     */
     private String version;
+    /**
+     * 创建名称
+     */
     private String createName;
+    /**
+     * 价格
+     */
     private String price;
 
     public String getPrice() {

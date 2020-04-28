@@ -7,33 +7,40 @@ package com.xzsd.app.clientGoods.entity;
 public class ClientGoodsVO {
     /**
      * 书名
-     * 书号
-     * 商品介绍
-     * 在售价
-     * 商品图片路径
-     * 商品评价等级
-     * 作者
-     * 出版社
-     * 门店名称（从个人信息中取）
      */
     private String goodsName;
+    /**
+     * 书号
+     */
     private String isbn;
+    /**
+     * 商品介绍
+     */
     private String goodsDescribe;
+    /**
+     * 商品售价
+     */
     private String goodsPrice;
+    /**
+     * 图片路径
+     */
     private String goodsImagePath;
+    /**
+     * 商品评分
+     */
     private String goodsEvaluateScore;
+    /**
+     * 作者
+     */
     private String goodsAuthor;
+    /**
+     * 出版社
+     */
     private String goodsPress;
+    /**
+     * 门店名称（个人信息取）
+     */
     private String storeName;
-    private String goodsScore;
-
-    public String getGoodsScore() {
-        return goodsScore;
-    }
-
-    public void setGoodsScore(String goodsScore) {
-        this.goodsScore = goodsScore;
-    }
 
     public String getGoodsName() {
         return goodsName;

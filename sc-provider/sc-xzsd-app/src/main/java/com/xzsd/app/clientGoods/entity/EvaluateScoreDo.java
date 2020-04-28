@@ -5,7 +5,13 @@ package com.xzsd.app.clientGoods.entity;
  * @date 2020/4/16 16:21
  */
 public class EvaluateScoreDo {
+    /**
+     * 商品id
+     */
     private String goodsId;
+    /**
+     * 评价等级
+     */
     private String evaluateScore;
 
     public String getGoodsId() {

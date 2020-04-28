@@ -1,4 +1,4 @@
-package com.xzsd.app.clientGoods.entity;
+package com.xzsd.app.clientOrder.entity;
 
 /**
  * @author Embrace

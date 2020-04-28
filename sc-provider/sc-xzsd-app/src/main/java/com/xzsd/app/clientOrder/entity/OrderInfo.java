@@ -8,14 +8,6 @@ import java.util.Date;
  */
 public class OrderInfo {
     /**
-     * order_id
-     * goods_Id
-     * price
-     * user_id
-     * num
-     * id
-     */
-    /**
      * 订单号
      */
     private String orderId;
@@ -65,27 +57,32 @@ public class OrderInfo {
      */
     private String version;
     /**
-     * order_id
-     * is_deleted
-     * create_by
-     * gmt_create
-     * change_name
-     * change_time
-     * version
-     * user_id
-     * shipping_user
-     * order_status
-     * receiver_no
-     * pay_time
-     * price
-     * @return
+     * 用户id
      */
     private String userId;
+    /**
+     * 下单人
+     */
     private String shippingUser;
+    /**
+     * 门店id
+     */
     private String storeId;
+    /**
+     * 商品list
+     */
     private String goodsIdList;
+    /**
+     * 商品价格list
+     */
     private String goodsPriceList;
+    /**
+     * 数量list
+     */
     private String goodsNumList;
+    /**
+     * 电话
+     */
     private String phone;
     private double unitPrice;
     private int num;

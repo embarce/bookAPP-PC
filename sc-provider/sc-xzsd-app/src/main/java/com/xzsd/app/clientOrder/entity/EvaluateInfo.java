@@ -5,9 +5,21 @@ package com.xzsd.app.clientOrder.entity;
  * @date 2020/4/21 10:02
  */
 public class EvaluateInfo {
+    /**
+     * 商品id
+     */
     private String goodsId;
+    /**
+     * 评价内容
+     */
     private String evaluateContent;
+    /**
+     * 评价等级
+     */
     private String evaluateScore;
+    /**
+     * 图片路径
+     */
     private String imageUrlList;
 
     public String getGoodsId() {

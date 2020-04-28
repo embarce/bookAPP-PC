@@ -7,13 +7,19 @@ package com.xzsd.app.clientHome.entity;
 public class HomeHotGoodsVO {
     /**
      * 商品编号
-     * 商品名称
-     * 商品图片路径
-     * 商品价格
      */
     private String goodsId;
+    /**
+     * 商品名称
+     */
     private String goodsName;
+    /**
+     * 商品图片路径
+     */
     private String goodsImagePath;
+    /**
+     * 商品价格
+     */
     private String goodsPrice;
 
     public String getGoodsId() {

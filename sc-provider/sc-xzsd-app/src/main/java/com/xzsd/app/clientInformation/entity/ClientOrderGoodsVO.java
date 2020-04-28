@@ -5,11 +5,29 @@ package com.xzsd.app.clientInformation.entity;
  * @date 2020/4/20 11:06
  */
 public class ClientOrderGoodsVO {
+    /**
+     * 商品名称
+     */
     private String goodsName;
+    /**
+     * 商品图片路径
+     */
     private String goodsImagePath;
+    /**
+     * 商品介绍
+     */
     private String goodsDescribe;
+    /**
+     * 商品价格
+     */
     private String goodsPrice;
+    /**
+     * 商品数量
+     */
     private String cartGoodsCount;
+    /**
+     * 商品id
+     */
     private String goodsId;
     public String getGoodsName() {
         return goodsName;

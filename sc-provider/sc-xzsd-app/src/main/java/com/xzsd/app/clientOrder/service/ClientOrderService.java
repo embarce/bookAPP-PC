@@ -31,19 +31,22 @@ public class ClientOrderService {
      */
     @Transactional(rollbackFor = Exception.class)
     public AppResponse addOrder(OrderInfo orderInfo) {
-        int storeId=Integer.valueOf(orderInfo.getStoreId());
-        if(storeId==0){
+        int storeId = Integer.valueOf(orderInfo.getStoreId());
+        //验证邀请码是否有绑定
+        if (storeId == 0) {
             return AppResponse.bizError("没有绑定邀请码，请前往绑定邀请码");
         }
         orderInfo.setCreateBy(SecurityUtils.getCurrentUserId());
         String orderId = StringUtil.getCommonCode(2);
         orderInfo.setOrderId(orderId);
+        //拆分数据
         List<String> goodsId = Arrays.asList(orderInfo.getGoodsIdList().split(","));
         List<String> goodsPrice = Arrays.asList(orderInfo.getGoodsPriceList().split(","));
         List<String> goodsNum = Arrays.asList(orderInfo.getGoodsNumList().split(","));
         List<OrderDetailsVO> orderInfoList = new ArrayList<>();
         orderInfo.setUserId(SecurityUtils.getCurrentUserId());
         orderInfo.setShippingUser(SecurityUtils.getCurrentUserId());
+        //封装到订单类且统计价格
         float sum = 0;
         int goodsNumSum = 0;
         for (int i = 0; i < goodsId.size(); i++) {
@@ -82,7 +85,7 @@ public class ClientOrderService {
         int goods = clientOrderDao.updateGoodsStock(orderInfoList);
         int num = clientOrderDao.addOrderDetail(orderInfoList);
         //清空购物车
-        int updateNum=clientOrderDao.updateShoppingCar(goodsId,SecurityUtils.getCurrentUserId());
+        int updateNum = clientOrderDao.updateShoppingCar(goodsId, SecurityUtils.getCurrentUserId());
         orderInfo.setPrice(sum);
         orderInfo.setGoodsNum(goodsNumSum);
         int count = clientOrderDao.addOrder(orderInfo);
@@ -153,12 +156,17 @@ public class ClientOrderService {
      */
     public AppResponse addGoodsEvaluate(GoodsEvaluateInfo goodsEvaluateInfo) {
         List<EvaluateDO> evaluateDOS = new ArrayList<>();
+        List<String> goodsList = new ArrayList<>();
+        //封装评价
         for (EvaluateInfo evaluateInfo : goodsEvaluateInfo.getEvaluateInfos()) {
             EvaluateDO evaluateDO = new EvaluateDO();
             evaluateDO.setAppraiseId(StringUtil.getCommonCode(2));
             evaluateDO.setGoodsId(evaluateInfo.getGoodsId());
+            //封装商品id
+            goodsList.add(evaluateInfo.getGoodsId());
             evaluateDO.setTxt(evaluateInfo.getEvaluateContent());
             evaluateDO.setImage(evaluateInfo.getImageUrlList());
+            //默认好评
             if (evaluateInfo.getEvaluateScore() == null) {
                 evaluateInfo.setEvaluateScore("5");
             }
@@ -168,6 +176,23 @@ public class ClientOrderService {
             evaluateDOS.add(evaluateDO);
         }
         int count = clientOrderDao.addGoodsEvaluate(evaluateDOS);
+        List<GoodsScoreInfo> goodsScoreInfoList = clientOrderDao.getGoodsCountByGoodsId(goodsList);
+        List<Float> Score = new ArrayList<>();
+        //封装评价等级
+        for (GoodsScoreInfo scoreInfo : goodsScoreInfoList) {
+            int goodsNum = Integer.valueOf(scoreInfo.getGoodsCount());
+            int goodsSumNum = Integer.valueOf(scoreInfo.getGoodsSum());
+            Score.add((float) (goodsSumNum / goodsNum));
+        }
+        List<GoodsScoreDO> goodsScoreDOList = new ArrayList<>();
+        for (int i = 0; i < goodsList.size(); i++) {
+            GoodsScoreDO goodsScoreDO = new GoodsScoreDO();
+            goodsScoreDO.setGoodsId(goodsList.get(i));
+            goodsScoreDO.setScore(Score.get(i));
+            goodsScoreDOList.add(goodsScoreDO);
+        }
+        //跟新评分
+        int num = clientOrderDao.updateGoodsScore(goodsScoreDOList);
         if (count == 0) {
             return AppResponse.bizError("评价失败");
         } else {

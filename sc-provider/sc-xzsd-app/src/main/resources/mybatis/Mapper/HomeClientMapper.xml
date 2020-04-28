@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.xzsd.app.clientHome.dao.HomeDao">
+<!--    轮播图-->
     <select id="listRotationCharHome" resultType="com.xzsd.app.clientHome.entity.HomeCrossImageVO">
         SELECT
             image_url slideshowPath,
@@ -12,6 +13,7 @@
             AND is_delete =0
             ORDER BY num
     </select>
+<!--    获取热门-->
     <select id="listHotGoods" resultType="com.xzsd.app.clientHome.entity.HomeHotGoodsVO">
         SELECT
             a.goods_id goodsId,
@@ -30,6 +32,7 @@
             a.no_id
             LIMIT #{showNum}
     </select>
+<!--    获取展示数量-->
     <select id="showTheNum" resultType="int">
         select
          word

@@ -5,7 +5,13 @@ package com.xzsd.app.clientInformation.entity;
  * @date 2020/4/21 16:07
  */
 public class DriverInfo {
+    /**
+     * 用户名
+     */
     private String userName;
+    /**
+     * 电话
+     */
     private String phone;
 
     public String getUserName() {
