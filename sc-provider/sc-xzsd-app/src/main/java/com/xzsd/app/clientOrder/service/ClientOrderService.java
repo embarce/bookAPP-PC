@@ -77,7 +77,8 @@ public class ClientOrderService {
         }
         int goods = clientOrderDao.updateGoodsStock(orderInfoList);
         int num = clientOrderDao.addOrderDetail(orderInfoList);
-        int updateNum=clientOrderDao.updateShoppingCar(goodsId);
+        //清空购物车
+        int updateNum=clientOrderDao.updateShoppingCar(goodsId,SecurityUtils.getCurrentUserId());
         orderInfo.setPrice(sum);
         orderInfo.setGoodsNum(goodsNumSum);
         int count = clientOrderDao.addOrder(orderInfo);

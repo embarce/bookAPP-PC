@@ -234,7 +234,8 @@
     <update id="updateShoppingCar" parameterType="java.lang.String">
         update t_shopping_car_table
         set is_delete=1
-        where goods_id in
+        where user_id=#{userId}
+        and goods_id in
         <foreach item="item" index="index" collection="goodsId" open="(" separator="," close=")">
             #{item}
         </foreach>

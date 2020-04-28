@@ -100,5 +100,5 @@ public interface ClientOrderDao {
      * @return
      */
     int updateGoodsNumByGoodsList(@Param("goodsIdList")List<String> goodsIdList);
-    int updateShoppingCar(@Param("goodsId") List<String> goodsId);
+    int updateShoppingCar(@Param("goodsId") List<String> goodsId,@Param("userId")String userId);
 }
