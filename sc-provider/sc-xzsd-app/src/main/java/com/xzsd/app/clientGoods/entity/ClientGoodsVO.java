@@ -25,6 +25,15 @@ public class ClientGoodsVO {
     private String goodsAuthor;
     private String goodsPress;
     private String storeName;
+    private String goodsScore;
+
+    public String getGoodsScore() {
+        return goodsScore;
+    }
+
+    public void setGoodsScore(String goodsScore) {
+        this.goodsScore = goodsScore;
+    }
 
     public String getGoodsName() {
         return goodsName;

@@ -38,4 +38,5 @@ public interface ClientGoodsDao {
      * @return
      */
     List<cateListVO> listGoodsByCateId(@Param("cateId") String cateId);
+    GoodsScoreInfo getGoodsScoreByGoodsId(@Param("goodsId")String goodsId);
 }

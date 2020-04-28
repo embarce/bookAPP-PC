@@ -71,4 +71,15 @@
         and category = #{cate_id}
         order by category asc
     </select>
+    <select id="getGoodsScoreByGoodsId" parameterType="java.lang.String" resultType="com.xzsd.app.clientGoods.entity.GoodsScoreInfo">
+        SELECT
+            count(*) goodsCount,
+            sum( a.star_level ) goodsSum
+        FROM
+            t_appraise_table a,
+            t_goods_table b
+        WHERE
+            b.good_id = a.goods_id
+            AND b.good_id = #{goodsId}
+    </select>
 </mapper>

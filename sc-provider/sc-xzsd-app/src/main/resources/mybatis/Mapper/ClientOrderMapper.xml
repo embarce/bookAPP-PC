@@ -94,6 +94,9 @@
             t_goods_order_table
         WHERE
             user_id = #{userId}
+        <if test="orderStateId != null and orderStateId != ''">
+            and order_status=#{orderStateId}
+        </if>
     </select>
     <!--    查询该订单商品列表-->
     <select id="getGoodsByCode" parameterType="java.lang.String" resultType="com.xzsd.app.clientOrder.entity.ClientOrderGoodsVO">

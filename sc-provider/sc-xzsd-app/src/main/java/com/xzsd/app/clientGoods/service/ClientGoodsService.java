@@ -27,6 +27,19 @@ public class ClientGoodsService {
      */
     public AppResponse getGoods(String goodsId) {
         ClientGoodsVO goodsInfo = clientGoodsDao.getGoods(goodsId);
+        GoodsScoreInfo goodsScoreInfo=clientGoodsDao.getGoodsScoreByGoodsId(goodsId);
+        if(goodsScoreInfo.getGoodsSum()==null){
+            goodsScoreInfo.setGoodsSum("0");
+        }
+        float goodsSum=Float.valueOf(goodsScoreInfo.getGoodsSum());
+        int goodsNum=Integer.valueOf(goodsScoreInfo.getGoodsCount());
+        float goodsAve=goodsSum/goodsNum;
+        if(goodsAve!=0){
+            String goodsScore=String.valueOf(goodsAve);
+            goodsInfo.setGoodsScore(goodsScore);
+        }else {
+            goodsInfo.setGoodsScore("暂时没有评分");
+        }
         if (goodsInfo == null) {
             return AppResponse.bizError("查询失败");
         } else {

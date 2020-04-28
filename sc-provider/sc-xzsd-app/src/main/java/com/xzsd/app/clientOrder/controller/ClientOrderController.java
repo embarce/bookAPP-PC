@@ -48,13 +48,13 @@ public class ClientOrderController {
     /**
      * 获取订单
      *
-     * @param orderStatus
+     * @param orderStateId
      * @return
      */
     @PostMapping("listOrder")
-    private AppResponse listOrder(String orderStatus) {
+    private AppResponse listOrder(String orderStateId) {
         try {
-            AppResponse appResponse = clientOrderService.listOrder(orderStatus);
+            AppResponse appResponse = clientOrderService.listOrder(orderStateId);
             return appResponse;
         } catch (Exception e) {
             logger.error("订单查询失败", e);
