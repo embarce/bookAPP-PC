@@ -26,7 +26,9 @@ public class ClientGoodsService {
      * @return
      */
     public AppResponse getGoods(String goodsId) {
+        //获取商品详情
         ClientGoodsVO goodsInfo = clientGoodsDao.getGoods(goodsId);
+        //准备计算商品的评分
         GoodsScoreInfo goodsScoreInfo=clientGoodsDao.getGoodsScoreByGoodsId(goodsId);
         if(goodsScoreInfo.getGoodsSum()==null){
             goodsScoreInfo.setGoodsSum("0");
@@ -34,7 +36,7 @@ public class ClientGoodsService {
         float goodsSum=Float.valueOf(goodsScoreInfo.getGoodsSum());
         int goodsNum=Integer.valueOf(goodsScoreInfo.getGoodsCount());
         float goodsAve=goodsSum/goodsNum;
-        if(goodsAve!=0){
+        if(goodsNum!=0){
             String goodsScore=String.valueOf(goodsAve);
             goodsInfo.setGoodsScore(goodsScore);
         }else {

@@ -162,7 +162,8 @@
             b.price goodsPrice,
             b.picture goodsImagePath,
             a.num cartGoodsCount,
-            b.good_id goodsId
+            b.good_id goodsId,
+            b.introduction goodsDescribe
         FROM
             t_goods_order_table_cp a,
             t_goods_table b

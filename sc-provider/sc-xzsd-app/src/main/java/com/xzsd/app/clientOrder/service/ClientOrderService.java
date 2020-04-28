@@ -31,6 +31,10 @@ public class ClientOrderService {
      */
     @Transactional(rollbackFor = Exception.class)
     public AppResponse addOrder(OrderInfo orderInfo) {
+        int storeId=Integer.valueOf(orderInfo.getStoreId());
+        if(storeId==0){
+            return AppResponse.bizError("没有绑定邀请码，请前往绑定邀请码");
+        }
         orderInfo.setCreateBy(SecurityUtils.getCurrentUserId());
         String orderId = StringUtil.getCommonCode(2);
         orderInfo.setOrderId(orderId);
@@ -70,7 +74,7 @@ public class ClientOrderService {
         }
         //返回库存不够的商品序号
         if (0 != listNum.size()) {
-            return AppResponse.success("新增失败库存不足", listNum);
+            return AppResponse.bizError("购买失败，库存不足");
         }
         if (0 != goodsIdList.size()) {
             clientOrderDao.updateGoodsNumByGoodsList(goodsIdList);
