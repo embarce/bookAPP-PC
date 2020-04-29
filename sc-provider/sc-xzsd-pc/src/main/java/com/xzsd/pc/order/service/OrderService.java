@@ -6,10 +6,7 @@ import com.neusoft.core.restful.AppResponse;
 import com.neusoft.security.client.utils.SecurityUtils;
 import com.neusoft.util.StringUtil;
 import com.xzsd.pc.order.dao.OredrDao;
-import com.xzsd.pc.order.entity.OrderDTO;
-import com.xzsd.pc.order.entity.OrderDetailsVO;
-import com.xzsd.pc.order.entity.OrderInfo;
-import com.xzsd.pc.order.entity.OrderVO;
+import com.xzsd.pc.order.entity.*;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -94,7 +91,7 @@ public class OrderService {
     }
 
     /**
-     * 订单各个状态修改 订单状态 0已下单，1已发货，2已取消，3已完成未评价，4已完成已评价
+     * 订单各个状态修改 订单状态  0已下单，1已取消，2已到货，3以取货  4已完成未评价，5已完成已评价
      *
      * @param orderId
      * @return
@@ -114,6 +111,7 @@ public class OrderService {
     @Transactional(rollbackFor = Exception.class)
     public AppResponse updateOrderStatus(String orderList, String versionList, String status) {
         String userId = SecurityUtils.getCurrentUserId();
+        int statue=Integer.valueOf(status);
         List<String> Olist = Arrays.asList(orderList.split(","));
         List<String> Vlist = Arrays.asList(versionList.split(","));
         List<OrderDTO> orderDTOList = new ArrayList<>();
@@ -127,6 +125,11 @@ public class OrderService {
                 orderDTO.setVersion(Vlist.get(i));
                 orderDTO.setLastModifiedBy(userId);
                 orderDTOList.add(orderDTO);
+            }
+            if(statue==1){
+                //取消订单返回库存
+                List<OrderNumVO> orderNumVOS=oredrDao.getGoodsNumByOrderId(Olist);
+                oredrDao.updateGoodsByGoodsId(orderNumVOS);
             }
             int count = oredrDao.updateOrderStatus(orderDTOList);
             if (count == 0) {

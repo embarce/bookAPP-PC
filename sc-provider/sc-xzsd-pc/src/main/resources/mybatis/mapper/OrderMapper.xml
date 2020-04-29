@@ -150,4 +150,29 @@
             and version=${orderDTO.version}
         </foreach >
     </update>
+
+    <select id="getGoodsNumByOrderId" parameterType="java.util.List" resultType="com.xzsd.pc.order.entity.OrderNumVO">
+            select
+            goods_Id goodsId,
+            sum(num) num
+            from  t_goods_order_table_cp
+            where order_id in
+            <foreach item="item" index="index" collection="orderId" open="(" separator="," close=")">
+                #{item}
+            </foreach>
+             GROUP BY goods_Id
+    </select>
+    <update id="updateGoodsByGoodsId" parameterType="java.util.List">
+        <selectKey resultType ="java.lang.Integer" keyProperty= "id"
+                   order= "AFTER">
+            SELECT LAST_INSERT_ID()
+        </selectKey >
+        <foreach collection="list" item="orderNumVOS" open="" close="" separator=";">
+            update t_goods_table
+            <set>
+                stock=stock+#{orderNumVOS.num}
+            </set>
+            where good_id = #{orderNumVOS.goodsId}
+        </foreach >
+    </update>
 </mapper>

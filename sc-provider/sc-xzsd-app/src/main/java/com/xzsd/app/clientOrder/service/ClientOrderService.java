@@ -31,9 +31,8 @@ public class ClientOrderService {
      */
     @Transactional(rollbackFor = Exception.class)
     public AppResponse addOrder(OrderInfo orderInfo) {
-        int storeId = Integer.valueOf(orderInfo.getStoreId());
         //验证邀请码是否有绑定
-        if (storeId == 0) {
+        if (orderInfo.getStoreId().equals("0")) {
             return AppResponse.bizError("没有绑定邀请码，请前往绑定邀请码");
         }
         orderInfo.setCreateBy(SecurityUtils.getCurrentUserId());
@@ -116,6 +115,12 @@ public class ClientOrderService {
      */
     public AppResponse updateOrderState(OrderDO orderDO) {
         orderDO.setUserId(SecurityUtils.getCurrentUserId());
+        int state = Integer.valueOf(orderDO.getOrderStateId());
+        if (1 == state) {
+            //库存返回
+            List<OrderNumVO> orderNumVOS = clientOrderDao.getGoodsNumByOrderId(orderDO.getOrderId());
+            clientOrderDao.updateGoodsByGoodsId(orderNumVOS);
+        }
         int num = clientOrderDao.updateOrderState(orderDO);
         if (0 == num) {
             return AppResponse.bizError("修改失败");
@@ -193,6 +198,7 @@ public class ClientOrderService {
         }
         //跟新评分
         int num = clientOrderDao.updateGoodsScore(goodsScoreDOList);
+        clientOrderDao.updateOrderStateForEve(goodsEvaluateInfo.getOrderId());
         if (count == 0) {
             return AppResponse.bizError("评价失败");
         } else {

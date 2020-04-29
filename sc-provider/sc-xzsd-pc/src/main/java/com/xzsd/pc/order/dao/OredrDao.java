@@ -1,10 +1,7 @@
 package com.xzsd.pc.order.dao;
 
 
-import com.xzsd.pc.order.entity.OrderDTO;
-import com.xzsd.pc.order.entity.OrderDetailsVO;
-import com.xzsd.pc.order.entity.OrderInfo;
-import com.xzsd.pc.order.entity.OrderVO;
+import com.xzsd.pc.order.entity.*;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -54,5 +51,18 @@ public interface OredrDao {
      */
       int updateOrderStatusById(@Param("listCode") List<String> listCode,@Param("userId")String userId,@Param("status")String status);
       int updateOrderStatus(List<OrderDTO> orderDTO);
+
+    /**
+     * 库存更新
+     * @param orderInfo
+     * @return
+     */
       int updateGoodsStock(List<OrderDetailsVO> orderInfo);
+    /**
+     * 库存返回
+     * @param orderNumVOS
+     * @return
+     */
+    int updateGoodsByGoodsId(List<OrderNumVO> orderNumVOS);
+    List<OrderNumVO> getGoodsNumByOrderId(@Param("orderId") List<String> orderId);
 }

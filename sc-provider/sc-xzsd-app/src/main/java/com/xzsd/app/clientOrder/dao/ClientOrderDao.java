@@ -109,5 +109,32 @@ public interface ClientOrderDao {
      */
     int updateShoppingCar(@Param("goodsId") List<String> goodsId,@Param("userId")String userId);
     List<GoodsScoreInfo> getGoodsCountByGoodsId(@Param("goodsId")List<String> goodsId);
+
+    /**
+     * 跟新评分
+     * @param goodsScoreDO
+     * @return
+     */
     int updateGoodsScore(List<GoodsScoreDO> goodsScoreDO);
+
+    /**
+     * 获取数量
+     * @param orderId
+     * @return
+     */
+    List<OrderNumVO> getGoodsNumByOrderId(@Param("orderId") String orderId);
+
+    /**
+     * 库存返回
+     * @param orderNumVOS
+     * @return
+     */
+    int updateGoodsByGoodsId(List<OrderNumVO> orderNumVOS);
+
+    /**
+     * 跟新评价后的订单状态
+     * @param orderId
+     * @return
+     */
+    int updateOrderStateForEve(@Param("orderId")String orderId);
 }

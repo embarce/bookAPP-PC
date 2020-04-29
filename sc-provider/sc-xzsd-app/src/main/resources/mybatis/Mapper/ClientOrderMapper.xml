@@ -142,7 +142,6 @@
         change_time=now()
         where is_deleted=0
         and order_id=#{orderId}
-        and version=#{version}
     </update>
 <!--    订单详情-->
     <select id="listOrderDeepen" parameterType="java.lang.String" resultType="com.xzsd.app.clientOrder.entity.ClientOrderVO">
@@ -277,5 +276,35 @@
             </set>
             where good_id = #{goodsScoreDOList.goodsId}
         </foreach >
+    </update>
+<!--    获取数量-->
+    <select id="getGoodsNumByOrderId" parameterType="java.lang.String" resultType="com.xzsd.app.clientOrder.entity.OrderNumVO">
+        SELECT
+        goods_Id goodsId,
+        num num
+        FROM `t_goods_order_table_cp`
+        where order_id=#{orderId}
+    </select>
+<!--    返回库存-->
+    <update id="updateGoodsByGoodsId" parameterType="java.util.List">
+        <selectKey resultType ="java.lang.Integer" keyProperty= "id"
+                   order= "AFTER">
+            SELECT LAST_INSERT_ID()
+        </selectKey >
+        <foreach collection="list" item="orderNumVOS" open="" close="" separator=";">
+            update t_goods_table
+            <set>
+                stock=stock+#{orderNumVOS.num}
+            </set>
+            where good_id = #{orderNumVOS.goodsId}
+        </foreach >
+    </update>
+    <!--    跟新状态-->
+    <update id="updateOrderStateForEve" parameterType="java.lang.String">
+        update t_goods_order_table
+        set
+        order_status=5
+        where is_deleted=0
+        and order_id=#{orderId}
     </update>
 </mapper>

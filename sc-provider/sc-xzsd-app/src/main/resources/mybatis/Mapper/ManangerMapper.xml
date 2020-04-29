@@ -22,7 +22,8 @@
                     c.user_name,
                     a.goodsNum,
                     a.price,
-                    c.phone
+                    c.phone,
+                    a.version
                 FROM
                     t_goods_order_table a,
                     t_store_table b,
@@ -65,7 +66,6 @@
         change_time=now()
         where is_deleted=0
         and order_id=#{orderId}
-        and version=#{version}
     </update>
 
     <!--映射-->
