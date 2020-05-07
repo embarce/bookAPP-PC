@@ -23,7 +23,8 @@
          create_by,
          gmt_create,
          version,
-         role
+         role,
+         pictureUrl
          )
         values
            (#{userAcct},
@@ -38,7 +39,8 @@
            #{userAcct},
            now(),
            0,
-           #{role}
+           #{role},
+           #{imageUrl}
             )
     </insert>
     <!--逻辑删除用户-->
@@ -121,7 +123,8 @@
             gmt_modified = now(),
             last_modified_by   = #{lastModifiedBy},
             user_pwd=#{userPwd},
-            version      = version + 1
+            version      = version + 1,
+            pictureUrl=#{imageUrl}
           where user_code = #{userId}
             and version = #{version}
             and is_deleted = 0

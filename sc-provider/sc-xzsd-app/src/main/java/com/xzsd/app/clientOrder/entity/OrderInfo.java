@@ -87,6 +87,15 @@ public class OrderInfo {
     private double unitPrice;
     private int num;
     private int goodsNum;
+    private String isShopping;
+
+    public String getIsShopping() {
+        return isShopping;
+    }
+
+    public void setIsShopping(String isShopping) {
+        this.isShopping = isShopping;
+    }
 
     public int getGoodsNum() {
         return goodsNum;

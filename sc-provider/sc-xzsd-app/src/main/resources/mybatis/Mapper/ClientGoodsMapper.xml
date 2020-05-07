@@ -16,6 +16,7 @@
             t_goods_table
         WHERE
             good_id =  #{goodsId}
+            and status=1
             AND is_delete =0
     </select>
 <!--    获取评价-->
@@ -46,6 +47,7 @@
             t_cate_table
         WHERE
             cate_id_parent =0
+            and is_delete =0
     </select>
     <!--映射-->
     <resultMap id="cateList" type="com.xzsd.app.clientGoods.entity.cateListVO">
@@ -72,6 +74,7 @@
         from t_goods_table
         where is_delete =0
         and category = #{cate_id}
+        and status=1
         order by category asc
     </select>
 </mapper>

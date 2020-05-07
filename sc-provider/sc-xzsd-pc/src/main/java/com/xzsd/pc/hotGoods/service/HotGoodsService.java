@@ -75,6 +75,10 @@ public class HotGoodsService {
         }
     }
 
+    /**
+     * 展示展示数量
+     * @return
+     */
     public AppResponse showTheNum() {
         int showNum = hotGoodsDao.showTheNum();
         return AppResponse.success("查询成功", showNum);

@@ -33,9 +33,21 @@ public class OrderVO {
      * 收货校边店id
      */
     private String receiverNo;
+    /**
+     * 电话
+     */
     private String phone;
+    /**
+     * 商店id
+     */
     private String storeId;
+    /**
+     * 版本号
+     */
     private String version;
+    /**
+     * 用户名
+     */
     private String userName;
 
     public String getUserName() {

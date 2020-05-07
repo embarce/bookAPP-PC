@@ -27,7 +27,7 @@ public class OrderInfo {
     /**
      * 订单状态；订单状态 0已下单，1已发货，2已取消，3已完成未评价，4已完成已评价
      */
-    private int orderStatus;
+    private String orderStatus;
     /**
      * 收货校边店id
      */
@@ -57,29 +57,37 @@ public class OrderInfo {
      */
     private String version;
     /**
-     * order_id
-     * is_deleted
-     * create_by
-     * gmt_create
-     * change_name
-     * change_time
-     * version
-     * user_id
-     * shipping_user
-     * order_status
-     * receiver_no
-     * pay_time
-     * price
-     * @return
+     * 用户id
      */
     private String userId;
+    /**
+     * 下单姓名
+     */
     private String shippingUser;
+    /**
+     * 店铺码
+     */
     private String receiver_no;
+    /**
+     * 商品信息list
+     */
     private String goodsIdList;
+    /**
+     * 商品加个list
+     */
     private String goodsPriceList;
+    /**
+     * 商品数量list
+     */
     private String goodsNumList;
+    /**
+     * 电话
+     */
     private String phone;
     private double unitPrice;
+    /**
+     * 数量
+     */
     private int num;
     public String getPhone() {
         return phone;
@@ -196,11 +204,11 @@ public class OrderInfo {
         this.payTime2 = payTime2;
     }
 
-    public int getOrderStatus() {
+    public String getOrderStatus() {
         return orderStatus;
     }
 
-    public void setOrderStatus(int orderStatus) {
+    public void setOrderStatus(String orderStatus) {
         this.orderStatus = orderStatus;
     }
 

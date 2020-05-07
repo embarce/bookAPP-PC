@@ -88,7 +88,7 @@
         JOIN t_sys_user b ON a.user_id = b.user_code
         where a.is_deleted = 0
         <if test="orderStatus != null and orderStatus != ''">
-            and a.order_status like concat('%', #{orderStatus}, '%')
+            and a.order_status = #{orderStatus}
         </if>
         <if test="orderId != null and orderId != ''">
             and a.order_id like concat('%', #{orderId}, '%')

@@ -10,6 +10,7 @@ import com.xzsd.app.clientInformation.entity.StoreInfo;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -29,7 +30,13 @@ public class ManangerService {
      */
     public AppResponse listOrder(String orderStateId) {
         String userId = SecurityUtils.getCurrentUserId();
-        List<ClientOrderVO> clientOrderVOS = manangerOrderDao.listOrder(orderStateId, userId);
+        List<ClientOrderVO> clientOrderVOS=new ArrayList<>();
+        if("4".equals(orderStateId)){
+            clientOrderVOS=manangerOrderDao.listOrderBy(userId);
+        }
+        else {
+            clientOrderVOS = manangerOrderDao.listOrder(orderStateId, userId);
+        }
         return AppResponse.success("查询成功", clientOrderVOS);
     }
 

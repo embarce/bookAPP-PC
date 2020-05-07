@@ -28,6 +28,9 @@ public class ClientGoodsService {
     public AppResponse getGoods(String goodsId) {
         //获取商品详情
         ClientGoodsVO goodsInfo = clientGoodsDao.getGoods(goodsId);
+        if(null==goodsInfo.getGoodsEvaluateScore()){
+            goodsInfo.setGoodsEvaluateScore("0");
+        }
         if (goodsInfo == null) {
             return AppResponse.bizError("查询失败");
         } else {

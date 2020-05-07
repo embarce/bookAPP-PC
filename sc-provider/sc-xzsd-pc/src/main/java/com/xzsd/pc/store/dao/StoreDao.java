@@ -10,9 +10,6 @@ import java.util.List;
 
 @Mapper
 public interface StoreDao {
-
-    int findStoreByStoreName(@Param("name") String name);
-
     /**
      * 查询营业执照
      *

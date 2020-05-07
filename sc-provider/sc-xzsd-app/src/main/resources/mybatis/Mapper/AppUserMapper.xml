@@ -52,7 +52,7 @@
         WHERE
             a.user_code = c.driver_id
             AND b.county_no = d.id
-            AND c.store_id = b.invitation
+            AND c.county_no = b.county_no
             AND a.user_code = #{userId}
     </select>
 <!--店长信息获取-->

@@ -28,6 +28,7 @@
         WHERE
             a.goods_id = b.good_id
             AND a.is_delete = 0
+            and b.status=1
         ORDER BY
             a.no_id
             LIMIT #{showNum}

@@ -10,14 +10,6 @@ import java.util.Date;
  */
 public class UserInfo {
     /**
-     * 页码
-     */
-    private int pageSize;
-    /**
-     * 页数
-     */
-    private int pageNum;
-    /**
      * 用户id
      */
     private String userId;
@@ -85,6 +77,9 @@ public class UserInfo {
      * 版本号
      */
     private String version;
+    /**
+     * 头像路径
+     */
     private String imageUrl;
 
     public String getImageUrl() {
@@ -93,22 +88,6 @@ public class UserInfo {
 
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
-    }
-
-    public int getPageSize() {
-        return pageSize;
-    }
-
-    public void setPageSize(int pageSize) {
-        this.pageSize = pageSize;
-    }
-
-    public int getPageNum() {
-        return pageNum;
-    }
-
-    public void setPageNum(int pageNum) {
-        this.pageNum = pageNum;
     }
 
     public String getUserId() {

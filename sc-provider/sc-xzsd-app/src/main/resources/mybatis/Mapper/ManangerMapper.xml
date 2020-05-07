@@ -36,6 +36,8 @@
                 <if test="orderStateId != null and orderStateId != ''">
                     and order_status = #{orderStateId}
                 </if>
+                ORDER BY
+                a.pay_time DESC
               </select>
             <!--    查询该订单商品列表-->
             <select id="getGoodsByCode" parameterType="java.lang.String" resultType="com.xzsd.app.clientInformation.entity.ClientOrderGoodsVO">
@@ -157,4 +159,61 @@
             AND a.county_no = b.county_no
             AND b.user_code = c.user_code
     </select>
+<!--查询已完成的接口-->
+    <!--映射-->
+    <resultMap id="oList" type="com.xzsd.app.clientInformation.entity.ClientOrderVO">
+        <id property="orderId" column="order_id"></id>
+        <result property="orderStateId" column="order_status"></result>
+        <result property="userId" column="user_code"></result>
+        <result property="userName" column="user_name"></result>
+        <result property="phone" column="phone"></result>
+        <result property="orderAllGoodsCount" column="goodsNum"></result>
+        <result property="orderAllCost" column="price"></result>
+        <result property="version" column="version"></result>
+        <collection property="goodsList" ofType="goodsList" javaType="java.util.List" column="order_id" select="getGoodsByCodes"></collection>
+    </resultMap>
+    <!--    查询该用户的订单列表-->
+    <select id="listOrderBy" parameterType="java.lang.String" resultMap="oList">
+        SELECT
+        order_id,
+        order_status,
+        c.user_code,
+        c.user_name,
+        a.goodsNum,
+        a.price,
+        c.phone,
+        a.version
+        FROM
+        t_goods_order_table a,
+        t_store_table b,
+        t_sys_user c
+        WHERE
+        a.is_deleted = 0
+        and a.receiver_no = b.stroe_no
+        AND b.user_code = #{userId}
+        AND c.user_code = a.user_id
+        AND order_status in(4 ,5)
+        ORDER BY
+        a.pay_time DESC
+    </select>
+    <!--    查询该订单商品列表-->
+    <select id="getGoodsByCodes" parameterType="java.lang.String" resultType="com.xzsd.app.clientInformation.entity.ClientOrderGoodsVO">
+                SELECT
+                a.goods_name goodsName,
+                a.picture goodsImagePath,
+                a.introduce goodsDescribe,
+                b.price goodsPrice,
+                b.num cartGoodsCount,
+                a.good_Id goodsId
+                FROM
+                t_goods_table a,
+                t_goods_order_table_cp b,
+                t_goods_order_table c
+                WHERE
+                b.is_deleted=0
+                and b.goods_Id=a.good_id
+                and c.order_id=b.order_id
+                and c.order_id=#{order_id}
+                ORDER BY b.change_time
+     </select>
 </mapper>

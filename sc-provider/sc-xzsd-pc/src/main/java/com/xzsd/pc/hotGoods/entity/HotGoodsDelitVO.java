@@ -6,7 +6,7 @@ package com.xzsd.pc.hotGoods.entity;
  */
 public class HotGoodsDelitVO {
     /**
-     * 热门数
+     * 热门数排序
      */
     private String hotGoodsNum;
     /**
@@ -25,6 +25,18 @@ public class HotGoodsDelitVO {
      * 版本号
      */
     private String version;
+    /**
+     * 排序号备用
+     */
+    private String noId;
+
+    public String getNoId() {
+        return noId;
+    }
+
+    public void setNoId(String noId) {
+        this.noId = noId;
+    }
 
     public String getHotGoodsNum() {
         return hotGoodsNum;

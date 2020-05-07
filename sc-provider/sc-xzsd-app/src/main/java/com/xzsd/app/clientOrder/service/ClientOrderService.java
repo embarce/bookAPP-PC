@@ -83,8 +83,10 @@ public class ClientOrderService {
         }
         int goods = clientOrderDao.updateGoodsStock(orderInfoList);
         int num = clientOrderDao.addOrderDetail(orderInfoList);
-        //清空购物车
-        int updateNum = clientOrderDao.updateShoppingCar(goodsId, SecurityUtils.getCurrentUserId());
+        if ("1".equals(orderInfo.getIsShopping())) {
+            //清空购物车
+            int updateNum = clientOrderDao.updateShoppingCar(goodsId, SecurityUtils.getCurrentUserId());
+        }
         orderInfo.setPrice(sum);
         orderInfo.setGoodsNum(goodsNumSum);
         int count = clientOrderDao.addOrder(orderInfo);
@@ -103,7 +105,15 @@ public class ClientOrderService {
      */
     public AppResponse listOrder(String orderStateId) {
         String userId = SecurityUtils.getCurrentUserId();
-        List<ClientOrderVO> clientOrderVOS = clientOrderDao.listOrder(orderStateId, userId);
+        List<ClientOrderVO> clientOrderVOS =new ArrayList<>();
+        //判断是不是传已完成的值来，是就调用已完成的接口，因为4和5都是已完成
+        boolean orderState="5".equals(orderStateId);
+        System.out.println(orderState);
+        if(orderState==true){
+            clientOrderVOS=clientOrderDao.listOrders(userId);
+        }else {
+            clientOrderVOS = clientOrderDao.listOrder(orderStateId, userId);
+        }
         return AppResponse.success("查询成功", clientOrderVOS);
     }
 

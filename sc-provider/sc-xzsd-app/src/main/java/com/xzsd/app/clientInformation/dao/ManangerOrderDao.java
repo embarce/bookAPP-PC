@@ -17,6 +17,7 @@ public interface ManangerOrderDao {
      * @return
      */
     List<ClientOrderVO> listOrder(@Param("orderStateId")String orderStateId, @Param("userId")String userId);
+    List<ClientOrderVO> listOrderBy(@Param("userId")String userId);
 
     /**
      * 修改订单状态

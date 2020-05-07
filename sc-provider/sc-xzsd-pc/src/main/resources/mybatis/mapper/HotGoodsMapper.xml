@@ -101,7 +101,7 @@
             a.hotGoodsId,
             b.goods_name goodsName,
             b.price,
-            b.introduction
+            b.introduction goodsIntroduction
         FROM
             t_hot_table a
             JOIN t_goods_table b ON a.goods_Id = b.good_id
@@ -118,6 +118,7 @@
     <select id="getHotGoods" parameterType="java.lang.String" resultType="com.xzsd.pc.hotGoods.entity.HotGoodsDelitVO">
         SELECT
             a.no_id hotGoodsNum,
+            a.no_id noId,
             a.goods_id goodsId,
             b.goods_name goodsName,
             a.hotGoodsId hotGoodsId,

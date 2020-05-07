@@ -47,6 +47,13 @@ public interface ClientOrderDao {
     List<ClientOrderVO> listOrder(@Param("orderStateId") String orderStateId, @Param("userId") String userId);
 
     /**
+     * 查询完成的订单
+     * @param userId
+     * @return
+     */
+    List<ClientOrderVO> listOrders(@Param("userId") String userId);
+
+    /**
      * 返回商品数量库存
      *
      * @param goodsId

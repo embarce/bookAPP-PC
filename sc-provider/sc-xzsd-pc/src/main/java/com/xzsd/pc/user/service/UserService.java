@@ -2,6 +2,7 @@ package com.xzsd.pc.user.service;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.neusoft.core.page.PageUtils;
 import com.neusoft.core.restful.AppResponse;
 import com.neusoft.security.client.utils.SecurityUtils;
 import com.neusoft.util.StringUtil;
@@ -90,11 +91,12 @@ public class UserService {
      * @Date : 2020-3-26
      */
     public AppResponse listUserByPage(UserInfo userInfo) {
-        PageHelper.startPage(userInfo.getPageNum(), userInfo.getPageSize());
+//        PageHelper.startPage(userInfo.getPageNum(), userInfo.getPageSize());
         List<UserInfo> userInfoList = userDao.listUserByPage(userInfo);
         // 包装Page对象
-        PageInfo<UserInfo> pageData = new PageInfo<UserInfo>(userInfoList);
-        return AppResponse.success("查询成功！", pageData);
+//        PageInfo<UserInfo> pageData = new PageInfo<UserInfo>(userInfoList);
+
+        return AppResponse.success("查询成功！", PageUtils.getPageInfo(userInfoList));
     }
 
     /**

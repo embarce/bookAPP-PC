@@ -114,7 +114,7 @@
     </update>
     <!--删除热门商品-->
     <update id="deleteHotGoodsByGoodsId" parameterType="java.lang.String">
-        update t_picture_table
+        update t_hot_table
         set
         is_delete = 1,
         change_time = now(),
@@ -212,6 +212,7 @@
             t_cate_table
         WHERE
             cate_id_parent =0
+            and is_delete=0
     </select>
     <select id="listGoodsClassifyByPid" parameterType="java.lang.String" resultType="com.xzsd.pc.goods.entity.classifVO">
         SELECT
@@ -221,5 +222,6 @@
             t_cate_table
         WHERE
             cate_id_parent =#{classifyId}
+            and is_delete=0
     </select>
 </mapper>
